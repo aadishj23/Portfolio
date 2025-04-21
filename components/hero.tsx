@@ -43,15 +43,15 @@ export default function Hero(){
 
     return(
         <div className="flex my-10 gap-5 lg:pl-[20vw] px-5 items-center" >
-            <div className="w-40 h-40 lg:h-48 rounded-lg overflow-hidden border-2 dark:border-4 border-gray-600 dark:border-gray-300 shadow-lg">
-                <Image
-                    src="/Photo.jpeg"
-                    alt="Aadish Jain"
-                    width={160}
-                    height={192}
-                    className=""
-                />
-            </div>
+          <div className="relative w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-lg overflow-hidden border-2 dark:border-4 border-gray-600 dark:border-gray-300 shadow-lg">
+            <Image
+              src="/Photo.jpeg"
+              alt="Aadish Jain"
+              fill
+              className="object-cover"
+            />
+          </div>
+
             <div>
                 <h1 className="dark:text-white text-3xl font-bold">Aadish Jain</h1>
                 <p className="dark:text-white my-2">Software Engineer</p>
