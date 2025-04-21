@@ -1,6 +1,7 @@
 import Navbar from "@/components/navbar";
 import AboutMe from "@/components/about";
 import Hero from "@/components/hero";
+import Skills from "@/components/skills";
 import { ScrollProgress } from "@/components/magicui/scroll-progress";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <hr className="h-px mt-2 bg-black dark:bg-[#7a7a7aa3] border-0" />
       <Hero />
       <AboutMe />
+      <Skills />
     </div>  
   );
 }
