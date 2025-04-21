@@ -1,9 +1,8 @@
 import Image from "next/image"
-import { InteractiveHoverButton } from "./magicui/interactive-hover-button"
 import { FloatingDock } from "@/components/ui/floating-dock";
 import {
   IconBrandGithub,
-  IconBrandX,
+  // IconBrandX,
   IconBrandLinkedin,
   IconMail,
 } from "@tabler/icons-react";
@@ -67,7 +66,6 @@ export default function Hero(){
             items={links}
           />
         </div>
-        <a href="https://drive.google.com/file/d/17eyJbui40twkZF0-JBlENlXqoza0R-9H/view?usp=drive_link" target="_blank"><InteractiveHoverButton> View Resume</InteractiveHoverButton></a>
       </div>
     </div>
   )
