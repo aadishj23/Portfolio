@@ -1,4 +1,5 @@
 "use client"
+
 import { InteractiveHoverButton } from "./magicui/interactive-hover-button"
 import { useEffect } from "react";
 import AOS from "aos";
@@ -7,7 +8,7 @@ import "aos/dist/aos.css";
 export default function AboutMe() {
 
   useEffect(() => {
-    AOS.init({ duration: 1000, once: true }); 
+    AOS.init({ duration: 1000, once: false }); 
   }, []);
 
   return (

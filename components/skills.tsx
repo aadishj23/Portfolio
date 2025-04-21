@@ -34,7 +34,7 @@ const slugs = [
 export default function Skills() {
 
     useEffect(() => {
-        AOS.init({ duration: 1000, once: true }); 
+        AOS.init({ duration: 1000, once: false }); 
     }, []);
 
     return (
