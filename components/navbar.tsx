@@ -18,7 +18,7 @@ function Navbar() {
   const { setTheme } = useTheme()
 
   return (
-    <div className="flex justify-between items-center px-4">
+    <div className="fixed top-0 left-0 right-0 z-50 bg-background flex justify-between items-center px-4 py-1 shadow-md">
       <Image
         src="/Logo_2.png"
         alt="Logo"
