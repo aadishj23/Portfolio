@@ -24,7 +24,7 @@ function Navbar() {
         alt="Logo"
         width={45}
         height={45}
-        className="pt-4"
+        className="my-2"
       />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
