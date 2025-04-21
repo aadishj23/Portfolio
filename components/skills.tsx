@@ -1,5 +1,3 @@
-import { IconCloud } from "@/components/magicui/icon-cloud";
-
 const slugs = [
     "typescript",
     "javascript",
@@ -25,9 +23,7 @@ const slugs = [
     "css3",
     "mysql",
     "mongodb",
-  ];
-  
-  
+];
 
 export default function Skills(){
 
@@ -38,9 +34,6 @@ export default function Skills(){
     return(
         <div className="lg:pl-[20vw] px-5 mt-10">
             <p className="dark:text-white font-bold text-2xl">Skills</p>
-            <div className="relative flex size-full items-center justify-center overflow-hidden">
-                <IconCloud images={images} />
-            </div>
         </div>
     )
 }

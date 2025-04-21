@@ -118,7 +118,7 @@ function IconContainer({
         }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="relative flex aspect-square items-center justify-center rounded-full dark:bg-linear-to-r from-black to-[#70290A] "
+        className="relative flex aspect-square items-center justify-center rounded-full bg-gray-200 dark:bg-neutral-800"
       >
         <AnimatePresence>
           {hovered && !isMobile && (

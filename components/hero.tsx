@@ -25,13 +25,13 @@ export default function Hero(){
       ),
       href: "https://www.linkedin.com/in/aadishj23/",
     },
-    {
-      title: "Twitter",
-      icon: (
-        <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "https://x.com/AadishJ23",
-    },
+    // {
+    //   title: "Twitter",
+    //   icon: (
+    //     <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+    //   ),
+    //   href: "https://x.com/AadishJ23",
+    // },
     {
       title: "Mail",
       icon: (
@@ -42,10 +42,10 @@ export default function Hero(){
   ];
 
   return(
-    <div className="flex mt-20 mb-10 gap-5 lg:pl-[20vw] px-5 items-center" >
-      <div className="relative w-32 h-40 sm:w-40 sm:h-48 lg:w-40 lg:h-48 rounded-lg overflow-hidden border-2 dark:border-4 border-gray-600 dark:border-gray-300 shadow-lg">
+    <div className="flex pt-24 mb-10 gap-5 lg:pl-[20vw] px-5 items-center" >
+      <div className="relative w-40 h-40 rounded-lg overflow-hidden border-2  border-gray-600 dark:border-gray-300 shadow-lg">
         <Image
-          src="/Photo.jpeg"
+          src="/pic2.jpeg"
           alt="Aadish Jain"
           fill
           className="object-cover"
@@ -55,11 +55,10 @@ export default function Hero(){
         <div className="flex flex-col md:flex-row md:items-center md:space-x-3">
           <h1 className="dark:text-white text-3xl font-bold">Aadish Jain</h1>
           <div
-            className="flex items-center space-x-1 px-3 py-1 rounded-xl mt-2 md:mt-0 w-max"
-            style={{ backgroundColor: "#70290A" }}
+            className="hidden md:flex items-center space-x-1 px-3 py-1 rounded-xl mt-2 w-max "
           >
             <span className="h-2 w-2 rounded-full bg-[#F00001] animate-pulse"></span>
-            <span className="text-white text-sm font-medium ml-1">Available to work</span>
+            <span className="dark:text-white text-sm font-medium ml-1">Available to work</span>
           </div>
         </div>
         <p className="dark:text-white my-2">Software Engineer</p>
