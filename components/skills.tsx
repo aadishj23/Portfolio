@@ -1,3 +1,9 @@
+"use client"
+
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 const slugs = [
     { title: "C++", icon: "https://cdn.simpleicons.org/cplusplus" },
     { title: "HTML", icon: "https://cdn.simpleicons.org/html5" },
@@ -26,8 +32,13 @@ const slugs = [
 ];
 
 export default function Skills() {
+
+    useEffect(() => {
+        AOS.init({ duration: 1000, once: true }); 
+    }, []);
+
     return (
-        <div className="lg:pl-[20vw] px-5 mt-10 w-full lg:w-4/5">
+        <div className="lg:pl-[20vw] px-5 mt-10 w-full lg:w-4/5" data-aos="fade-down">
             <p className="dark:text-white font-bold text-2xl">Skills</p>
             <div className="flex flex-wrap gap-4 mt-5">
                 {slugs.map(({ title, icon ,invert}) => (

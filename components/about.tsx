@@ -1,8 +1,17 @@
+"use client"
 import { InteractiveHoverButton } from "./magicui/interactive-hover-button"
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function AboutMe() {
+
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true }); 
+  }, []);
+
   return (
-    <div className="lg:pl-[20vw] px-5">
+    <div className="lg:pl-[20vw] px-5" data-aos="fade-down">
       <p className="dark:text-white font-bold text-2xl">About Me</p>
       <p className="mt-6 mb-4 w-full lg:w-3/5 dark:text-gray-300">I'm a passionate Full Stack Developer skilled in React, Next.js, Express.js, and PostgreSQL. I've built full-fledged platforms like <span className="text-red-700 cursor-pointer font-semibold"><a href="https://github.com/aadishj23/Labeasy" target="_blank">Labeasy</a></span>, a secure lab diagnostics solution recognized as a Top 10 finalist at a Major League Hacking event, and <span className="text-red-700 cursor-pointer font-semibold"><a href="https://github.com/aadishj23/Quiz-App" target="_blank">Quizzical</a></span>, a dynamic quiz platform designed for smooth performance and real-time feedback.</p>
       <p className="dark:text-gray-300 w-full lg:w-3/5">I also developed <span className="text-red-700 cursor-pointer font-semibold"><a href="https://github.com/aadishj23/Anveshan" target="_blank">Anveshan</a></span>, a full-stack app with a responsive UI, improving data visualization and interactivity.</p>

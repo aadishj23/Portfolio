@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image"
 import { FloatingDock } from "@/components/ui/floating-dock";
 import {
@@ -6,8 +8,15 @@ import {
   IconBrandLinkedin,
   IconMail,
 } from "@tabler/icons-react";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Hero(){
+
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true }); 
+  }, []);
 
   const links = [
     {
@@ -41,7 +50,7 @@ export default function Hero(){
   ];
 
   return(
-    <div className="flex pt-24 mb-10 gap-5 lg:pl-[20vw] px-5 items-center" >
+    <div className="flex pt-24 mb-10 gap-5 lg:pl-[20vw] px-5 items-center" data-aos="fade-down" >
       <div className="relative w-40 h-40 rounded-lg overflow-hidden border-2  border-gray-600 dark:border-gray-300 shadow-lg">
         <Image
           src="/pic2.jpeg"
