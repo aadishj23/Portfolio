@@ -11,7 +11,7 @@ const WelcomeScreen = () => {
     "Loading dev environment modules... 📦",
     "Establishing secure link to mainframe... 🔐",
     "Deploying portfolio interface... 🚀",
-    "All systems online. Welcome, Commander. 👨‍🚀"
+    "All systems online. Welcome. 👨‍🚀"
   ];
 
   useEffect(() => {
@@ -131,7 +131,7 @@ const WelcomeScreen = () => {
               </div>
               
               <div className="terminal-prompt text-xl text-terminal-foreground mb-2">
-                Solving real-world problems. One scalable system at a time.
+                💡 Turning ideas into systems that scale - backed by code, driven by curiosity.
               </div>
               
               <div className="flex items-center justify-center gap-4 text-terminal-accent/60">
@@ -148,7 +148,7 @@ const WelcomeScreen = () => {
               {apps.map((app, index) => (
                 <div
                   key={app.id}
-                  className={`os-window interactive-hover animate-scale-in animate-delay-${(index + 1) * 100} cursor-pointer group rounded-xl overflow-hidden bg-background`}
+                  className={`os-window interactive-hover animate-scale-in animate-delay-${(index + 1) * 100} cursor-pointer overflow-hidden`}
                 >
                   <div className="os-window-header bg-background">
                     <div className="flex items-center gap-3">
@@ -164,7 +164,7 @@ const WelcomeScreen = () => {
                     </div>
                   </div>
                   
-                  <div className="p-6 bg-background">
+                  <div className="p-6">
                     <p className="text-foreground-secondary text-sm mb-4">
                       {app.description}
                     </p>
