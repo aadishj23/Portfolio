@@ -122,11 +122,11 @@ const WelcomeScreen = () => {
           </div>
         ) : (
           /* Aadish OS Interface */
-          <div className="max-w-6xl mx-auto animate-fade-in-up">
+          <div className="max-w-6xl mx-auto animate-fade-in-up pt-12 xl:pt-0 ">
             {/* OS Header */}
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-3 mb-4">
-                <Terminal className="text-terminal-accent" size={40} />
+                <Terminal className="text-terminal-accent" size={32} />
                 <h1 className="text-6xl font-serif text-white">Aadish Jain</h1>
               </div>
               

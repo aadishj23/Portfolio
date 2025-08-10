@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ExternalLink, Github, Play, Database, Shield, Users } from 'lucide-react';
+import { ExternalLink, Github, Play, Database, Shield, Users,Code, Folder, User } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -12,18 +12,18 @@ const ProjectsSection = () => {
       id: 'labeasy',
       name: 'Labeasy',
       command: 'run-labeasy',
-      status: 'active',
+      status: 'production',
       description: 'A unified diagnostics platform that helps users find and book affordable lab tests from trusted local labs.',
-      impact: ['100+ Tests Database', 'Built MVP in 3 Days', 'Finalist @ HackCBS'],
+      impact: ['100+ Tests Database', 'Built MVP in 3 Days', 'Finalist @ HackCBS - a MLH Hackathon'],
       tech: ['React','Recoil','Tailwind CSS','Express.js', 'Prisma', 'PostgreSQL' ],
-      type: 'web-app',
+      type: 'icon1',
       metrics: {
         tests: '100+',
         "data encryption": '100%',
-        uptime: '99.9%'
+        uptime: '99%'
       },
       links: {
-        demo: 'https://labeasy.aadish.tech/',
+        live: 'https://labeasy.aadish.tech/',
         github: 'https://github.com/aadishj23/Labeasy'
       }
     },
@@ -33,13 +33,13 @@ const ProjectsSection = () => {
       command: 'run-namdapha',
       status: 'production',
       description: 'A modern and accessible website for Namdapha Tiger Reserve, showcasing its biodiversity, tourism info, and conservation efforts.',
-      impact: ['Integerated with Spring Boot Backend', 'Pixel Perfect Responsive UI ', 'Protected Admin Routes'],
+      impact: ['Integrated with Spring Boot Backend', 'Pixel-Perfect Responsive UI', 'Protected Admin Routes'],
       tech: ['React.js', 'Recoil', 'TypeScript', 'Tailwind CSS', 'Aceternity UI'],
-      type: 'backend',
+      type: 'icon2',
       metrics: {
         pages: '15+',
         visitors: '1K+',
-        uptime: '99.9%'
+        uptime: '99%'
       },
       links: {
         live: 'https://namdapha-axuo.vercel.app/',
@@ -50,38 +50,140 @@ const ProjectsSection = () => {
       id: 'Quizzical',
       name: 'Quizzical',
       command: 'run-quizzical',
-      status: 'experimental',
+      status: 'production',
       description: 'A quiz platform offering thousands of technical questions categorized by topic and difficulty level.',
-      impact: ['Integerated Quiz API for Questions Database', 'Feedback Driven Results', 'Detailed Past Qizzes Played History'],
+      impact: ['Integrated Quiz API for Questions Database', 'Feedback-Driven Results', 'Detailed Quiz History Tracking'],
       tech: ['React', 'Recoil', 'TypeScript', 'Tailwind CSS', 'Express.js', 'Prisma', 'PostgreSQL'],
-      type: 'ai-system',
+      type: 'icon3',
       metrics: {
         questions: '11K+',
         categories: '7+',
         levels: '3'
       },
       links: {
-        demo: 'https://quizzical.aadish.tech/',
+        live: 'https://quizzical.aadish.tech/',
         github: 'https://github.com/aadishj23/Quiz-App'
       }
     },
     {
-      id: 'devTools',
+      id: 'Anveshan',
       name: 'Anveshan',
       command: 'run-Anveshan',
       status: 'production',
       description: 'A website for Anveshan, the technical club of BPIT, showcasing its events, team, projects, and achievers.',
-      impact: ['Modularity for easy Maintainance', 'Integerated both SPA and MPA Versions', 'Community contributions'],
-      tech: ['React', 'Tailwind CSS', 'Aceternity UI', 'Express.js', 'Mongo DB'],
-      type: 'cli-tool',
+      impact: ['Modular Architecture for Easy Maintenance', 'Integrated SPA and MPA Versions', 'Community-Driven Development'],
+      tech: ['React', 'Tailwind CSS', 'Aceternity UI', 'Express.js', 'MongoDB'],
+      type: 'icon4',
       metrics: {
         modular: '100%',
         "People Data": '50+',
         projects: '10+'
       },
       links: {
-        demo: 'https://anveshan.dev/',
+        live: 'https://anveshan.dev/',
         github: 'https://github.com/aadishj23/Anveshan'
+      }
+    },
+    {
+      id: 'taskmate',
+      name: 'TaskMate',
+      command: 'run-TaskMate',
+      status: 'production',
+      description: 'A full-stack to-do app that lets you efficiently manage, track, and organize your tasks with a seamless user experience.',
+      impact: ['Real-time Task Tracking', 'User Authentication & JWT Security', 'Responsive Cross-Platform Design'],
+      tech: ['React.js', 'Tailwind CSS', 'Express.js', 'MongoDB', 'JWT'],
+      type: 'icon5',
+      metrics: {
+        features: '6+',
+        "User Tasks": '100+',
+        uptime: '99.5%'
+      },
+      links: {
+        live: 'https://taskmate.aadish.tech/',
+        github: 'https://github.com/aadishj23/TaskMate'
+      }
+    },
+    {
+      id: 'Venturevine',
+      name: 'Venturevine',
+      command: 'run-Venturevine',
+      status: 'production',
+      description: 'A comprehensive platform for entrepreneurs and startups to showcase their ventures, connect with investors, and grow their network.',
+      impact: ['Startup Showcase Platform', 'Investor Connection System', 'Community Building Features'],
+      tech: ['React', 'Tailwind CSS', 'Dynamic Routing'],
+      type: 'icon6',
+      metrics: {
+        sections: '10+',
+        "Dynamic Routes": '25+',
+        dependencies: '10+'
+      },
+      links: {
+        live: 'https://venturevine.aadish.tech/',
+        github: 'https://github.com/aadishj23/Venturevine'
+      }
+    },
+    {
+      id: 'hackblitz',
+      name: 'HackBlitz Hackathon Website',
+      command: 'run-HackBlitz',
+      status: 'production',
+      description: 'The official website for HackBlitz, a 24-hour hackathon featuring project showcases in front of 10+ judges.',
+      impact: ['HackBlitz Event Information', 'Participant Registration Portal', 'Hackathon Information Showcase Platform'],
+      tech: ['React', 'Recoil', 'Tailwind CSS'],
+      type: 'icon7',
+      metrics: {
+        sections: '8+',
+        contributors: '3'
+      },
+      links: {
+        live: 'https://hackblitz.aadish.tech/',
+        github: 'https://github.com/aadishj23/HackBlitz'
+      }
+    },
+    {
+      id: 'TempTrack',
+      name: 'TempTrack',
+      command: 'run-TempTrack',
+      status: 'production',
+      description: 'A weather tracking application that provides real-time temperature data, forecasts, and location-based weather information.',
+      impact: ['Real-time Weather Data', 'Location-Based Forecasting', 'Weather Based Background'],
+      tech: ['React', 'Tailwind CSS', 'Context API'],
+      type: 'icon1',
+      metrics: {
+        locations: '10K+',
+        accuracy: '99%'
+      },
+      links: {
+        live: 'https://weather.aadish.tech/',
+        github: 'https://github.com/aadishj23/weather'
+      }
+    },
+    {
+      id: 'youtube',
+      name: 'Youtube Comment Scraper',
+      command: 'run-ytCmntScraper',
+      status: 'production',
+      description: 'An YouTube comment extraction tool that filters and sorts comments by relevance, date, and quantity for comprehensive data analysis.',
+      impact: ['Comment Data Extraction', 'Bulk Comment Processing'],
+      tech: ['React', 'Tailwind CSS'],
+      type: 'icon2',
+      links: {
+        live: 'https://youtube-comment-scrapper.aadish.tech/',
+        github: 'https://github.com/aadishj23/Youtube-Comment-Scrapper'
+      }
+    },
+    {
+      id: 'Tenzies',
+      name: 'Tenzies',
+      command: 'run-Tenzies',
+      status: 'production',
+      description: 'A fun dice game where players roll dice to achieve matching numbers, built with modern web technologies.',
+      impact: ['Interactive Dice Game', 'Score Tracking System', 'Responsive Game Interface'],
+      tech: ['React', 'Tailwind CSS'],
+      type: 'icon3',
+      links: {
+        live: 'https://tenzies.aadish.tech/',
+        github: 'https://github.com/aadishj23/Tenzies-Game'
       }
     }
   ];
@@ -91,26 +193,24 @@ const ProjectsSection = () => {
       setRunningProcesses([...runningProcesses, projectId]);
       setTimeout(() => {
         setRunningProcesses(prev => prev.filter(id => id !== projectId));
-      }, 3000);
+      }, 2000);
     }
   };
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'active': return 'neon';
-      case 'production': return 'electric';
-      case 'experimental': return 'hot';
-      case 'open-source': return 'electric';
-      default: return 'electric';
-    }
+  const getStatusColor = (status: string, index: number) => {
+    const colors = ['neon', 'electric', 'hot', 'amber'];
+    return colors[index % colors.length];
   };
 
   const getTypeIcon = (type: string) => {
     switch (type) {
-      case 'web-app': return <Database size={16} />;
-      case 'backend': return <Shield size={16} />;
-      case 'ai-system': return <Play size={16} />;
-      case 'cli-tool': return <Users size={16} />;
+      case 'icon1': return <Database size={16} />;
+      case 'icon2': return <Shield size={16} />;
+      case 'icon3': return <Play size={16} />;
+      case 'icon4': return <Users size={16} />;
+      case 'icon5': return <Code size={16} />;
+      case 'icon6': return <Folder size={16} />;
+      case 'icon7': return <User size={16} />;
       default: return <Database size={16} />;
     }
   };
@@ -137,7 +237,10 @@ const ProjectsSection = () => {
                   <span className="text-terminal-warning">%CPU</span>
                   <span className="text-terminal-warning">%MEM</span>
                   <span className="text-terminal-foreground flex-1">{project.command}</span>
-                  <div className={`w-2 h-2 rounded-full bg-${getStatusColor(project.status)} pulse-glow`} />
+                  <div 
+                    className="w-2 h-2 rounded-full pulse-glow" 
+                    style={{ backgroundColor: `hsl(var(--accent-${getStatusColor(project.status, index)}))` }}
+                  />
                 </div>
               ))}
             </div>
@@ -158,11 +261,17 @@ const ProjectsSection = () => {
             >
               <div className="os-window-header bg-background">
                 <div className="flex items-center gap-3">
-                  <div className={`text-${getStatusColor(project.status)}`}>
+                  <div style={{ color: `hsl(var(--accent-${getStatusColor(project.status, index)}))` }}>
                     {getTypeIcon(project.type)}
                   </div>
                   <span className="font-mono text-sm">{project.name}</span>
-                  <Badge variant="outline" className={`text-${getStatusColor(project.status)} border-${getStatusColor(project.status)}/30`}>
+                  <Badge 
+                    variant="outline" 
+                    style={{ 
+                      color: `hsl(var(--accent-${getStatusColor(project.status, index)}))`,
+                      borderColor: `hsl(var(--accent-${getStatusColor(project.status, index)}) / 0.3)`
+                    }}
+                  >
                     {project.status}
                   </Badge>
                 </div>
@@ -179,8 +288,8 @@ const ProjectsSection = () => {
                 </p>
 
                 {/* Process Logs */}
-                <div className="bg-terminal-bg rounded-lg p-4 mb-6 font-mono text-sm">
-                  <div className="terminal-prompt mb-2">$ {project.command}</div>
+                <div className="bg-terminal-bg rounded-lg p-4 mb-6 font-mono text-sm min-h-[4.4rem]">
+                  <div className="terminal-prompt mb-2 text-terminal-accent">{project.command}</div>
                   
                   {runningProcesses.includes(project.id) ? (
                     <div className="space-y-1 min-h-[4.4rem]">
@@ -191,7 +300,7 @@ const ProjectsSection = () => {
                       </div>
                     </div>
                   ) : (
-                    <div className="space-y-1">
+                    <div className="space-y-1 min-h-[4.5rem]">
                       {project.impact.map((impact, i) => (
                         <div key={i} className="terminal-success text-terminal-foreground">
                           {impact}
@@ -202,18 +311,31 @@ const ProjectsSection = () => {
                 </div>
 
                 {/* Metrics */}
-                <div className="grid grid-cols-3 gap-4 mb-6">
-                  {Object.entries(project.metrics).map(([key, value]) => (
-                    <div key={key} className="text-center">
-                      <div className={`text-2xl font-bold text-${getStatusColor(project.status)}`}>
-                        {value}
-                      </div>
-                      <div className="text-xs text-foreground-secondary uppercase tracking-wide">
-                        {key}
-                      </div>
+                {project.metrics && (
+                  <div className="mb-6">
+                    <div className={`grid gap-4 mb-6 ${
+                      Object.keys(project.metrics).length === 1 
+                        ? 'grid-cols-1 max-w-xs mx-auto' 
+                        : Object.keys(project.metrics).length === 2 
+                        ? 'grid-cols-2 max-w-md mx-auto' 
+                        : 'grid-cols-3'
+                    }`}>
+                      {Object.entries(project.metrics).map(([key, value]) => (
+                        <div key={key} className="text-center">
+                          <div 
+                            className="text-2xl font-bold"
+                            style={{ color: `hsl(var(--accent-${getStatusColor(project.status, index)}))` }}
+                          >
+                            {value}
+                          </div>
+                          <div className="text-xs text-foreground-secondary uppercase tracking-wide">
+                            {key}
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  </div>
+                )}
 
                 {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2 mb-6">
@@ -241,11 +363,7 @@ const ProjectsSection = () => {
                         }}
                         >
                         {type === 'github' && <Github size={14} />}
-                        {type === 'demo' && <Play size={14} />}
                         {type === 'live' && <ExternalLink size={14} />}
-                        {type === 'npm' && <ExternalLink size={14} />}
-                        {type === 'case' && <ExternalLink size={14} />}
-                        {type === 'paper' && <ExternalLink size={14} />}
                         <span className="capitalize">{type}</span>
                         </Button>
                     ))}
