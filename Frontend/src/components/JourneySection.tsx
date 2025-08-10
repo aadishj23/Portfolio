@@ -147,14 +147,32 @@ const JourneySection = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-electric via-neon to-hot rounded-full animate-pulse" />
           </div>
           <div className={`flex ${isMobile ? 'flex-wrap gap-4 justify-center' : 'justify-between'} mt-2`}>
-            {journey.map((milestone, index) => (
-              <div key={milestone.id} className={`flex flex-col items-center ${isMobile ? 'min-w-[80px]' : ''}`}>
-                <div className={`w-3 h-3 rounded-full ${
-                  milestone.status === 'current' ? 'bg-neon animate-pulse' : 'bg-electric'
-                } mb-1`} />
-                <span className="text-xs text-foreground-secondary text-center">{milestone.year}</span>
-              </div>
-            ))}
+            {journey.map((milestone, index) => {
+              // Calculate color based on position along the gradient
+              const totalMilestones = journey.length;
+              const progress = index / (totalMilestones - 1); // 0 to 1
+              
+              let dotColor = '';
+              if (progress <= 0.33) {
+                // First third: electric (blue)
+                dotColor = 'bg-electric';
+              } else if (progress <= 0.66) {
+                // Middle third: neon (green)
+                dotColor = 'bg-neon';
+              } else {
+                // Last third: hot (red/orange)
+                dotColor = 'bg-hot';
+              }
+              
+              return (
+                <div key={milestone.id} className={`flex flex-col items-center ${isMobile ? 'min-w-[80px]' : ''}`}>
+                  <div className={`w-3 h-3 rounded-full ${dotColor} ${
+                    milestone.status === 'current' ? 'animate-pulse' : ''
+                  } mb-1`} />
+                  <span className="text-xs text-foreground-secondary text-center">{milestone.year}</span>
+                </div>
+              );
+            })}
           </div>
         </div>
 
@@ -173,7 +191,7 @@ const JourneySection = () => {
                   onClick={() => setSelectedMilestone(selectedMilestone === milestone.id ? null : milestone.id)}
                 >
                   <div className="os-window-header">
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 ">
                       <div className="text-electric">
                         {milestone.icon}
                       </div>
@@ -248,7 +266,7 @@ const JourneySection = () => {
                         {milestone.achievement && (
                           <div>
                             <h4 className="font-semibold mb-2 text-foreground">Achievement</h4>
-                            <Badge className="bg-neon/20 text-neon border-neon/30">
+                            <Badge className="bg-transparent text-neon border-neon/30">
                               {milestone.achievement}
                             </Badge>
                           </div>
