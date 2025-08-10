@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import WelcomeScreen from '@/components/WelcomeScreen';
 import ProjectsSection from '@/components/ProjectsSection';
 import JourneySection from '@/components/JourneySection';
+import WorkExperienceSection from '@/components/WorkExperienceSection';
 
 const Index = () => {
   useEffect(() => {
@@ -34,6 +35,7 @@ const Index = () => {
       <WelcomeScreen />
       <ProjectsSection />
       <JourneySection />
+      <WorkExperienceSection />
     </div>
   );
 };

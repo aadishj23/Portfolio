@@ -144,7 +144,7 @@ const JourneySection = () => {
             <span className="text-sm text-foreground-secondary">Now</span>
           </div>
           <div className="relative h-2 bg-surface rounded-full overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-electric via-neon to-hot rounded-full animate-pulse" />
+            <div className="absolute inset-0 bg-gradient-to-r from-electric via-neon to-hot rounded-full" />
           </div>
           <div className={`flex ${isMobile ? 'flex-wrap gap-4 justify-center' : 'justify-between'} mt-2`}>
             {journey.map((milestone, index) => {
