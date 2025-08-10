@@ -193,6 +193,11 @@ const ProjectsSection = () => {
       setRunningProcesses([...runningProcesses, projectId]);
       setTimeout(() => {
         setRunningProcesses(prev => prev.filter(id => id !== projectId));
+        // Automatically open live URL after process completes
+        const project = projects.find(p => p.id === projectId);
+        if (project?.links?.live) {
+          window.open(project.links.live, '_blank');
+        }
       }, 2000);
     }
   };

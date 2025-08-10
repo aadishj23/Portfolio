@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import WelcomeScreen from '@/components/WelcomeScreen';
 import ProjectsSection from '@/components/ProjectsSection';
+import JourneySection from '@/components/JourneySection';
 
 const Index = () => {
   useEffect(() => {
@@ -32,6 +33,7 @@ const Index = () => {
     <div className="scroll-snap-container custom-scrollbar">
       <WelcomeScreen />
       <ProjectsSection />
+      <JourneySection />
     </div>
   );
 };
