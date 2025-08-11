@@ -169,6 +169,66 @@
     box-shadow: var(--shadow-terminal);
   }
 
+  /* Ensure all text in terminal is visible */
+  .terminal * {
+    color: inherit;
+  }
+
+  .terminal input::placeholder {
+    color: hsl(var(--terminal-foreground) / 0.6);
+  }
+
+  .terminal button {
+    color: hsl(var(--terminal-accent));
+  }
+
+  /* Terminal text color overrides for better visibility */
+  .terminal .text-terminal-foreground {
+    color: hsl(var(--terminal-foreground)) !important;
+  }
+
+  .terminal .text-terminal-accent {
+    color: hsl(var(--terminal-accent)) !important;
+  }
+
+  .terminal .text-terminal-warning {
+    color: hsl(var(--terminal-warning)) !important;
+  }
+
+  .terminal .text-terminal-error {
+    color: hsl(var(--terminal-error)) !important;
+  }
+
+  .terminal .text-terminal-success {
+    color: hsl(var(--terminal-success)) !important;
+  }
+
+  /* Force dark background for terminal */
+  .terminal {
+    background: hsl(var(--terminal-bg)) !important;
+    overflow: hidden;
+  }
+
+  /* Terminal header styling */
+  .terminal > div:first-child {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+  }
+
+  /* Ensure all text in terminal has proper contrast */
+  .terminal div, .terminal span, .terminal p {
+    color: hsl(var(--terminal-foreground)) !important;
+  }
+
+  /* Override any inherited text colors */
+  .terminal .text-foreground {
+    color: hsl(var(--terminal-foreground)) !important;
+  }
+
+  .terminal .text-foreground-secondary {
+    color: hsl(var(--terminal-foreground) / 0.8) !important;
+  }
+
   .terminal-prompt::before {
     content: '$ ';
     color: hsl(var(--terminal-accent));
@@ -180,6 +240,10 @@
 
   .terminal-error::before {
     content: '❌ ';
+  }
+
+  .terminal-warning::before {
+    content: '⚠️ ';
   }
 
   /* Glassmorphism Cards */

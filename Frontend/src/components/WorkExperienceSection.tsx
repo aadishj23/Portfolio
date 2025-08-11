@@ -98,7 +98,7 @@ const WorkExperienceSection = () => {
         <div className="max-w-4xl mx-auto text-center mb-16">
           <div className="terminal max-w-md mx-auto mb-8">
             <div className="terminal-prompt text-sm py-5">
-              // professional timeline
+              echo "professional timeline"
             </div>
           </div>
           

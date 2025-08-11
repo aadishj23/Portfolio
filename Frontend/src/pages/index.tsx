@@ -7,6 +7,7 @@ import SkillsSection from '@/components/SkillsSection';
 import StackSection from '@/components/StackSection';
 import PersonalSection from '@/components/PersonalSection';
 import ContactSection from '@/components/ContactSection';
+import Terminal from '@/components/Terminal';
 
 
 const Index = () => {
@@ -45,6 +46,7 @@ const Index = () => {
       <StackSection />
       <PersonalSection />
       <ContactSection />
+      <Terminal />
     </div>
   );
 };
