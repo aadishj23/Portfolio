@@ -226,7 +226,7 @@ const SkillsSection = () => {
   };
 
   return (
-    <section className="min-h-screen py-20 bg-background-secondary scroll-snap-section">
+    <section id="skills" className="min-h-screen py-20 bg-background-secondary scroll-snap-section">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="max-w-4xl mx-auto text-center mb-16">

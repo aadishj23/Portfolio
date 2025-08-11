@@ -111,7 +111,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="min-h-screen py-20 bg-terminal-bg scroll-snap-section">
+    <section id="contact" className="min-h-screen py-20 bg-terminal-bg scroll-snap-section">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="max-w-4xl mx-auto text-center mb-16">

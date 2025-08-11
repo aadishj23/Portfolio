@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Terminal, Code, Folder, User, Mail, Download } from 'lucide-react';
+import { Terminal, Code, Folder, User, Mail, Download, Briefcase, BookOpen } from 'lucide-react';
 import heroTerminal from '@/assets/hero-terminal.jpeg';
 
 const WelcomeScreen = () => {
@@ -43,34 +43,49 @@ const WelcomeScreen = () => {
     };
   }, [bootingComplete]);
 
+  // Function to scroll to a specific section
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   const apps = [
     { 
       id: 'projects', 
       name: 'Projects.exe', 
       icon: <Code size={24} />,
       description: 'Building solutions that scale',
-      color: 'electric'
+      color: 'electric',
+      sectionId: 'projects'
+    },
+    { 
+      id: 'journey', 
+      name: 'Journey.app', 
+      icon: <BookOpen size={24} />,
+      description: 'My learning journey',
+      color: 'neon',
+      sectionId: 'journey'
     },
     { 
       id: 'experience', 
-      name: 'Timeline.app', 
+      name: 'Experience.exe', 
+      icon: <Briefcase size={24} />,
+      description: 'Work experience & timeline',
+      color: 'hot',
+      sectionId: 'work-experience'
+    },
+    { 
+      id: 'skills', 
+      name: 'Skills.sh', 
       icon: <Folder size={24} />,
-      description: 'Journey through startups',
-      color: 'neon'
-    },
-    { 
-      id: 'about', 
-      name: 'About.md', 
-      icon: <User size={24} />,
-      description: 'The human behind the code',
-      color: 'hot'
-    },
-    { 
-      id: 'contact', 
-      name: 'Connect.sh', 
-      icon: <Mail size={24} />,
-      description: 'Let\'s build something together',
-      color: 'electric'
+      description: 'Technical skills & stack',
+      color: 'electric',
+      sectionId: 'skills'
     }
   ];
 
@@ -149,6 +164,7 @@ const WelcomeScreen = () => {
                 <div
                   key={app.id}
                   className={`os-window interactive-hover animate-scale-in animate-delay-${(index + 1) * 100} cursor-pointer overflow-hidden`}
+                  onClick={() => scrollToSection(app.sectionId)}
                 >
                   <div className="os-window-header bg-background">
                     <div className="flex items-center gap-3">
@@ -186,7 +202,10 @@ const WelcomeScreen = () => {
                 Download Resume
               </button></a>
               
-              <button className="inline-flex items-center gap-2 px-6 py-3 bg-neon/20 hover:bg-neon/30 border border-neon/40 rounded-lg text-neon font-mono text-sm transition-all duration-300 hover:shadow-glow">
+              <button 
+                className="inline-flex items-center gap-2 px-6 py-3 bg-neon/20 hover:bg-neon/30 border border-neon/40 rounded-lg text-neon font-mono text-sm transition-all duration-300 hover:shadow-glow"
+                onClick={() => scrollToSection('contact')}
+              >
                 <Mail size={16} />
                 Get In Touch
               </button>
