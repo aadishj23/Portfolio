@@ -194,7 +194,7 @@ const ContactSection = () => {
                   <div className="flex gap-3">
                     <Button 
                       type="submit"
-                      className="bg-terminal-accent hover:bg-terminal-accent/80 text-terminal-bg font-mono"
+                      className="bg-accent-electric hover:bg-accent-electric/80 text-white font-mono font-semibold shadow-lg"
                       disabled={!message.trim()}
                     >
                       <Send size={14} className="mr-2" />

@@ -161,6 +161,16 @@ const Terminal = () => {
                  <div><span className="text-terminal-accent">skills</span> - Show skills</div>
                  <div><span className="text-terminal-accent">experience</span> - Show work experience</div>
                  <div><span className="text-terminal-accent">echo</span> - Echo text</div>
+                 <div><span className="text-terminal-accent">open projects.exe</span> - Navigate to projects</div>
+                 <div><span className="text-terminal-accent">open journey.app</span> - Navigate to journey</div>
+                 <div><span className="text-terminal-accent">open experience.exe</span> - Navigate to experience</div>
+                 <div><span className="text-terminal-accent">open skills.sh</span> - Navigate to skills</div>
+                 <div><span className="text-terminal-accent">ps aux | grep aadish-projects</span> - Show running projects</div>
+                 <div><span className="text-terminal-accent">cat career_summary.txt</span> - Show work summary</div>
+                 <div><span className="text-terminal-accent">skill --list --filter="all" --search="none"</span> - Skills summary</div>
+                 <div><span className="text-terminal-accent">cat /etc/aadish/architecture-principles.txt</span> - Show principles</div>
+                 <div><span className="text-terminal-accent">message --to="aadish" --priority="high"</span> - Navigate to contact</div>
+                 <div><span className="text-terminal-accent">list-commands</span> - Debug: List all command keys</div>
                </div>
               <div className="text-xs text-terminal-foreground/60 mt-2">
                 Type 'help [command]' for detailed information about a specific command.
@@ -328,6 +338,226 @@ const Terminal = () => {
          }
          return <div className="text-terminal-foreground">{args.join(' ')}</div>;
        }
+     },
+     // New navigation commands
+     'open projects.exe': {
+       description: 'Navigate to projects section',
+       usage: 'open projects.exe',
+       execute: () => {
+         // Scroll to projects section
+         const projectsSection = document.getElementById('projects');
+         if (projectsSection) {
+           projectsSection.scrollIntoView({ behavior: 'smooth' });
+           return <div className="text-terminal-success">✅ Navigated to Projects section</div>;
+         }
+         return <div className="text-terminal-error">❌ Projects section not found</div>;
+       }
+     },
+     'open journey.app': {
+       description: 'Navigate to journey section',
+       usage: 'open journey.app',
+       execute: () => {
+         // Scroll to journey section
+         const journeySection = document.getElementById('journey');
+         if (journeySection) {
+           journeySection.scrollIntoView({ behavior: 'smooth' });
+           return <div className="text-terminal-success">✅ Navigated to Journey section</div>;
+         }
+         return <div className="text-terminal-error">❌ Journey section not found</div>;
+       }
+     },
+     'open experience.exe': {
+       description: 'Navigate to work experience section',
+       usage: 'open experience.exe',
+       execute: () => {
+         // Scroll to work experience section
+         const experienceSection = document.getElementById('work-experience');
+         if (experienceSection) {
+           experienceSection.scrollIntoView({ behavior: 'smooth' });
+           return <div className="text-terminal-success">✅ Navigated to Work Experience section</div>;
+         }
+         return <div className="text-terminal-error">❌ Work Experience section not found</div>;
+       }
+     },
+     'open skills.sh': {
+       description: 'Navigate to skills section',
+       usage: 'open skills.sh',
+       execute: () => {
+         // Scroll to skills section
+         const skillsSection = document.getElementById('skills');
+         if (skillsSection) {
+           skillsSection.scrollIntoView({ behavior: 'smooth' });
+           return <div className="text-terminal-success">✅ Navigated to Skills section</div>;
+         }
+         return <div className="text-terminal-error">❌ Skills section not found</div>;
+       }
+     },
+     'ps aux | grep aadish-projects': {
+       description: 'Show all running projects',
+       usage: 'ps aux | grep aadish-projects',
+       execute: () => {
+         return (
+           <div className="space-y-2">
+             <div className="text-terminal-accent font-bold">Running Aadish Projects:</div>
+             <div className="space-y-1 text-sm">
+               <div className="text-terminal-success">✅ aadish-portfolio (PID: 1337) - Active</div>
+               <div className="text-terminal-success">✅ aadish-backend (PID: 1338) - Running</div>
+               <div className="text-terminal-success">✅ aadish-frontend (PID: 1339) - Active</div>
+               <div className="text-terminal-warning">⚠️ aadish-database (PID: 1340) - Starting</div>
+             </div>
+             <div className="text-terminal-foreground text-xs mt-2">
+               Total processes: 4 | Active: 3 | Starting: 1
+             </div>
+           </div>
+         );
+       }
+     },
+     'cat career_summary.txt': {
+       description: 'Display work experience summary',
+       usage: 'cat career_summary.txt',
+       execute: () => {
+         return (
+           <div className="space-y-2">
+             <div className="text-terminal-accent font-bold">Career Summary (career_summary.txt):</div>
+             <div className="text-terminal-foreground text-sm font-mono">
+               <div>🏢 Physics Wallah - Backend Trainee</div>
+               <div>   📅 Duration: May 2025 - Present</div>
+               <div>   🔧 Focus: Backend Development, API Development</div>
+               <div>   🚀 Achievements: Database optimization, API performance</div>
+               <div></div>
+               <div>🏢 Appzlogic - Full Stack SDE Intern</div>
+               <div>   📅 Duration: June 2024 - November 2024</div>
+               <div>   🔧 Focus: Web Applications, E-commerce, APIs</div>
+               <div>   🚀 Achievements: Full-stack development, team collaboration</div>
+               <div></div>
+               <div>🎓 Education: BPIT - Computer Science</div>
+               <div>🌟 Specialization: Full Stack Development</div>
+             </div>
+           </div>
+         );
+       }
+     },
+     'skill --list --filter="all" --search="none"': {
+       description: 'Display comprehensive skills summary',
+       usage: 'skill --list --filter="all" --search="none"',
+       execute: () => {
+         return (
+           <div className="space-y-3">
+             <div className="text-terminal-accent font-bold">Skills Summary (skill --list --filter="all" --search="none"):</div>
+             
+             <div className="space-y-2">
+               <div className="text-terminal-accent font-semibold">🖥️ Frontend Technologies:</div>
+               <div className="grid grid-cols-2 gap-1 text-sm">
+                 <div>• React.js (Advanced)</div>
+                 <div>• TypeScript (Advanced)</div>
+                 <div>• Next.js (Intermediate)</div>
+                 <div>• Tailwind CSS (Advanced)</div>
+                 <div>• JavaScript (Advanced)</div>
+                 <div>• HTML5/CSS3 (Advanced)</div>
+               </div>
+             </div>
+             
+             <div className="space-y-2">
+               <div className="text-terminal-accent font-semibold">⚙️ Backend Technologies:</div>
+               <div className="grid grid-cols-2 gap-1 text-sm">
+                 <div>• Node.js (Advanced)</div>
+                 <div>• Express.js (Advanced)</div>
+                 <div>• Prisma ORM (Intermediate)</div>
+                 <div>• REST APIs (Advanced)</div>
+                 <div>• GraphQL (Basic)</div>
+                 <div>• JWT Authentication (Advanced)</div>
+               </div>
+             </div>
+             
+             <div className="space-y-2">
+               <div className="text-terminal-accent font-semibold">🗄️ Databases:</div>
+               <div className="grid grid-cols-2 gap-1 text-sm">
+                 <div>• PostgreSQL (Advanced)</div>
+                 <div>• MongoDB (Intermediate)</div>
+                 <div>• Redis (Basic)</div>
+                 <div>• Database Design (Advanced)</div>
+               </div>
+             </div>
+             
+             <div className="space-y-2">
+               <div className="text-terminal-accent font-semibold">🛠️ Tools & DevOps:</div>
+               <div className="grid grid-cols-2 gap-1 text-sm">
+                 <div>• Git & GitHub (Advanced)</div>
+                 <div>• Docker (Intermediate)</div>
+                 <div>• AWS (Basic)</div>
+                 <div>• Vercel (Advanced)</div>
+                 <div>• Postman (Advanced)</div>
+                 <div>• VS Code (Advanced)</div>
+               </div>
+             </div>
+             
+             <div className="text-terminal-foreground text-xs mt-2">
+               Total skills: 30+ | Proficiency levels: Advanced (15), Intermediate (10), Basic (5)
+             </div>
+           </div>
+         );
+       }
+     },
+     'cat /etc/aadish/architecture-principles.txt': {
+       description: 'Display architecture principles',
+       usage: 'cat /etc/aadish/architecture-principles.txt',
+       execute: () => {
+         return (
+           <div className="space-y-2">
+             <div className="text-terminal-accent font-bold">Architecture Principles (/etc/aadish/architecture-principles.txt):</div>
+             <div className="text-terminal-foreground text-sm font-mono">
+               <div>✅ Scalability: Design for growth from day one</div>
+               <div>✅ Modularity: Independent, replaceable components</div>
+               <div>✅ Performance: Cache aggressively, optimize queries</div>
+               <div>✅ Security: Defense in depth, zero trust model</div>
+               <div>✅ Observability: Monitor everything, debug efficiently</div>
+             </div>
+             <div className="text-terminal-foreground text-xs mt-2">
+               File size: 256 bytes | Last modified: Today | Owner: aadish
+             </div>
+           </div>
+         );
+       }
+     },
+     'message --to="aadish" --priority="high"': {
+       description: 'Navigate to contact section',
+       usage: 'message --to="aadish" --priority="high"',
+       execute: () => {
+         // Scroll to contact section
+         const contactSection = document.getElementById('contact');
+         if (contactSection) {
+           contactSection.scrollIntoView({ behavior: 'smooth' });
+           return (
+             <div className="space-y-2">
+               <div className="text-terminal-success">✅ High priority message sent to aadish</div>
+               <div className="text-terminal-foreground text-sm">Navigating to Contact section...</div>
+               <div className="text-terminal-warning text-xs">Message queued with high priority</div>
+             </div>
+           );
+         }
+         return <div className="text-terminal-error">❌ Contact section not found</div>;
+       }
+     },
+     // Debug command to list all available commands
+     'list-commands': {
+       description: 'List all available command keys for debugging',
+       usage: 'list-commands',
+       execute: () => {
+         const commandKeys = Object.keys(commands);
+         return (
+           <div className="space-y-2">
+             <div className="text-terminal-accent font-bold">Available Command Keys:</div>
+             <div className="text-terminal-foreground text-sm font-mono">
+               {commandKeys.map((key, index) => (
+                 <div key={index}>• "{key}"</div>
+               ))}
+             </div>
+             <div className="text-terminal-foreground text-xs mt-2">
+               Total commands: {commandKeys.length}
+             </div>
+           </div>
+         );
+       }
      }
   };
 
@@ -376,6 +606,13 @@ const Terminal = () => {
     if (!trimmedCommand) return null;
 
     console.log('Executing command:', trimmedCommand); // Debug log
+    console.log('Available command keys:', Object.keys(commands)); // Debug log
+
+    // First, try to find an exact match for the full command (for commands with spaces)
+    if (commands[trimmedCommand as keyof typeof commands]) {
+      console.log('Exact command match found:', trimmedCommand); // Debug log
+      return commands[trimmedCommand as keyof typeof commands].execute([]);
+    }
 
     const [cmd, ...args] = trimmedCommand.split(' ');
     console.log('Command:', cmd, 'Args:', args); // Debug log
@@ -393,7 +630,7 @@ const Terminal = () => {
     }
 
     console.log('Command not found:', cmd); // Debug log
-    return <div className="text-terminal-error">Command '{cmd}' not found. Type 'help' for available commands.</div>;
+    return <div className="text-terminal-error">Command '{trimmedCommand}' not found. Type 'help' for available commands.</div>;
   };
 
   // Handle command submission
