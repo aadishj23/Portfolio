@@ -5,6 +5,8 @@ import JourneySection from '@/components/JourneySection';
 import WorkExperienceSection from '@/components/WorkExperienceSection';
 import SkillsSection from '@/components/SkillsSection';
 import StackSection from '@/components/StackSection';
+import PersonalSection from '@/components/PersonalSection';
+
 
 const Index = () => {
   useEffect(() => {
@@ -40,6 +42,7 @@ const Index = () => {
       <WorkExperienceSection />
       <SkillsSection />
       <StackSection />
+      <PersonalSection />
     </div>
   );
 };
