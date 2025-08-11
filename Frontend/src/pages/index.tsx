@@ -3,6 +3,7 @@ import WelcomeScreen from '@/components/WelcomeScreen';
 import ProjectsSection from '@/components/ProjectsSection';
 import JourneySection from '@/components/JourneySection';
 import WorkExperienceSection from '@/components/WorkExperienceSection';
+import SkillsSection from '@/components/SkillsSection';
 
 const Index = () => {
   useEffect(() => {
@@ -36,6 +37,7 @@ const Index = () => {
       <ProjectsSection />
       <JourneySection />
       <WorkExperienceSection />
+      <SkillsSection />
     </div>
   );
 };

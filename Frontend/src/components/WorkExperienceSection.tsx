@@ -40,7 +40,7 @@ const WorkExperienceSection = () => {
       responsibilities: [
         'Built scalable systems for enterprise clients',
         'Added 3+ new pages to the company\'s website',
-        'Worked on 10+ new features for Images Bazaar by Sandeep Maheshwari',
+        'Worked on 10+ new pages for Images Bazaar by Sandeep Maheshwari',
         'Collaborated with cross-functional teams on product strategy'
       ],
       technologies: ['JavaScript', 'React.js', 'Redux', 'MUI', 'Next.js', 'Node.js', 'Express.js', 'PostgreSQL' ],
@@ -48,6 +48,44 @@ const WorkExperienceSection = () => {
       website: 'https://appzlogic.com'
     }
   ];
+
+  // Function to calculate total experience in years and months
+  const calculateTotalExperience = () => {
+    let totalMonths = 0;
+    
+    experience.forEach(role => {
+      const period = role.period;
+      const [startStr, endStr] = period.split(' - ');
+      
+      // Parse start date
+      const startDate = new Date(startStr);
+      
+      // Parse end date (handle "Present" case)
+      let endDate: Date;
+      if (endStr === 'Present') {
+        endDate = new Date();
+      } else {
+        endDate = new Date(endStr);
+      }
+      
+      // Calculate difference in months
+      const monthsDiff = (endDate.getFullYear() - startDate.getFullYear()) * 12 + 
+                        (endDate.getMonth() - startDate.getMonth());
+      
+      totalMonths += monthsDiff;
+    });
+    
+    const years = Math.floor(totalMonths / 12);
+    const months = totalMonths % 12;
+    
+    if (years > 0 && months > 0) {
+      return `${years}+ years, ${months}+ months`;
+    } else if (years > 0) {
+      return `${years}+ years`;
+    } else {
+      return `${months}+ months`;
+    }
+  };
 
   const getStatusColor = (status: string) => {
     return status === 'current' ? 'neon' : 'electric';
@@ -223,7 +261,7 @@ const WorkExperienceSection = () => {
               $ cat career_summary.txt
             </div>
             <div>
-              {experience.length} professional roles • 9+ months experience • Millions of users impacted
+              {experience.length} professional roles • {calculateTotalExperience()} experience • Millions of users impacted
             </div>
           </div>
         </div>
