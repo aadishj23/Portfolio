@@ -6,6 +6,7 @@ import WorkExperienceSection from '@/components/WorkExperienceSection';
 import SkillsSection from '@/components/SkillsSection';
 import StackSection from '@/components/StackSection';
 import PersonalSection from '@/components/PersonalSection';
+import ContactSection from '@/components/ContactSection';
 
 
 const Index = () => {
@@ -43,6 +44,7 @@ const Index = () => {
       <SkillsSection />
       <StackSection />
       <PersonalSection />
+      <ContactSection />
     </div>
   );
 };

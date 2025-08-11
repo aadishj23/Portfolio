@@ -1,4 +1,4 @@
-import { Coffee, Code2, Rocket, Heart, BookOpen, Music, Trophy, Users, Crown, Database, Lightbulb } from 'lucide-react';
+import { Coffee, Code2, Rocket, BookOpen, Music, Crown} from 'lucide-react';
 import { Card } from '@/components/ui/card';
 
 const PersonalSection = () => {
