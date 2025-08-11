@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Send, Copy, Github, Linkedin, Twitter, Mail, MapPin, Calendar } from 'lucide-react';
+import { Send, Copy, Github, Linkedin, Mail, MapPin, Calendar } from 'lucide-react';
+import XLogo from '@/components/ui/x-logo';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -48,7 +49,7 @@ const ContactSection = () => {
     },
     {
       id: 'twitter',
-      icon: <Twitter size={20} />,
+      icon: <XLogo size={20} />,
       label: 'X',
       value: '@AadishJ23',
       action: 'https://x.com/AadishJ23',
