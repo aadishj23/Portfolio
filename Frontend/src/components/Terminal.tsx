@@ -23,6 +23,7 @@ interface Project {
 const Terminal = () => {
   const { bootingComplete } = useBootContext();
   const [isOpen, setIsOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
   const [isHalfSize, setIsHalfSize] = useState(true); // Changed default to true
   const [inputValue, setInputValue] = useState('');
@@ -278,10 +279,9 @@ const Terminal = () => {
         <div className="space-y-2">
           <div className="text-terminal-accent font-bold">Contact Information:</div>
           <div className="text-terminal-foreground text-sm">
-            📧 Email: aadishj23@gmail.com<br/>
-            💼 LinkedIn: linkedin.com/in/aadishjain<br/>
+            📧 Email: aadishjain017@gmail.com<br/>
+            💼 LinkedIn: linkedin.com/in/aadishj23<br/>
             🐙 GitHub: github.com/aadishj23<br/>
-            📱 Phone: +91 98765 43210
           </div>
         </div>
       )
@@ -293,7 +293,7 @@ const Terminal = () => {
         <div className="space-y-2">
           <div className="text-terminal-accent font-bold">Technical Skills:</div>
           <div className="grid grid-cols-2 gap-2 text-sm">
-            <div><span className="text-terminal-accent">Frontend:</span> React, TypeScript, Tailwind CSS</div>
+            <div><span className="text-terminal-accent">Frontend:</span> JavaScript, React, TypeScript, Tailwind CSS, Next.js</div>
             <div><span className="text-terminal-accent">Backend:</span> Node.js, Express.js, Prisma</div>
             <div><span className="text-terminal-accent">Database:</span> PostgreSQL, MongoDB</div>
             <div><span className="text-terminal-accent">Tools:</span> Git, Docker, AWS</div>
@@ -309,11 +309,11 @@ const Terminal = () => {
            <div className="text-terminal-accent font-bold">Work Experience:</div>
            <div className="text-terminal-foreground text-sm">
              🏢 <span className="text-terminal-accent">Physics Wallah</span> - Backend Trainee<br/>
-             📅 2024 - Present<br/>
-             🔧 Full Stack Development, API Development<br/><br/>
+             📅 May 2025 - Present<br/>
+             🔧 Backend Development, API Development, Database Management<br/><br/>
              
-             🏢 <span className="text-terminal-accent">Freelance</span> - Full Stack Developer<br/>
-             📅 2023 - Present<br/>
+             🏢 <span className="text-terminal-accent">Appzlogic</span> - Full Stack SDE Intern<br/>
+             📅 June 2024 - November 2024<br/>
              🔧 Web Applications, E-commerce, APIs
            </div>
          </div>
@@ -456,6 +456,17 @@ const Terminal = () => {
     }
   };
 
+  // Handle terminal closing with animation
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsOpen(false);
+      setIsClosing(false);
+      setIsMaximized(false);
+      setIsHalfSize(true);
+    }, 300); // Match the animation duration
+  };
+
   // Focus input when terminal opens
   useEffect(() => {
     if (isOpen && inputRef.current) {
@@ -548,11 +559,13 @@ const Terminal = () => {
   }
 
      return (
-     <div className={`fixed inset-0 z-50 ${isMaximized ? '' : isHalfSize ? '' : 'p-6'}`}>
-              <div className={`terminal bg-terminal-bg border border-terminal-accent/30 rounded-b-lg shadow-2xl flex flex-col ${
+     <div className={`fixed inset-0 z-50 transition-all duration-300 ease-in-out ${
+       isClosing ? 'opacity-0' : 'opacity-100'
+     } ${isMaximized ? '' : isHalfSize ? '' : 'p-6'}`}>
+              <div className={`terminal bg-terminal-bg border border-terminal-accent/30 shadow-2xl flex flex-col transition-all duration-300 ease-in-out ${
                 isMaximized ? 'rounded-none h-full' : 
-                isHalfSize ? 'w-full h-1/2 bottom-0 absolute' : 
-                'rounded-b-lg h-full'
+                isHalfSize ? `w-full h-1/2 bottom-0 absolute ${isClosing ? 'translate-y-full' : 'translate-y-0'}` : 
+                'rounded-t-lg h-full'
               }`}>
                  {/* Terminal Header */}
          <div className="flex items-center justify-between p-3 border-b border-terminal-accent/20 bg-terminal-bg/80 backdrop-blur-sm rounded-t-lg">
@@ -582,15 +595,11 @@ const Terminal = () => {
                    title="Maximize"
                  />
                )}
-                             <button
-                  onClick={() => {
-                    setIsOpen(false);
-                    setIsMaximized(false);
-                    setIsHalfSize(true);
-                  }}
-                  className="w-3 h-3 rounded-full bg-terminal-error hover:bg-terminal-error/80 transition-colors"
-                  title="Close"
-                />
+                                                           <button
+                   onClick={handleClose}
+                   className="w-3 h-3 rounded-full bg-terminal-error hover:bg-terminal-error/80 transition-colors"
+                   title="Close"
+                 />
              </div>
         </div>
 

@@ -31,19 +31,6 @@ const WelcomeScreen = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // Prevent scrolling during boot sequence
-  useEffect(() => {
-    if (!bootingComplete) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [bootingComplete]);
-
   // Function to scroll to a specific section
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -91,7 +78,7 @@ const WelcomeScreen = () => {
   ];
 
   return (
-    <section className={`min-h-screen relative overflow-hidden bg-gradient-terminal flex items-center justify-center scroll-snap-section ${!bootingComplete ? 'overflow-hidden' : ''}`}>
+    <section className={`min-h-screen relative bg-gradient-terminal flex items-center justify-center scroll-snap-section ${!bootingComplete ? 'overflow-hidden' : ''}`}>
       {/* Background Image */}
       <div 
         className="absolute inset-0 opacity-20 bg-cover bg-center"
