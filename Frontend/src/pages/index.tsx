@@ -8,6 +8,7 @@ import StackSection from '@/components/StackSection';
 import PersonalSection from '@/components/PersonalSection';
 import ContactSection from '@/components/ContactSection';
 import Terminal from '@/components/Terminal';
+import BackToTopButton from '@/components/BackToTopButton';
 import { BootProvider, useBootContext } from '@/contexts/BootContext';
 
 const IndexContent = () => {
@@ -74,6 +75,7 @@ const IndexContent = () => {
       <PersonalSection />
       <ContactSection />
       <Terminal />
+      <BackToTopButton />
     </div>
   );
 };
