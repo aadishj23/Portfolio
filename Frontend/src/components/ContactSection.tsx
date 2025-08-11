@@ -191,10 +191,10 @@ const ContactSection = () => {
                     />
                   </div>
 
-                  <div className="flex gap-3">
+                  <div className="flex flex-col sm:flex-row gap-3 w-full">
                     <Button 
                       type="submit"
-                      className="bg-accent-electric hover:bg-accent-electric/80 text-white font-mono font-semibold shadow-lg"
+                      className="bg-accent-electric hover:bg-accent-electric/80 text-white font-mono font-semibold shadow-lg w-full sm:w-auto"
                       disabled={!message.trim()}
                     >
                       <Send size={14} className="mr-2" />
@@ -205,7 +205,7 @@ const ContactSection = () => {
                       type="button"
                       variant="outline"
                       onClick={() => setMessage('')}
-                      className="border-terminal-accent/50 text-terminal-accent hover:bg-terminal-accent/20 hover:border-terminal-accent font-mono bg-terminal-bg/60"
+                      className="border-terminal-accent/50 text-terminal-accent hover:bg-terminal-accent/20 hover:border-terminal-accent font-mono bg-terminal-bg/60 w-full sm:w-auto"
                     >
                       Clear
                     </Button>
@@ -315,24 +315,24 @@ const ContactSection = () => {
                   </div>
 
                   <div className="p-4 pb-6 bg-terminal-bg/60">
-                    <div className="flex items-center justify-between">
-                      <div className="font-mono text-sm text-white">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                      <div className="font-mono text-sm text-white break-all">
                         {method.value}
                       </div>
                       
-                      <div className="flex gap-2">
+                      <div className="flex gap-2 w-full sm:w-auto">
                         <Button
                           size="sm"
                           variant="outline"
                           onClick={() => copyToClipboard(method.action)}
-                          className="border-white/40 text-white hover:bg-white/20 hover:border-white/60 hover:text-white bg-terminal-bg/60"
+                          className="border-white/40 text-white hover:bg-white/20 hover:border-white/60 hover:text-white bg-terminal-bg/60 flex-1 sm:flex-none"
                         >
                           <Copy size={12} />
                         </Button>
                         
                         <Button
                           size="sm"
-                          className="bg-terminal-accent hover:bg-terminal-accent/80 text-terminal-bg"
+                          className="bg-terminal-accent hover:bg-terminal-accent/80 text-terminal-bg flex-1 sm:flex-none"
                           onClick={() => window.open(method.action, '_blank')}
                         >
                           Connect
