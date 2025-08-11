@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import { Terminal as TerminalIcon, X, Minimize, Maximize2, Command, ArrowUp, ArrowDown } from 'lucide-react';
+import { Terminal as TerminalIcon, X, Maximize2, Command, ArrowUp, ArrowDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useBootContext } from '@/contexts/BootContext';
 
 interface CommandHistory {
   command: string;
@@ -20,10 +21,10 @@ interface Project {
 }
 
 const Terminal = () => {
+  const { bootingComplete } = useBootContext();
   const [isOpen, setIsOpen] = useState(false);
-  const [isMinimized, setIsMinimized] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
-  const [isHalfSize, setIsHalfSize] = useState(false);
+  const [isHalfSize, setIsHalfSize] = useState(true); // Changed default to true
   const [inputValue, setInputValue] = useState('');
   const [commandHistory, setCommandHistory] = useState<CommandHistory[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
@@ -457,10 +458,10 @@ const Terminal = () => {
 
   // Focus input when terminal opens
   useEffect(() => {
-    if (isOpen && !isMinimized && inputRef.current) {
+    if (isOpen && inputRef.current) {
       inputRef.current.focus();
     }
-  }, [isOpen, isMinimized]);
+  }, [isOpen]);
 
   // Scroll to bottom when new commands are added
   useEffect(() => {
@@ -525,13 +526,21 @@ const Terminal = () => {
     };
   }, [isOpen, isHalfSize]);
 
+  if (!bootingComplete) {
+    return null; // Hide terminal until booting is complete
+  }
+
   if (!isOpen) {
     return (
-             <Button
-         onClick={() => setIsOpen(true)}
-         className="fixed bottom-6 right-6 z-50 bg-terminal-bg hover:bg-terminal-bg/80 text-terminal-foreground border-terminal-accent/30 hover:border-terminal-accent/50 hidden md:flex"
-         size="lg"
-       >
+                    <Button
+          onClick={() => {
+            setIsOpen(true);
+            setIsMaximized(false);
+            setIsHalfSize(true);
+          }}
+          className="fixed bottom-6 right-6 z-50 bg-terminal-bg hover:bg-terminal-bg/80 text-terminal-foreground border-terminal-accent/30 hover:border-terminal-accent/50 hidden md:flex"
+          size="lg"
+        >
         <TerminalIcon className="mr-2" size={20} />
         Open Terminal
       </Button>
@@ -552,49 +561,42 @@ const Terminal = () => {
             <span className="text-terminal-foreground font-mono text-sm">aadish@terminal ~ %</span>
           </div>
           
-                     <div className="flex gap-2">
-             <button
-               onClick={() => {
-                 setIsMinimized(!isMinimized);
-                 setIsHalfSize(false);
-                 setIsMaximized(false);
-               }}
-               className="w-3 h-3 rounded-full bg-terminal-warning hover:bg-terminal-warning/80 transition-colors"
-               title="Minimize"
-             />
-             <button
-               onClick={() => {
-                 setIsHalfSize(!isHalfSize);
-                 setIsMinimized(false);
-                 setIsMaximized(false);
-               }}
-               className="w-3 h-3 rounded-full bg-terminal-accent hover:bg-terminal-accent/80 transition-colors"
-               title="Half Size"
-             />
-             <button
-               onClick={() => {
-                 setIsMaximized(!isMaximized);
-                 setIsMinimized(false);
-                 setIsHalfSize(false);
-               }}
-               className="w-3 h-3 rounded-full bg-terminal-accent/60 hover:bg-terminal-accent/80 transition-colors"
-               title="Maximize"
-             />
-             <button
-               onClick={() => setIsOpen(false)}
-               className="w-3 h-3 rounded-full bg-terminal-error hover:bg-terminal-error/80 transition-colors"
-               title="Close"
-             />
-           </div>
+                                                                                     <div className="flex gap-2">
+               {isMaximized && (
+                 <button
+                   onClick={() => {
+                     setIsMaximized(false);
+                     setIsHalfSize(true);
+                   }}
+                   className="w-3 h-3 rounded-full bg-terminal-warning hover:bg-terminal-warning/80 transition-colors"
+                   title="Minimize to Half Size"
+                 />
+               )}
+               {!isMaximized && (
+                 <button
+                   onClick={() => {
+                     setIsMaximized(true);
+                     setIsHalfSize(false);
+                   }}
+                   className="w-3 h-3 rounded-full bg-terminal-accent hover:bg-terminal-accent/80 transition-colors"
+                   title="Maximize"
+                 />
+               )}
+                             <button
+                  onClick={() => {
+                    setIsOpen(false);
+                    setIsMaximized(false);
+                    setIsHalfSize(true);
+                  }}
+                  className="w-3 h-3 rounded-full bg-terminal-error hover:bg-terminal-error/80 transition-colors"
+                  title="Close"
+                />
+             </div>
         </div>
 
                  {/* Terminal Body */}
          <div className="flex-1 overflow-hidden">
-           {isMinimized ? (
-             <div className="flex items-center justify-center h-full text-terminal-accent">
-               <TerminalIcon size={32} />
-             </div>
-                       ) : isHalfSize ? (
+           {isHalfSize ? (
               <div ref={terminalRef} className="h-full overflow-y-auto p-4 space-y-3">
                 {commandHistory.map((entry, index) => (
                   <div key={index} className="space-y-2">

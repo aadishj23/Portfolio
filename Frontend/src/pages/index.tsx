@@ -8,6 +8,7 @@ import StackSection from '@/components/StackSection';
 import PersonalSection from '@/components/PersonalSection';
 import ContactSection from '@/components/ContactSection';
 import Terminal from '@/components/Terminal';
+import { BootProvider } from '@/contexts/BootContext';
 
 
 const Index = () => {
@@ -37,17 +38,19 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="scroll-snap-container custom-scrollbar">
-      <WelcomeScreen />
-      <ProjectsSection />
-      <JourneySection />
-      <WorkExperienceSection />
-      <SkillsSection />
-      <StackSection />
-      <PersonalSection />
-      <ContactSection />
-      <Terminal />
-    </div>
+    <BootProvider>
+      <div className="scroll-snap-container custom-scrollbar">
+        <WelcomeScreen />
+        <ProjectsSection />
+        <JourneySection />
+        <WorkExperienceSection />
+        <SkillsSection />
+        <StackSection />
+        <PersonalSection />
+        <ContactSection />
+        <Terminal />
+      </div>
+    </BootProvider>
   );
 };
 

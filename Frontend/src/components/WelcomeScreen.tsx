@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Terminal, Code, Folder, User, Mail, Download, Briefcase, BookOpen } from 'lucide-react';
 import heroTerminal from '@/assets/hero-terminal.jpeg';
+import { useBootContext } from '@/contexts/BootContext';
 
 const WelcomeScreen = () => {
-  const [bootingComplete, setBootingComplete] = useState(false);
+  const { bootingComplete, setBootingComplete } = useBootContext();
   const [currentStep, setCurrentStep] = useState(0);
   
   const bootSequence = [
