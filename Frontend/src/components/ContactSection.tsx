@@ -9,6 +9,7 @@ import { toast } from 'sonner';
 
 const ContactSection = () => {
   const [message, setMessage] = useState('');
+  const [email, setEmail] = useState('');
   const [currentSuggestion, setCurrentSuggestion] = useState(0);
   const [hoveredSuggestion, setHoveredSuggestion] = useState<number | null>(null);
   
@@ -104,11 +105,34 @@ const ContactSection = () => {
     toast.success('Copied to clipboard!');
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real implementation, this would send the message
-    toast.success('Message sent! I\'ll get back to you soon.');
-    setMessage('');
+    
+    try {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          message
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success('Message sent! I\'ll get back to you soon.');
+        setMessage('');
+        setEmail('');
+      } else {
+        toast.error(data.message || 'Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast.error('Failed to send message. Please check your connection and try again.');
+    }
   };
 
   return (
@@ -183,6 +207,15 @@ const ContactSection = () => {
                       $ message --to="aadish" --priority="high"
                     </div>
                     
+                    <Input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="your.email@example.com"
+                      className="bg-terminal-bg/80 border-terminal-accent/50 text-white placeholder:text-terminal-foreground/70 font-mono text-sm"
+                      required
+                    />
+                    
                     <Textarea
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
@@ -195,7 +228,7 @@ const ContactSection = () => {
                     <Button 
                       type="submit"
                       className="bg-accent-electric hover:bg-accent-electric/80 text-white font-mono font-semibold shadow-lg w-full sm:w-auto"
-                      disabled={!message.trim()}
+                      disabled={!message.trim() || !email.trim()}
                     >
                       <Send size={14} className="mr-2" />
                       Send Message
@@ -204,7 +237,10 @@ const ContactSection = () => {
                     <Button 
                       type="button"
                       variant="outline"
-                      onClick={() => setMessage('')}
+                      onClick={() => {
+                        setMessage('');
+                        setEmail('');
+                      }}
                       className="border-terminal-accent/50 text-terminal-accent hover:bg-terminal-accent/20 hover:border-terminal-accent font-mono bg-terminal-bg/60 w-full sm:w-auto"
                     >
                       Clear
