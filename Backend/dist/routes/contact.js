@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const Contact_1 = __importDefault(require("../models/Contact"));
+const emailService_1 = __importDefault(require("../services/emailService"));
 const router = express_1.default.Router();
 // POST /api/contact - Submit contact form
 router.post('/', async (req, res) => {
@@ -29,6 +30,16 @@ router.post('/', async (req, res) => {
             message
         });
         await newContact.save();
+        // Send email notification
+        const emailService = new emailService_1.default();
+        const emailSent = await emailService.sendContactNotification({
+            email: newContact.email,
+            message: newContact.message,
+            createdAt: newContact.createdAt
+        });
+        if (!emailSent) {
+            console.warn('Contact saved but email notification failed to send');
+        }
         res.status(201).json({
             success: true,
             message: 'Contact message sent successfully!',
@@ -62,6 +73,32 @@ router.get('/', async (req, res) => {
         res.status(500).json({
             success: false,
             message: 'Internal server error'
+        });
+    }
+});
+// Test email service endpoint
+router.post('/test-email', async (req, res) => {
+    try {
+        const emailService = new emailService_1.default();
+        const connectionTest = await emailService.testConnection();
+        if (connectionTest) {
+            res.json({
+                success: true,
+                message: 'Email service connection successful'
+            });
+        }
+        else {
+            res.status(500).json({
+                success: false,
+                message: 'Email service connection failed'
+            });
+        }
+    }
+    catch (error) {
+        console.error('Email service test error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Email service test failed'
         });
     }
 });

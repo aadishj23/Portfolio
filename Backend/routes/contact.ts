@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import Contact from '../models/Contact';
+import EmailService from '../services/emailService';
 
 const router = express.Router();
 
@@ -31,6 +32,18 @@ router.post('/', async (req: Request, res: Response) => {
 
     await newContact.save();
 
+    // Send email notification
+    const emailService = new EmailService();
+    const emailSent = await emailService.sendContactNotification({
+      email: newContact.email,
+      message: newContact.message,
+      createdAt: newContact.createdAt
+    });
+
+    if (!emailSent) {
+      console.warn('Contact saved but email notification failed to send');
+    }
+
     res.status(201).json({
       success: true,
       message: 'Contact message sent successfully!',
@@ -46,25 +59,6 @@ router.post('/', async (req: Request, res: Response) => {
     res.status(500).json({
       success: false,
       message: 'Internal server error. Please try again later.'
-    });
-  }
-});
-
-// GET /api/contact - Get all contacts (for admin purposes)
-router.get('/', async (req: Request, res: Response) => {
-  try {
-    const contacts = await Contact.find().sort({ createdAt: -1 });
-    
-    res.json({
-      success: true,
-      count: contacts.length,
-      data: contacts
-    });
-  } catch (error) {
-    console.error('Error fetching contacts:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Internal server error'
     });
   }
 });
