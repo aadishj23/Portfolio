@@ -86,14 +86,14 @@ const PersonalSection = () => {
             </div>
 
             {/* Notebook Margin */}
-            <div className="absolute left-0 top-0 bottom-0 w-20 border-r-2 border-hot/20 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-8 md:w-20 border-r-2 border-hot/20 pointer-events-none" />
 
             {/* Content Grid */}
-            <div className="pl-24 pr-8 space-y-12">
+            <div className="pl-6 md:pl-24 pr-4 md:pr-8 space-y-12">
               {personalNotes.map((note, index) => (
                 <div
                   key={note.id}
-                  className={`relative animate-fade-in-up animate-delay-${(index + 1) * 100}`}
+                  className={`relative animate-fade-in-up animate-delay-${(index + 1) * 100} ml-8 md:ml-0`}
                 >
                   {/* Handwritten Style Card */}
                   <Card className="glass-card border-none shadow-soft transform rotate-1 hover:rotate-0 transition-transform duration-300">
