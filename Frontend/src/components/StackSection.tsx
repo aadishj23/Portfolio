@@ -21,30 +21,18 @@ const StackSection = () => {
         { name: 'TypeScript', role: 'Type Safety', why: 'Fewer runtime errors, better DX' },
         { name: 'Next.js', role: 'Framework', why: 'SSR/SSG, routing, and API routes' }
       ],
-      connections: ['api']
+      connections: ['backend']
     },
     {
-      id: 'api',
-      name: 'API Gateway',
+      id: 'backend',
+      name: 'Backend Layer',
       icon: <Server size={24} />,
       color: 'electric',
       position: 'top-20',
-      description: 'Request routing and API management',
+      description: 'API management, business logic, and server-side processing',
       technologies: [
         { name: 'Node.js', role: 'Runtime', why: 'Non-blocking I/O for scalable servers' },
-        { name: 'Express.js', role: 'Web Framework', why: 'Minimal, robust HTTP server for APIs' }
-      ],
-      connections: ['business']
-    },
-    {
-      id: 'business',
-      name: 'Business Logic',
-      icon: <Layers size={24} />,
-      color: 'electric',
-      position: 'top-60',
-      description: 'Core application logic and processing',
-      technologies: [
-        { name: 'Node.js', role: 'Runtime', why: 'Server-side JavaScript for core logic' },
+        { name: 'Express.js', role: 'Web Framework', why: 'Minimal, robust HTTP server for APIs' },
         { name: 'Prisma', role: 'ORM', why: 'Type-safe database access and migrations' }
       ],
       connections: ['database']
@@ -53,8 +41,8 @@ const StackSection = () => {
       id: 'database',
       name: 'Data Layer',
       icon: <Database size={24} />,
-      color: 'electric',
-      position: 'top-120',
+      color: 'neon',
+      position: 'top-60',
       description: 'Data persistence and management',
       technologies: [
         { name: 'PostgreSQL', role: 'Relational DB', why: 'ACID compliance and rich SQL features' },
@@ -67,7 +55,7 @@ const StackSection = () => {
       name: 'Infrastructure',
       icon: <Cloud size={24} />,
       color: 'hot',
-      position: 'top-140',
+      position: 'top-80',
       description: 'Cloud services and deployment',
       technologies: [
         { name: 'AWS', role: 'Cloud Platform', why: 'Managed services and global infrastructure' },

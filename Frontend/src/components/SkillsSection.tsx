@@ -41,7 +41,72 @@ const SkillsSection = () => {
   ];
 
   const skills = [
-    // Backend Development
+    // Programming Languages
+    {
+      name: 'C++',
+      category: 'languages',
+      proficiency: 4,
+      experience: '2+ years',
+      description: 'High-performance systems programming language',
+      usedIn: ['Data Structures and Algorithms', 'System programming', 'Performance optimization']
+  },
+  {
+      name: 'HTML',
+      category: 'languages',
+      proficiency: 5,
+      experience: '2+ years',
+      projects: ['All Recent Projects'],
+      description: 'Markup language for structuring web content',
+      usedIn: ['Web development', 'Content structure', 'Accessibility implementation']
+  },
+  {
+      name: 'CSS',
+      category: 'languages',
+      proficiency: 5,
+      experience: '2+ years',
+      projects: ['All Recent Projects'],
+      description: 'Styling language for web presentation',
+      usedIn: ['UI/UX design', 'Responsive layouts', 'Animation and transitions']
+  },
+  {
+      name: 'JavaScript',
+      category: 'languages',
+      proficiency: 4,
+      experience: '2+ years',
+      projects: ['All Recent Projects'],
+      description: 'Dynamic programming language for web development',
+      usedIn: ['Frontend applications', 'Backend APIs', 'Interactive web features']
+  },
+  {
+    name: 'TypeScript',
+    category: 'languages',
+    proficiency: 4,
+    experience: '1+ years',
+    projects: ['Namdpaha', 'Quizzical'],
+    description: 'Typed superset of JavaScript for safer development',
+    usedIn: ['Large codebases', 'API development', 'Frontend applications']
+  },
+  {
+      name: 'SQL',
+      category: 'languages',
+      proficiency: 4,
+      experience: '2+ years',
+      projects: ['Labeasy', 'Quizzical'],
+      description: 'Structured query language for database operations',
+      usedIn: ['Database operations', 'Data analysis', 'Report generation']
+  },
+  {
+      name: 'NoSQL',
+      category: 'languages',
+      proficiency: 5,
+      experience: '2+ years',
+      projects: ['Anveshan', 'TaskMate'],
+      description: 'Non-relational database querying and operations',
+      usedIn: ['Flexible data modeling', 'Scalable applications', 'Real-time data']
+  },
+
+
+    // Frameworks
     {
         name: 'Tailwind CSS',
         category: 'frameworks',
@@ -141,70 +206,6 @@ const SkillsSection = () => {
         experience: '1+ years',
         description: 'Serverless Cloud infrastructure',
         usedIn: ['Cloudflare Pages', 'Cloudflare Workers']
-    },
-    
-    // Programming Languages
-    {
-        name: 'C++',
-        category: 'languages',
-        proficiency: 4,
-        experience: '2+ years',
-        description: 'High-performance systems programming language',
-        usedIn: ['Data Structures and Algorithms', 'System programming', 'Performance optimization']
-    },
-    {
-        name: 'HTML',
-        category: 'languages',
-        proficiency: 5,
-        experience: '2+ years',
-        projects: ['All Recent Projects'],
-        description: 'Markup language for structuring web content',
-        usedIn: ['Web development', 'Content structure', 'Accessibility implementation']
-    },
-    {
-        name: 'CSS',
-        category: 'languages',
-        proficiency: 5,
-        experience: '2+ years',
-        projects: ['All Recent Projects'],
-        description: 'Styling language for web presentation',
-        usedIn: ['UI/UX design', 'Responsive layouts', 'Animation and transitions']
-    },
-    {
-        name: 'JavaScript',
-        category: 'languages',
-        proficiency: 4,
-        experience: '2+ years',
-        projects: ['All Recent Projects'],
-        description: 'Dynamic programming language for web development',
-        usedIn: ['Frontend applications', 'Backend APIs', 'Interactive web features']
-    },
-    {
-      name: 'TypeScript',
-      category: 'languages',
-      proficiency: 4,
-      experience: '1+ years',
-      projects: ['Namdpaha', 'Quizzical'],
-      description: 'Typed superset of JavaScript for safer development',
-      usedIn: ['Large codebases', 'API development', 'Frontend applications']
-    },
-    {
-        name: 'SQL',
-        category: 'languages',
-        proficiency: 4,
-        experience: '2+ years',
-        projects: ['Labeasy', 'Quizzical'],
-        description: 'Structured query language for database operations',
-        usedIn: ['Database operations', 'Data analysis', 'Report generation']
-    },
-    {
-        name: 'NoSQL',
-        category: 'languages',
-        proficiency: 5,
-        experience: '2+ years',
-        projects: ['Anveshan', 'TaskMate'],
-        description: 'Non-relational database querying and operations',
-        usedIn: ['Flexible data modeling', 'Scalable applications', 'Real-time data']
     }
   ];
 
