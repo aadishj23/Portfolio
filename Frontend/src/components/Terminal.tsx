@@ -167,7 +167,7 @@ const Terminal = () => {
                  <div><span className="text-terminal-accent">open skills.sh</span> - Navigate to skills</div>
                  <div><span className="text-terminal-accent">ps aux | grep aadish-projects</span> - Show running projects</div>
                  <div><span className="text-terminal-accent">cat career_summary.txt</span> - Show work summary</div>
-                 <div><span className="text-terminal-accent">skill --list --filter="all" --search="none"</span> - Skills summary</div>
+                 <div><span className="text-terminal-accent">skill</span> - Display skills with filtering and search</div>
                  <div><span className="text-terminal-accent">cat /etc/aadish/architecture-principles.txt</span> - Show principles</div>
                  <div><span className="text-terminal-accent">message --to="aadish" --priority="high"</span> - Navigate to contact</div>
                  <div><span className="text-terminal-accent">list-commands</span> - Debug: List all command keys</div>
@@ -251,10 +251,9 @@ const Terminal = () => {
       usage: 'whoami',
       execute: () => (
         <div className="space-y-2">
-          <div className="text-terminal-accent font-bold">aadish</div>
+          <div className="text-terminal-accent font-bold">Aadish Jain</div>
           <div className="text-terminal-foreground text-sm">
-            Full Stack Developer • Backend Trainee @Physics Wallah<br/>
-            Building solutions that scale • Driven by curiosity
+            Full Stack Developer • Backend Trainee @Physics Wallah
           </div>
         </div>
       )
@@ -296,22 +295,150 @@ const Terminal = () => {
         </div>
       )
     },
-    skills: {
-      description: 'Show technical skills',
-      usage: 'skills',
-      execute: () => (
-        <div className="space-y-2">
-          <div className="text-terminal-accent font-bold">Technical Skills:</div>
-          <div className="grid grid-cols-2 gap-2 text-sm">
-            <div><span className="text-terminal-accent">Frontend:</span> JavaScript, React, TypeScript, Tailwind CSS, Next.js</div>
-            <div><span className="text-terminal-accent">Backend:</span> Node.js, Express.js, Prisma</div>
-            <div><span className="text-terminal-accent">Database:</span> PostgreSQL, MongoDB</div>
-            <div><span className="text-terminal-accent">Tools:</span> Git, Docker, AWS</div>
+        skill: {
+      description: 'Display skills with filtering and search options',
+      usage: 'skill [--list] [--filter="category"] [--search="term"]',
+      execute: (args: string[]) => {
+        // Parse arguments
+        let showList = false;
+        let filter = 'all';
+        let search = '';
+        
+        args.forEach(arg => {
+          if (arg === '--list') showList = true;
+          if (arg.startsWith('--filter=')) filter = arg.split('=')[1]?.replace(/"/g, '') || 'all';
+          if (arg.startsWith('--search=')) search = arg.split('=')[1]?.replace(/"/g, '') || '';
+        });
+
+        // Normalize search: treat "none" as no search filter
+        if (search && search.toLowerCase() === 'none') {
+          search = '';
+        }
+        
+        // Skills data from SkillsSection.tsx
+        const skills = [
+          // Programming Languages
+          { name: 'C++', category: 'languages', proficiency: 4, experience: '2+ years', description: 'High-performance systems programming language' },
+          { name: 'HTML', category: 'languages', proficiency: 5, experience: '2+ years', description: 'Markup language for structuring web content' },
+          { name: 'CSS', category: 'languages', proficiency: 5, experience: '2+ years', description: 'Styling language for web presentation' },
+          { name: 'JavaScript', category: 'languages', proficiency: 4, experience: '2+ years', description: 'Dynamic programming language for web development' },
+          { name: 'TypeScript', category: 'languages', proficiency: 4, experience: '1+ years', description: 'Typed superset of JavaScript for safer development' },
+          { name: 'SQL', category: 'languages', proficiency: 4, experience: '2+ years', description: 'Structured query language for database operations' },
+          { name: 'NoSQL', category: 'languages', proficiency: 5, experience: '2+ years', description: 'Non-relational database querying and operations' },
+          
+          // Frameworks
+          { name: 'Tailwind CSS', category: 'frameworks', proficiency: 5, experience: '1+ years', description: 'Utility-first CSS framework for rapid UI development' },
+          { name: 'React.js', category: 'frameworks', proficiency: 5, experience: '2+ years', description: 'Modern JavaScript library for building interactive user interfaces' },
+          { name: 'Node.js', category: 'frameworks', proficiency: 5, experience: '1+ years', description: 'JavaScript runtime for server-side development' },
+          { name: 'Express.js', category: 'frameworks', proficiency: 4, experience: '1+ years', description: 'Minimal and flexible Node.js web application framework' },
+          { name: 'Next.js', category: 'frameworks', proficiency: 4, experience: '1+ years', description: 'Full-stack React framework with server-side rendering' },
+          
+          // Database Systems
+          { name: 'PostgreSQL', category: 'database', proficiency: 4, experience: '2+ years', description: 'Advanced SQL and database optimization techniques' },
+          { name: 'MongoDB', category: 'database', proficiency: 5, experience: '2+ years', description: 'NoSQL database design and aggregation pipelines' },
+          { name: 'Prisma', category: 'database', proficiency: 4, experience: '1+ years', description: 'Modern ORM for type-safe database operations' },
+          
+          // DevOps & Cloud
+          { name: 'Docker', category: 'devops', proficiency: 4, experience: '1+ years', description: 'Containerization platform for consistent deployments' },
+          { name: 'AWS', category: 'devops', proficiency: 4, experience: '1+ years', description: 'Cloud computing platform for scalable infrastructure' },
+          { name: 'Cloudflare', category: 'devops', proficiency: 3, experience: '1+ years', description: 'Serverless Cloud infrastructure' }
+        ];
+        
+        // Filter skills based on arguments
+        let filteredSkills = skills;
+        
+        if (filter !== 'all') {
+          filteredSkills = skills.filter(skill => skill.category === filter);
+        }
+        
+        if (search) {
+          filteredSkills = filteredSkills.filter(skill => 
+            skill.name.toLowerCase().includes(search.toLowerCase()) ||
+            skill.description.toLowerCase().includes(search.toLowerCase())
+          );
+        }
+        
+        // Render proficiency stars
+        const renderStars = (proficiency: number) => {
+          return Array.from({ length: 5 }, (_, i) => (
+            <span key={i} className={i < proficiency ? 'text-yellow-400' : 'text-gray-400'}>★</span>
+          ));
+        };
+        
+        // Get category display name
+        const getCategoryName = (category: string) => {
+          const names: { [key: string]: string } = {
+            languages: 'Programming Languages',
+            frameworks: 'Frameworks & Libraries',
+            database: 'Database Systems',
+            devops: 'DevOps & Cloud'
+          };
+          return names[category] || category;
+        };
+        
+        // Group skills by category for display
+        const groupedSkills = filteredSkills.reduce((acc, skill) => {
+          if (!acc[skill.category]) {
+            acc[skill.category] = [];
+          }
+          acc[skill.category].push(skill);
+          return acc;
+        }, {} as { [key: string]: typeof skills });
+        
+        return (
+          <div className="space-y-4">
+            <div className="text-terminal-accent font-bold">
+              Skills Summary {showList ? '(--list)' : ''} {filter !== 'all' ? `[Filter: ${getCategoryName(filter)}]` : ''} {search ? `[Search: "${search}"]` : ''}
+            </div>
+            
+            {Object.entries(groupedSkills).map(([category, categorySkills]) => (
+              <div key={category} className="space-y-2">
+                <div className="text-terminal-accent font-semibold">
+                  {getCategoryName(category)} ({categorySkills.length}):
+                </div>
+                <div className="grid grid-cols-1 gap-2 text-sm">
+                  {categorySkills.map((skill, index) => (
+                    <div key={index} className="flex items-center justify-between p-2 bg-terminal-bg/30 rounded border border-terminal-accent/20">
+                      <div className="flex items-center gap-3">
+                        <span className="text-terminal-foreground font-medium">{skill.name}</span>
+                        <span className="text-terminal-warning text-xs">({skill.experience})</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="flex gap-1">
+                          {renderStars(skill.proficiency)}
+                        </div>
+                        <span className="text-terminal-accent text-xs">
+                          {skill.proficiency === 5 ? 'Expert' : skill.proficiency === 4 ? 'Advanced' : skill.proficiency === 3 ? 'Intermediate' : 'Basic'}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+            
+            <div className="text-terminal-foreground text-xs mt-4 p-2 bg-terminal-bg/20 rounded">
+              Found {filteredSkills.length} skills | Filter: {filter} | Search: {search || 'none'} | 
+              Categories: languages, frameworks, database, devops
+            </div>
+            
+            <div className="text-terminal-warning text-xs">
+              💡 Usage: skill --list --filter="category" --search="term" | Categories: all, languages, frameworks, database, devops
+            </div>
           </div>
-        </div>
-      )
+        );
+      }
     },
-         experience: {
+    skills: {
+      description: 'Show all skills (simple view)',
+      usage: 'skills',
+      execute: () => {
+        // Call the skill command with no arguments to show all skills
+        const skillCommand = commands.skill;
+        return skillCommand.execute([]);
+      }
+    },
+    experience: {
        description: 'Show work experience',
        usage: 'experience',
        execute: () => (
@@ -400,13 +527,18 @@ const Terminal = () => {
            <div className="space-y-2">
              <div className="text-terminal-accent font-bold">Running Aadish Projects:</div>
              <div className="space-y-1 text-sm">
-               <div className="text-terminal-success">✅ aadish-portfolio (PID: 1337) - Active</div>
-               <div className="text-terminal-success">✅ aadish-backend (PID: 1338) - Running</div>
-               <div className="text-terminal-success">✅ aadish-frontend (PID: 1339) - Active</div>
-               <div className="text-terminal-warning">⚠️ aadish-database (PID: 1340) - Starting</div>
+               {projects.map((project, index) => (
+                 <div key={project.id} className="flex items-center gap-4">
+                   <span className="text-terminal-success">✅</span>
+                   <span className="text-terminal-accent">{project.name}</span>
+                   <span className="text-terminal-foreground">(PID: {1337 + index})</span>
+                   <span className="text-terminal-success">- Active -</span>
+                   <span className="text-terminal-foreground flex-1">{project.command}</span>
+                 </div>
+               ))}
              </div>
              <div className="text-terminal-foreground text-xs mt-2">
-               Total processes: 4 | Active: 3 | Starting: 1
+               Total processes: {projects.length} | Active: {projects.length} | All projects running successfully
              </div>
            </div>
          );
@@ -432,67 +564,6 @@ const Terminal = () => {
                <div></div>
                <div>🎓 Education: BPIT - Computer Science</div>
                <div>🌟 Specialization: Full Stack Development</div>
-             </div>
-           </div>
-         );
-       }
-     },
-     'skill --list --filter="all" --search="none"': {
-       description: 'Display comprehensive skills summary',
-       usage: 'skill --list --filter="all" --search="none"',
-       execute: () => {
-         return (
-           <div className="space-y-3">
-             <div className="text-terminal-accent font-bold">Skills Summary (skill --list --filter="all" --search="none"):</div>
-             
-             <div className="space-y-2">
-               <div className="text-terminal-accent font-semibold">🖥️ Frontend Technologies:</div>
-               <div className="grid grid-cols-2 gap-1 text-sm">
-                 <div>• React.js (Advanced)</div>
-                 <div>• TypeScript (Advanced)</div>
-                 <div>• Next.js (Intermediate)</div>
-                 <div>• Tailwind CSS (Advanced)</div>
-                 <div>• JavaScript (Advanced)</div>
-                 <div>• HTML5/CSS3 (Advanced)</div>
-               </div>
-             </div>
-             
-             <div className="space-y-2">
-               <div className="text-terminal-accent font-semibold">⚙️ Backend Technologies:</div>
-               <div className="grid grid-cols-2 gap-1 text-sm">
-                 <div>• Node.js (Advanced)</div>
-                 <div>• Express.js (Advanced)</div>
-                 <div>• Prisma ORM (Intermediate)</div>
-                 <div>• REST APIs (Advanced)</div>
-                 <div>• GraphQL (Basic)</div>
-                 <div>• JWT Authentication (Advanced)</div>
-               </div>
-             </div>
-             
-             <div className="space-y-2">
-               <div className="text-terminal-accent font-semibold">🗄️ Databases:</div>
-               <div className="grid grid-cols-2 gap-1 text-sm">
-                 <div>• PostgreSQL (Advanced)</div>
-                 <div>• MongoDB (Intermediate)</div>
-                 <div>• Redis (Basic)</div>
-                 <div>• Database Design (Advanced)</div>
-               </div>
-             </div>
-             
-             <div className="space-y-2">
-               <div className="text-terminal-accent font-semibold">🛠️ Tools & DevOps:</div>
-               <div className="grid grid-cols-2 gap-1 text-sm">
-                 <div>• Git & GitHub (Advanced)</div>
-                 <div>• Docker (Intermediate)</div>
-                 <div>• AWS (Basic)</div>
-                 <div>• Vercel (Advanced)</div>
-                 <div>• Postman (Advanced)</div>
-                 <div>• VS Code (Advanced)</div>
-               </div>
-             </div>
-             
-             <div className="text-terminal-foreground text-xs mt-2">
-               Total skills: 30+ | Proficiency levels: Advanced (15), Intermediate (10), Basic (5)
              </div>
            </div>
          );
@@ -801,7 +872,7 @@ const Terminal = () => {
      } ${isMaximized ? '' : isHalfSize ? '' : 'p-6'}`}>
               <div className={`terminal bg-terminal-bg border border-terminal-accent/30 shadow-2xl flex flex-col transition-all duration-300 ease-in-out ${
                 isMaximized ? 'rounded-none h-full' : 
-                isHalfSize ? `w-full h-1/2 bottom-0 absolute ${isClosing ? 'translate-y-full' : 'translate-y-0'}` : 
+                isHalfSize ? `w-full h-1/2 bottom-0 absolute rounded-none ${isClosing ? 'translate-y-full' : 'translate-y-0'}` : 
                 'rounded-t-lg h-full'
               }`}>
                  {/* Terminal Header */}
