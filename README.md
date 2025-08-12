@@ -17,28 +17,28 @@ This portfolio consists of two main components:
 ![Welcome Screen](https://drive.google.com/uc?id=17r7wwGM4wQkvd3VyjM6ZuiilbE13zFhj)
 
 ### Projects Section
-![Projects Section](https://drive.google.com/uc&id=1X9FAxFrbZrjUz2DusPbzWsYxGDPQ5ihZ)
+![Projects Section](https://drive.google.com/uc?id=1X9FAxFrbZrjUz2DusPbzWsYxGDPQ5ihZ)
 
 ### Journey Timeline
-![Journey Timeline](https://drive.google.com/uc&id=1viNS6riT9hUikssg9nENSrvFPbbOJQMf)
+![Journey Timeline](https://drive.google.com/uc?id=1viNS6riT9hUikssg9nENSrvFPbbOJQMf)
 
 ### Work Experience
-![Work Experience](https://drive.google.com/uc&id=1Xfth79ETzFIxBtO8xM2lG4JDjxLYTYhk)
+![Work Experience](https://drive.google.com/uc?id=1Xfth79ETzFIxBtO8xM2lG4JDjxLYTYhk)
 
 ### Skills Section
-![Skills](https://drive.google.com/uc&id=1pNzrGtqmdxlkWRPzfFcSAQ-gv9iZhqSn)
+![Skills](https://drive.google.com/uc?id=1pNzrGtqmdxlkWRPzfFcSAQ-gv9iZhqSn)
 
 ### Stack Section
-![Stack](https://drive.google.com/uc&id=1fWlwK1IjHaiQ6guKnbuZNXPJ5p9yh2cI)
+![Stack](https://drive.google.com/uc?id=1fWlwK1IjHaiQ6guKnbuZNXPJ5p9yh2cI)
 
 ### Personal Section
-![Personal Section](https://drive.google.com/uc&id=1HfOJamcGPi1BUt8PUPpbYG0DFcW2cb7F)
+![Personal Section](https://drive.google.com/uc?id=1HfOJamcGPi1BUt8PUPpbYG0DFcW2cb7F)
 
 ### Contact Form
-![Contact Form](https://drive.google.com/uc&id=18H0lxDHvtsX4cQ3zLwK6mjqjofQQEVrT)
+![Contact Form](https://drive.google.com/uc?id=18H0lxDHvtsX4cQ3zLwK6mjqjofQQEVrT)
 
 ### Terminal Interface
-![Terminal Interface](https://drive.google.com/uc&id=1wuDIBtph8dTxTacog03rW98s8CU97jYA)
+![Terminal Interface](https://drive.google.com/uc?id=1wuDIBtph8dTxTacog03rW98s8CU97jYA)
 
 
 ## 🏗️ Architecture
