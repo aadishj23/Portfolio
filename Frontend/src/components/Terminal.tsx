@@ -881,7 +881,7 @@ const Terminal = () => {
           }
           variant="ghost"
           size="icon"
-          className="fixed bottom-6 right-6 z-50 md:hidden rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 bg-terminal-bg/80 border border-terminal-accent/30 text-terminal-foreground"
+          className="fixed bottom-6 right-6 z-50 md:hidden rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 bg-terminal-bg/80 border border-terminal-accent/30 text-terminal-foreground hover:bg-terminal-bg/80 active:bg-terminal-bg/80 focus:bg-terminal-bg/80 hover:text-terminal-foreground active:text-terminal-foreground hover:border-terminal-accent/30 active:border-terminal-accent/30 focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none"
           aria-label="Terminal info"
         >
           <TerminalIcon className="h-5 w-5" />
