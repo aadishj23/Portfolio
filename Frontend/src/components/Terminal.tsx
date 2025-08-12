@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Terminal as TerminalIcon, X, Maximize2, Command, ArrowUp, ArrowDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { toast } from '@/components/ui/sonner';
 import { useBootContext } from '@/contexts/BootContext';
 
 interface CommandHistory {
@@ -851,7 +852,9 @@ const Terminal = () => {
 
   if (!isOpen) {
     return (
-                    <Button
+      <>
+        {/* Desktop: real terminal open button */}
+        <Button
           onClick={() => {
             setIsOpen(true);
             setIsMaximized(false);
@@ -859,10 +862,31 @@ const Terminal = () => {
           }}
           className="fixed bottom-6 right-6 z-50 bg-terminal-bg hover:bg-terminal-bg/80 text-terminal-foreground border-terminal-accent/30 hover:border-terminal-accent/50 hidden md:flex"
           size="lg"
+          aria-label="Open Terminal"
         >
-        <TerminalIcon className="mr-2" size={20} />
-        Open Terminal
-      </Button>
+          <TerminalIcon className="mr-2" size={20} />
+          Open Terminal
+        </Button>
+
+        {/* Mobile: info button with toast prompting to use desktop */}
+        <Button
+          onClick={() =>
+            toast(
+              'Terminal is desktop-only',
+              {
+                description:
+                  'For the full interactive terminal experience, please open this site on a larger screen.',
+              }
+            )
+          }
+          variant="ghost"
+          size="icon"
+          className="fixed bottom-6 right-6 z-50 md:hidden rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 bg-terminal-bg/80 border border-terminal-accent/30 text-terminal-foreground"
+          aria-label="Terminal info"
+        >
+          <TerminalIcon className="h-5 w-5" />
+        </Button>
+      </>
     );
   }
 
