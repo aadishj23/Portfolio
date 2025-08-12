@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Send, Copy, Github, Linkedin, Mail, MapPin, Calendar } from 'lucide-react';
+import { Send, Copy, Github, Linkedin, Mail, MapPin, Calendar, Loader2 } from 'lucide-react';
 import XLogo from '@/components/ui/x-logo';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -12,6 +12,7 @@ const ContactSection = () => {
   const [email, setEmail] = useState('');
   const [currentSuggestion, setCurrentSuggestion] = useState(0);
   const [hoveredSuggestion, setHoveredSuggestion] = useState<number | null>(null);
+  const [isSending, setIsSending] = useState(false);
   
   const suggestions = [
     'collaboration',
@@ -108,6 +109,8 @@ const ContactSection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    setIsSending(true);
+    
     try {
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/contact`, {
         method: 'POST',
@@ -132,6 +135,8 @@ const ContactSection = () => {
     } catch (error) {
       console.error('Error sending message:', error);
       toast.error('Failed to send message. Please check your connection and try again.');
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -228,10 +233,19 @@ const ContactSection = () => {
                     <Button 
                       type="submit"
                       className="bg-accent-electric hover:bg-accent-electric/80 text-white font-mono font-semibold shadow-lg w-full sm:w-auto"
-                      disabled={!message.trim() || !email.trim()}
+                      disabled={!message.trim() || !email.trim() || isSending}
                     >
-                      <Send size={14} className="mr-2" />
-                      Send Message
+                      {isSending ? (
+                        <>
+                          <Loader2 size={14} className="mr-2 animate-spin" />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Send size={14} className="mr-2" />
+                          Send Message
+                        </>
+                      )}
                     </Button>
                     
                     <Button 
@@ -242,6 +256,7 @@ const ContactSection = () => {
                         setEmail('');
                       }}
                       className="border-terminal-accent/50 text-terminal-accent hover:bg-terminal-accent/20 hover:border-terminal-accent font-mono bg-terminal-bg/60 w-full sm:w-auto"
+                      disabled={isSending}
                     >
                       Clear
                     </Button>
