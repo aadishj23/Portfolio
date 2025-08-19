@@ -8,7 +8,8 @@ import StackSection from '@/components/StackSection';
 import PersonalSection from '@/components/PersonalSection';
 import ContactSection from '@/components/ContactSection';
 import Terminal from '@/components/Terminal';
-import BackToTopButton from '@/components/BackToTopButton';
+import FloatingNavbar from '@/components/FloatingNavbar';
+import ScrollProgressBar from '@/components/ScrollProgressBar';
 import { BootProvider, useBootContext } from '@/contexts/BootContext';
 
 const IndexContent = () => {
@@ -66,6 +67,7 @@ const IndexContent = () => {
 
   return (
     <div className="scroll-snap-container custom-scrollbar">
+      <ScrollProgressBar />
       <WelcomeScreen />
       <ProjectsSection />
       <JourneySection />
@@ -75,7 +77,7 @@ const IndexContent = () => {
       <PersonalSection />
       <ContactSection />
       <Terminal />
-      <BackToTopButton />
+      <FloatingNavbar />
     </div>
   );
 };

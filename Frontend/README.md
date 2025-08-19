@@ -81,9 +81,12 @@ Frontend/
 │   │   │   ├── button.tsx      # Button component
 │   │   │   ├── card.tsx        # Card component
 │   │   │   ├── input.tsx       # Input component
+│   │   │   ├── sonner.tsx      # Sonner toast component
 │   │   │   ├── textarea.tsx    # Textarea component
 │   │   │   ├── toast.tsx       # Toast notifications
-│   │   │   └── tooltip.tsx     # Tooltip component
+│   │   │   ├── toaster.tsx     # Toaster component
+│   │   │   ├── tooltip.tsx     # Tooltip component
+│   │   │   └── x-logo.tsx      # X logo component
 │   │   ├── Terminal.tsx        # Interactive terminal
 │   │   ├── WelcomeScreen.tsx   # Boot sequence
 │   │   ├── ProjectsSection.tsx # Projects showcase
@@ -93,7 +96,8 @@ Frontend/
 │   │   ├── StackSection.tsx    # Tech stack
 │   │   ├── PersonalSection.tsx # Personal insights
 │   │   ├── ContactSection.tsx  # Contact form
-│   │   └── BackToTopButton.tsx # Navigation helper
+│   │   ├── FloatingNavbar.tsx  # Floating navigation
+│   │   └── ScrollProgressBar.tsx # Scroll progress indicator
 │   ├── contexts/               # React contexts
 │   │   └── BootContext.tsx     # Boot sequence state
 │   ├── hooks/                  # Custom hooks
@@ -104,13 +108,24 @@ Frontend/
 │   ├── pages/                  # Page components
 │   │   ├── index.tsx           # Main portfolio page
 │   │   └── NotFound.tsx        # 404 page
+│   ├── types/                  # TypeScript type definitions
+│   │   └── global.d.ts         # Global type declarations
+│   ├── App.css                 # Main application styles
+│   ├── App.tsx                 # Main App component
+│   ├── index.css               # Global styles
+│   ├── main.tsx                # Application entry point
 │   └── assets/                 # Images and static files
 │       └── hero-terminal.jpeg  # Hero image
 ├── public/                     # Public assets
 │   ├── favicon.png             # Site favicon
-│   ├── placeholder.svg         # Placeholder image
 │   └── robots.txt              # SEO robots file
+├── components.json             # Shadcn/ui configuration
+├── eslint.config.js            # ESLint configuration
+├── postcss.config.js           # PostCSS configuration
 ├── tailwind.config.ts          # Tailwind configuration
+├── tsconfig.app.json           # TypeScript app configuration
+├── tsconfig.json               # TypeScript configuration
+├── tsconfig.node.json          # TypeScript node configuration
 ├── vite.config.ts              # Vite configuration
 └── package.json                # Dependencies and scripts
 ```

@@ -45,18 +45,44 @@ This portfolio consists of two main components:
 
 ```
 Portfolio/
-├── Frontend/           # React + TypeScript + Tailwind CSS
-│   ├── src/           # Source code
-│   ├── public/        # Static assets
-│   └── package.json   # Frontend dependencies
-├── Backend/           # Express.js + TypeScript + MongoDB
-│   ├── src/           # Source code
-│   ├── config/        # Database configuration
-│   ├── models/        # Data models
-│   ├── routes/        # API endpoints
-│   ├── services/      # Business logic
-│   └── package.json   # Backend dependencies
-└── README.md          # This file
+├── Frontend/                    # React + TypeScript + Tailwind CSS
+│   ├── src/                    # Source code
+│   │   ├── components/         # React components
+│   │   │   ├── ui/            # Shadcn/ui components
+│   │   │   ├── Terminal.tsx   # Interactive terminal
+│   │   │   ├── WelcomeScreen.tsx # Boot sequence
+│   │   │   ├── ProjectsSection.tsx # Projects showcase
+│   │   │   ├── JourneySection.tsx # Learning timeline
+│   │   │   ├── WorkExperienceSection.tsx # Work history
+│   │   │   ├── SkillsSection.tsx # Skills showcase
+│   │   │   ├── StackSection.tsx # Tech stack
+│   │   │   ├── PersonalSection.tsx # Personal insights
+│   │   │   ├── ContactSection.tsx # Contact form
+│   │   │   ├── FloatingNavbar.tsx # Floating navigation
+│   │   │   └── ScrollProgressBar.tsx # Scroll progress indicator
+│   │   ├── contexts/           # React contexts
+│   │   ├── hooks/              # Custom hooks
+│   │   ├── lib/                # Utility functions
+│   │   ├── pages/              # Page components
+│   │   ├── types/              # TypeScript type definitions
+│   │   ├── App.css             # Main application styles
+│   │   ├── App.tsx             # Main App component
+│   │   ├── index.css           # Global styles
+│   │   ├── main.tsx            # Application entry point
+│   │   └── assets/             # Images and static files
+│   ├── public/                 # Static assets
+│   ├── tailwind.config.ts      # Tailwind configuration
+│   ├── vite.config.ts          # Vite configuration
+│   └── package.json            # Frontend dependencies
+├── Backend/                     # Express.js + TypeScript + MongoDB
+│   ├── config/                 # Database configuration
+│   ├── models/                 # Data models
+│   ├── routes/                 # API endpoints
+│   ├── services/               # Business logic
+│   ├── index.ts                # Main server file
+│   ├── package.json            # Backend dependencies
+│   ├── tsconfig.json           # TypeScript configuration
+└── README.md                    # This file
 ```
 
 ## 🎯 Key Features

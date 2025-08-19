@@ -440,4 +440,47 @@
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }
+
+  /* Floating Navbar */
+  .floating-navbar {
+    position: fixed;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    pointer-events: auto;
+    width: auto;
+    min-width: max-content;
+  }
+
+  .floating-navbar-mobile {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  z-index: 1001;
+  pointer-events: auto;
+}
+
+  /* Navbar animations */
+  .navbar-enter {
+    opacity: 0;
+    transform: translateY(-20px) translateX(-50%);
+  }
+
+  .navbar-enter-active {
+    opacity: 1;
+    transform: translateY(0) translateX(-50%);
+    transition: opacity 300ms ease-out, transform 300ms ease-out;
+  }
+
+  .navbar-exit {
+    opacity: 1;
+    transform: translateY(0) translateX(-50%);
+  }
+
+  .navbar-exit-active {
+    opacity: 0;
+    transform: translateY(-20px) translateX(-50%);
+    transition: opacity 300ms ease-out, transform 300ms ease-out;
+  }
 }

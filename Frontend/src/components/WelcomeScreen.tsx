@@ -78,7 +78,7 @@ const WelcomeScreen = () => {
   ];
 
   return (
-    <section className={`min-h-screen relative bg-gradient-terminal flex items-center justify-center scroll-snap-section ${!bootingComplete ? 'overflow-hidden' : ''}`}>
+    <section id="welcome" className={`min-h-screen relative bg-gradient-terminal flex items-center justify-center scroll-snap-section ${!bootingComplete ? 'overflow-hidden' : ''}`}>
       {/* Background Image */}
       <div 
         className="absolute inset-0 opacity-20 bg-cover bg-center"

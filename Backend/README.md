@@ -164,7 +164,9 @@ Backend/
 │   └── emailService.ts      # Email notification service
 ├── index.ts                 # Main server file
 ├── package.json             # Dependencies and scripts
-└── tsconfig.json            # TypeScript configuration
+├── package-lock.json        # Lock file for dependencies
+├── tsconfig.json            # TypeScript configuration
+└── README.md                # Backend documentation
 ```
 
 ## 🔒 Security Features
