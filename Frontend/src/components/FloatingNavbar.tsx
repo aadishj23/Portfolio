@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from 'react';
-import { ChevronUp, ChevronDown, Home, Code, BookOpen, Briefcase, Folder, Layers, User, Mail, Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useCallback, useRef, memo } from 'react';
+import { Home, Code, BookOpen, Briefcase, Folder, Layers, User, Mail, Menu, X } from 'lucide-react';
+import { motion, AnimatePresence, useAnimationControls } from 'framer-motion';
 
 interface NavItem {
   id: string;
@@ -19,6 +19,133 @@ const navItems: NavItem[] = [
   { id: 'personal', label: 'Personal', icon: <User size={16} />, color: 'hot' },
   { id: 'contact', label: 'Contact', icon: <Mail size={16} />, color: 'electric' }
 ];
+
+// Desktop Navigation (memoized, imperatively animated to avoid rerenders on scroll)
+const DesktopFloatingNav = memo(() => {
+  const controls = useAnimationControls();
+  const isNavigatingRef = useRef(false);
+
+  const getWelcomeBottom = () => {
+    const welcome = document.getElementById('welcome');
+    if (welcome) {
+      return welcome.offsetTop + welcome.offsetHeight;
+    }
+    // Fallback threshold if welcome not found
+    return 120;
+  };
+
+  const updateVisibility = useCallback(() => {
+    if (isNavigatingRef.current) return;
+    const threshold = getWelcomeBottom();
+    const show = window.scrollY >= threshold;
+    controls.start({ opacity: show ? 1 : 0, y: show ? 0 : -20, transition: { duration: 0.3, ease: 'easeOut' } });
+  }, [controls]);
+
+  useEffect(() => {
+    // Initialize visibility
+    updateVisibility();
+    // Listen to scroll without causing React state updates
+    window.addEventListener('scroll', updateVisibility, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', updateVisibility);
+    };
+  }, [updateVisibility]);
+
+  const waitUntilSectionReached = useCallback((sectionId: string): Promise<void> => {
+    return new Promise((resolve) => {
+      const tolerance = 24; // px
+      const timeoutMs = 10000;
+      const startedAt = performance.now();
+      const check = () => {
+        // welcome -> top of page
+        if (sectionId === 'welcome') {
+          if (window.scrollY <= tolerance) {
+            resolve();
+            return;
+          }
+        } else {
+          const el = document.getElementById(sectionId);
+          if (!el) {
+            resolve();
+            return;
+          }
+          const top = el.getBoundingClientRect().top;
+          if (Math.abs(top) <= tolerance) {
+            resolve();
+            return;
+          }
+        }
+        if (performance.now() - startedAt > timeoutMs) {
+          resolve();
+          return;
+        }
+        requestAnimationFrame(check);
+      };
+      requestAnimationFrame(check);
+    });
+  }, []);
+
+  const handleClick = useCallback(async (sectionId: string) => {
+    // Hide immediately with animation
+    await controls.start({ opacity: 0, y: -20, transition: { duration: 0.2, ease: 'easeIn' } });
+
+    // Smooth scroll to target
+    isNavigatingRef.current = true;
+    if (sectionId === 'welcome') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Wait until the target section is reached, then reappear if past welcome
+    await waitUntilSectionReached(sectionId);
+    const threshold = getWelcomeBottom();
+    const shouldShow = window.scrollY >= threshold;
+    if (shouldShow) {
+      await controls.start({ opacity: 1, y: 0, transition: { duration: 0.3, ease: 'easeOut' } });
+    }
+    isNavigatingRef.current = false;
+  }, [controls, waitUntilSectionReached]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={controls}
+      className="hidden lg:flex items-center gap-2 bg-background/95 backdrop-blur-md border border-border/50 rounded-full px-6 py-3 shadow-soft"
+      style={{
+        position: 'fixed',
+        top: '2rem',
+        left: '0',
+        right: '0',
+        margin: '0 auto',
+        width: 'fit-content',
+        zIndex: 1000
+      }}
+    >
+      {navItems.map((item) => (
+        <motion.button
+          key={item.id}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.96 }}
+          transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+          onClick={() => handleClick(item.id)}
+          className={`relative overflow-hidden flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all duration-200 hover:bg-accent/20 hover:text-${item.color} group text-foreground`}
+        >
+          <span className={`text-${item.color} group-hover:scale-110 transition-transform duration-200`}>
+            {item.icon}
+          </span>
+          <span className={`group-hover:text-${item.color} transition-colors duration-200`}>
+            {item.label}
+          </span>
+        </motion.button>
+      ))}
+    </motion.div>
+  );
+});
+DesktopFloatingNav.displayName = 'DesktopFloatingNav';
 
 const FloatingNavbar = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -41,12 +168,12 @@ const FloatingNavbar = () => {
   const handleScroll = useCallback(() => {
     const currentScrollY = window.scrollY;
     const lastScrollY = window.lastScrollY || 0;
-    
+
     // Close mobile menu when scrolling
     if (isMobileMenuOpen) {
       setIsMobileMenuOpen(false);
     }
-    
+
     // Determine active section based on scroll position
     const sections = navItems.map(item => item.id);
     let newActiveSection = 'welcome';
@@ -62,7 +189,7 @@ const FloatingNavbar = () => {
     if (newActiveSection !== activeSection) {
       setActiveSection(newActiveSection);
     }
-    
+
     // Clear existing scroll timeout
     if (scrollTimeout) {
       clearTimeout(scrollTimeout);
@@ -96,9 +223,9 @@ const FloatingNavbar = () => {
     setHideTimeout(newTimeout);
     window.lastScrollY = currentScrollY;
     updateScrollProgress();
-  }, [hideTimeout, isVisible, isExpanded, updateScrollProgress, activeSection, scrollTimeout, isMobileMenuOpen]);
+  }, [isMobileMenuOpen, activeSection, updateScrollProgress]);
 
-  // Smooth scroll to section
+  // Smooth scroll to section (mobile only)
   const scrollToSection = (sectionId: string) => {
     if (sectionId === 'welcome') {
       // Scroll to top for welcome section
@@ -118,17 +245,6 @@ const FloatingNavbar = () => {
     
     // Close mobile menu if open
     setIsMobileMenuOpen(false);
-    
-    // Reset hide timeout
-    if (hideTimeout) {
-      clearTimeout(hideTimeout);
-    }
-    const newTimeout = setTimeout(() => {
-      if (isVisible && !isExpanded) {
-        setIsVisible(false);
-      }
-    }, 3000);
-    setHideTimeout(newTimeout);
   };
 
   // Handle scroll events
@@ -143,65 +259,12 @@ const FloatingNavbar = () => {
         clearTimeout(scrollTimeout);
       }
     };
-  }, [handleScroll, hideTimeout, scrollTimeout]);
+  }, [handleScroll]);
 
   // Cleanup timeout on unmount
   useEffect(() => {
-    return () => {
-      if (hideTimeout) {
-        clearTimeout(hideTimeout);
-      }
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-      }
-    };
-  }, [hideTimeout, scrollTimeout]);
-
-  // Desktop Navigation
-  const DesktopNav = () => (
-    <motion.div
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
-      className="hidden lg:flex items-center gap-2 bg-background/95 backdrop-blur-md border border-border/50 rounded-full px-6 py-3 shadow-soft"
-      style={{
-        position: 'fixed',
-        top: '2rem',
-        left: '0',
-        right: '0',
-        margin: '0 auto',
-        width: 'fit-content',
-        zIndex: 1000
-      }}
-    >
-      {navItems.map((item, index) => (
-        <motion.button
-          key={item.id}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ 
-            opacity: isExpanded ? 1 : 0, 
-            scale: isExpanded ? 1 : 0.8,
-            transition: { delay: index * 0.05 }
-          }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => scrollToSection(item.id)}
-          className={`flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all duration-200 hover:bg-accent/20 hover:text-${item.color} group ${
-            activeSection === item.id 
-              ? `bg-${item.color}/20 text-${item.color} border border-${item.color}/30` 
-              : 'text-foreground'
-          }`}
-        >
-          <span className={`text-${item.color} group-hover:scale-110 transition-transform duration-200`}>
-            {item.icon}
-          </span>
-          <span className={`group-hover:text-${item.color} transition-colors duration-200`}>
-            {item.label}
-          </span>
-        </motion.button>
-      ))}
-    </motion.div>
-  );
+    return () => {};
+  }, []);
 
   // Mobile Navigation - Floating Action Button with Expanding Options
   const MobileNav = () => (
@@ -302,7 +365,7 @@ const FloatingNavbar = () => {
 
   return (
     <>
-      <DesktopNav />
+      <DesktopFloatingNav />
       <MobileNav />
     </>
   );
