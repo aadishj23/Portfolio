@@ -196,16 +196,19 @@ const FloatingNavbar = () => {
     }
     
          // Set new scroll timeout for debouncing
-     const newScrollTimeout = setTimeout(() => {
-       if (currentScrollY > 100) { // Only show after scrolling down 100px
-         // Always show expanded navbar when scrolling in any direction
-         setIsVisible(true);
-         setIsExpanded(true);
-       } else {
-         setIsVisible(false);
-         setIsExpanded(false);
-       }
-     }, 150); // 150ms delay after scrolling stops
+    const newScrollTimeout = setTimeout(() => {
+      // Determine threshold: top of 'projects' section if available, else 100px
+      const projectsEl = document.getElementById('projects');
+      const threshold = projectsEl ? Math.max(0, projectsEl.offsetTop - 50) : 100;
+
+      if (currentScrollY >= threshold) {
+        setIsVisible(true);
+        setIsExpanded(true);
+      } else {
+        setIsVisible(false);
+        setIsExpanded(false);
+      }
+    }, 150); // 150ms delay after scrolling stops
 
     setScrollTimeout(newScrollTimeout);
     
@@ -270,12 +273,8 @@ const FloatingNavbar = () => {
   const MobileNav = () => (
     <div className="lg:hidden">
       {/* Scroll Progress Indicator */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
-        className="floating-navbar-mobile"
-      >
+      {isVisible && (
+        <div className="floating-navbar-mobile">
                  {/* Main FAB */}
          <motion.button
            whileHover={{ scale: 1.1 }}
@@ -319,47 +318,48 @@ const FloatingNavbar = () => {
         {/* Expanding Navigation Options */}
         <AnimatePresence>
           {isMobileMenuOpen && (
-                         <motion.div
-               initial={{ opacity: 0, scale: 0.8 }}
-               animate={{ opacity: 1, scale: 1 }}
-               exit={{ opacity: 0, scale: 0.8 }}
-               transition={{ duration: 0.2 }}
-               className="absolute bottom-12 left-0 w-64 bg-background/95 backdrop-blur-md border border-border/50 rounded-2xl shadow-soft p-4"
-             >
-              <div className="grid grid-cols-2 gap-3">
-                {navItems.map((item, index) => (
-                  <motion.button
-                    key={item.id}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ 
-                      opacity: 1, 
-                      x: 0,
-                      transition: { delay: index * 0.05 }
-                    }}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => scrollToSection(item.id)}
-                    className={`flex flex-col items-center gap-2 p-3 rounded-xl text-sm font-medium transition-all duration-200 hover:bg-accent/20 group ${
-                      activeSection === item.id 
-                        ? `bg-${item.color}/20 text-${item.color} border border-${item.color}/30` 
-                        : 'text-foreground'
-                    }`}
-                  >
-                    <span className={`text-${item.color} group-hover:scale-110 transition-transform duration-200`}>
-                      {item.icon}
-                    </span>
-                    <span className={`text-xs text-center transition-colors duration-200 ${
-                      activeSection === item.id ? `text-${item.color}` : 'text-foreground'
-                    }`}>
-                      {item.label}
-                    </span>
-                  </motion.button>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
+                        <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.2 }}
+              className="absolute bottom-12 left-0 w-64 bg-background/95 backdrop-blur-md border border-border/50 rounded-2xl shadow-soft p-4"
+            >
+             <div className="grid grid-cols-2 gap-3">
+               {navItems.map((item, index) => (
+                 <motion.button
+                   key={item.id}
+                   initial={{ opacity: 0, x: 20 }}
+                   animate={{ 
+                     opacity: 1, 
+                     x: 0,
+                     transition: { delay: index * 0.05 }
+                   }}
+                   whileHover={{ scale: 1.05 }}
+                   whileTap={{ scale: 0.95 }}
+                   onClick={() => scrollToSection(item.id)}
+                   className={`flex flex-col items-center gap-2 p-3 rounded-xl text-sm font-medium transition-all duration-200 hover:bg-accent/20 group ${
+                     activeSection === item.id 
+                       ? `bg-${item.color}/20 text-${item.color} border border-${item.color}/30` 
+                       : 'text-foreground'
+                   }`}
+                 >
+                   <span className={`text-${item.color} group-hover:scale-110 transition-transform duration-200`}>
+                     {item.icon}
+                   </span>
+                   <span className={`text-xs text-center transition-colors duration-200 ${
+                     activeSection === item.id ? `text-${item.color}` : 'text-foreground'
+                   }`}>
+                     {item.label}
+                   </span>
+                 </motion.button>
+               ))}
+             </div>
+           </motion.div>
+         )}
+       </AnimatePresence>
+     </div>
+      )}
     </div>
   );
 
