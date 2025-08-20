@@ -68,7 +68,7 @@ const ProjectsSection = () => {
     {
       id: 'Anveshan',
       name: 'Anveshan',
-      command: 'run-Anveshan',
+      command: 'run-anveshan',
       status: 'production',
       description: 'A website for Anveshan, the technical club of BPIT, showcasing its events, team, projects, and achievers.',
       impact: ['Modular Architecture for Easy Maintenance', 'Integrated SPA and MPA Versions', 'Community-Driven Development'],
@@ -87,7 +87,7 @@ const ProjectsSection = () => {
     {
       id: 'taskmate',
       name: 'TaskMate',
-      command: 'run-TaskMate',
+      command: 'run-taskmate',
       status: 'production',
       description: 'A full-stack to-do app that lets you efficiently manage, track, and organize your tasks with a seamless user experience.',
       impact: ['Real-time Task Tracking', 'User Authentication & JWT Security', 'Responsive Cross-Platform Design'],
@@ -106,7 +106,7 @@ const ProjectsSection = () => {
     {
       id: 'Venturevine',
       name: 'Venturevine',
-      command: 'run-Venturevine',
+      command: 'run-venturevine',
       status: 'production',
       description: 'A comprehensive platform for entrepreneurs and startups to showcase their ventures, connect with investors, and grow their network.',
       impact: ['Startup Showcase Platform', 'Investor Connection System', 'Community Building Features'],
@@ -125,7 +125,7 @@ const ProjectsSection = () => {
     {
       id: 'hackblitz',
       name: 'HackBlitz Hackathon Website',
-      command: 'run-HackBlitz',
+      command: 'run-hackblitz',
       status: 'production',
       description: 'The official website for HackBlitz, a 24-hour hackathon featuring project showcases in front of 10+ judges.',
       impact: ['HackBlitz Event Information', 'Participant Registration Portal', 'Hackathon Information Showcase Platform'],
@@ -143,7 +143,7 @@ const ProjectsSection = () => {
     {
       id: 'TempTrack',
       name: 'TempTrack',
-      command: 'run-TempTrack',
+      command: 'run-temptrack',
       status: 'production',
       description: 'A weather tracking application that provides real-time temperature data, forecasts, and location-based weather information.',
       impact: ['Real-time Weather Data', 'Location-Based Forecasting', 'Weather Based Background'],
@@ -161,7 +161,7 @@ const ProjectsSection = () => {
     {
       id: 'youtube',
       name: 'Youtube Comment Scraper',
-      command: 'run-ytCmntScraper',
+      command: 'run-ytcmntscraper',
       status: 'production',
       description: 'An YouTube comment extraction tool that filters and sorts comments by relevance, date, and quantity for comprehensive data analysis.',
       impact: ['Comment Data Extraction', 'Bulk Comment Processing'],
@@ -175,7 +175,7 @@ const ProjectsSection = () => {
     {
       id: 'Tenzies',
       name: 'Tenzies',
-      command: 'run-Tenzies',
+      command: 'run-tenzies',
       status: 'production',
       description: 'A fun dice game where players roll dice to achieve matching numbers, built with modern web technologies.',
       impact: ['Interactive Dice Game', 'Score Tracking System', 'Responsive Game Interface'],
