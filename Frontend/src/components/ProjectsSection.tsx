@@ -23,7 +23,7 @@ const ProjectsSection = () => {
         uptime: '99%'
       },
       links: {
-        live: 'https://labeasy.aadish.tech/',
+        live: 'https://labeasy.aadishjain.dev/',
         github: 'https://github.com/aadishj23/Labeasy'
       }
     },
@@ -61,7 +61,7 @@ const ProjectsSection = () => {
         levels: '3'
       },
       links: {
-        live: 'https://quizzical.aadish.tech/',
+        live: 'https://quizzical.aadishjain.dev/',
         github: 'https://github.com/aadishj23/Quiz-App'
       }
     },
@@ -99,7 +99,7 @@ const ProjectsSection = () => {
         uptime: '99.5%'
       },
       links: {
-        live: 'https://taskmate.aadish.tech/',
+        live: 'https://taskmate.aadishjain.dev/',
         github: 'https://github.com/aadishj23/TaskMate'
       }
     },
@@ -118,7 +118,7 @@ const ProjectsSection = () => {
         dependencies: '10+'
       },
       links: {
-        live: 'https://venturevine.aadish.tech/',
+        live: 'https://venturevine.aadishjain.dev/',
         github: 'https://github.com/aadishj23/Venturevine'
       }
     },
@@ -136,7 +136,7 @@ const ProjectsSection = () => {
         contributors: '3'
       },
       links: {
-        live: 'https://hackblitz.aadish.tech/',
+        live: 'https://hackblitz.aadishjain.dev/',
         github: 'https://github.com/aadishj23/HackBlitz'
       }
     },
@@ -154,7 +154,7 @@ const ProjectsSection = () => {
         accuracy: '99%'
       },
       links: {
-        live: 'https://weather.aadish.tech/',
+        live: 'https://weather.aadishjain.dev/',
         github: 'https://github.com/aadishj23/weather'
       }
     },
@@ -168,7 +168,7 @@ const ProjectsSection = () => {
       tech: ['React', 'Tailwind CSS'],
       type: 'icon2',
       links: {
-        live: 'https://youtube-comment-scrapper.aadish.tech/',
+        live: 'https://youtube-comment-scrapper.aadishjain.dev/',
         github: 'https://github.com/aadishj23/Youtube-Comment-Scrapper'
       }
     },
@@ -182,7 +182,7 @@ const ProjectsSection = () => {
       tech: ['React', 'Tailwind CSS'],
       type: 'icon3',
       links: {
-        live: 'https://tenzies.aadish.tech/',
+        live: 'https://tenzies.aadishjain.dev/',
         github: 'https://github.com/aadishj23/Tenzies-Game'
       }
     }
@@ -344,7 +344,7 @@ const ProjectsSection = () => {
 
                 {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map((tech) => (
+                  {projectjain.dev.map((tech) => (
                     <Badge key={tech} variant="secondary" className="text-xs">
                       {tech}
                     </Badge>

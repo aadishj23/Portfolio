@@ -42,7 +42,7 @@ const Terminal = () => {
       command: 'run-labeasy',
       description: 'A unified diagnostics platform that helps users find and book affordable lab tests from trusted local labs.',
       links: {
-        live: 'https://labeasy.aadish.tech/',
+        live: 'https://labeasy.aadishjain.dev/',
         github: 'https://github.com/aadishj23/Labeasy'
       }
     },
@@ -62,7 +62,7 @@ const Terminal = () => {
       command: 'run-quizzical',
       description: 'A quiz platform offering thousands of technical questions categorized by topic and difficulty level.',
       links: {
-        live: 'https://quizzical.aadish.tech/',
+        live: 'https://quizzical.aadishjain.dev/',
         github: 'https://github.com/aadishj23/Quiz-App'
       }
     },
@@ -82,7 +82,7 @@ const Terminal = () => {
       command: 'run-taskmate',
       description: 'A full-stack to-do app that lets you efficiently manage, track, and organize your tasks with a seamless user experience.',
       links: {
-        live: 'https://taskmate.aadish.tech/',
+        live: 'https://taskmate.aadishjain.dev/',
         github: 'https://github.com/aadishj23/TaskMate'
       }
     },
@@ -92,7 +92,7 @@ const Terminal = () => {
       command: 'run-venturevine',
       description: 'A comprehensive platform for entrepreneurs and startups to showcase their ventures, connect with investors, and grow their network.',
       links: {
-        live: 'https://venturevine.aadish.tech/',
+        live: 'https://venturevine.aadishjain.dev/',
         github: 'https://github.com/aadishj23/Venturevine'
       }
     },
@@ -102,7 +102,7 @@ const Terminal = () => {
       command: 'run-hackblitz',
       description: 'The official website for HackBlitz, a 24-hour hackathon featuring project showcases in front of 10+ judges.',
       links: {
-        live: 'https://hackblitz.aadish.tech/',
+        live: 'https://hackblitz.aadishjain.dev/',
         github: 'https://github.com/aadishj23/HackBlitz'
       }
     },
@@ -112,7 +112,7 @@ const Terminal = () => {
       command: 'run-temptrack',
       description: 'A weather tracking application that provides real-time temperature data, forecasts, and location-based weather information.',
       links: {
-        live: 'https://weather.aadish.tech/',
+        live: 'https://weather.aadishjain.dev/',
         github: 'https://github.com/aadishj23/weather'
       }
     },
@@ -122,7 +122,7 @@ const Terminal = () => {
       command: 'run-ytcmntscraper',
       description: 'An YouTube comment extraction tool that filters and sorts comments by relevance, date, and quantity for comprehensive data analysis.',
       links: {
-        live: 'https://youtube-comment-scrapper.aadish.tech/',
+        live: 'https://youtube-comment-scrapper.aadishjain.dev/',
         github: 'https://github.com/aadishj23/Youtube-Comment-Scrapper'
       }
     },
@@ -132,7 +132,7 @@ const Terminal = () => {
       command: 'run-tenzies',
       description: 'A fun dice game where players roll dice to achieve matching numbers, built with modern web technologies.',
       links: {
-        live: 'https://tenzies.aadish.tech/',
+        live: 'https://tenzies.aadishjain.dev/',
         github: 'https://github.com/aadishj23/Tenzies-Game'
       }
     }

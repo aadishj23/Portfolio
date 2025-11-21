@@ -3,7 +3,7 @@
 A modern, interactive full-stack developer portfolio featuring a React frontend with terminal-inspired design and a Node.js backend API. Built with cutting-edge technologies and featuring smooth animations, interactive elements, and comprehensive project showcases.
 
 ## Website
-- https://aadish.tech/
+- https://aadishjain.dev/
 
 ## ✨ Project Overview
 
