@@ -344,7 +344,7 @@ const ProjectsSection = () => {
 
                 {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {projectjain.dev.map((tech) => (
+                  {project.tech.map((tech) => (
                     <Badge key={tech} variant="secondary" className="text-xs">
                       {tech}
                     </Badge>
