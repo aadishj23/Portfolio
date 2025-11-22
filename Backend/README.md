@@ -48,6 +48,7 @@ A robust backend API for Aadish Jain's portfolio website, built with **Express.j
    PORT=5500
    DATABASE_URL=mongodb://localhost:27017/portfolio
    RESEND_API_KEY=re_your_resend_api_key
+   RESEND_FROM_EMAIL=noreply@yourdomain.com
    EMAIL_USER=your_email@gmail.com
    ```
 
@@ -151,7 +152,8 @@ This backend uses **Resend** API service for email delivery, which is perfect fo
 
 ### Environment Variables
 - `RESEND_API_KEY`: Your Resend API key (required)
-- `EMAIL_USER`: Your email address (used for both sending and receiving notifications - must be verified in Resend)
+- `RESEND_FROM_EMAIL`: The "from" email address (must be verified in Resend)
+- `EMAIL_USER`: Your email address (where notifications will be sent)
 
 ### Benefits of Resend
 - ✅ No SMTP configuration needed
@@ -193,7 +195,8 @@ Ensure all required environment variables are set in production:
 - `PORT` - Server port (default: 3000)
 - `DATABASE_URL` - MongoDB connection string
 - `RESEND_API_KEY` - Resend API key for email service
-- `EMAIL_USER` - Email address (used for both sending and receiving - must be verified in Resend)
+- `RESEND_FROM_EMAIL` - Verified "from" email address in Resend
+- `EMAIL_USER` - Email address where notifications will be sent
 
 ### Production Commands
 ```bash

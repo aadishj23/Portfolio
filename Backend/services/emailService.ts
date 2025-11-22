@@ -19,14 +19,19 @@ class EmailService {
 
   async sendContactNotification(contactData: ContactFormData): Promise<boolean> {
     try {
-      const email = process.env.EMAIL_USER;
-      if (!email) {
+      const fromEmail = process.env.RESEND_FROM_EMAIL || process.env.EMAIL_USER;
+      if (!fromEmail) {
+        throw new Error('RESEND_FROM_EMAIL or EMAIL_USER environment variable is required');
+      }
+
+      const toEmail = process.env.EMAIL_USER;
+      if (!toEmail) {
         throw new Error('EMAIL_USER environment variable is required');
       }
 
       await this.resend.emails.send({
-        from: email,
-        to: email,
+        from: fromEmail,
+        to: toEmail,
         subject: `New Contact Form Message from ${contactData.email}`,
         html: this.generateContactEmailHTML(contactData),
         text: this.generateContactEmailText(contactData),
