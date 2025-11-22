@@ -1,4 +1,4 @@
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
 interface ContactFormData {
   email: string;
@@ -7,29 +7,32 @@ interface ContactFormData {
 }
 
 class EmailService {
-  private transporter: nodemailer.Transporter;
+  private resend: Resend;
 
   constructor() {
-    this.transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER, 
-        pass: process.env.EMAIL_APP_PASSWORD
-      }
-    });
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      throw new Error('RESEND_API_KEY environment variable is required');
+    }
+    this.resend = new Resend(apiKey);
   }
 
   async sendContactNotification(contactData: ContactFormData): Promise<boolean> {
     try {
-      const mailOptions = {
-        from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_USER,
+      const email = process.env.EMAIL_USER;
+      if (!email) {
+        throw new Error('EMAIL_USER environment variable is required');
+      }
+
+      await this.resend.emails.send({
+        from: email,
+        to: email,
         subject: `New Contact Form Message from ${contactData.email}`,
         html: this.generateContactEmailHTML(contactData),
-        text: this.generateContactEmailText(contactData)
-      };
+        text: this.generateContactEmailText(contactData),
+        replyTo: contactData.email
+      });
 
-      await this.transporter.sendMail(mailOptions);
       console.log('Contact notification email sent successfully');
       return true;
     } catch (error) {
@@ -100,8 +103,11 @@ You can reply directly to ${contactData.email} to respond.
   // Test email service connection
   async testConnection(): Promise<boolean> {
     try {
-      await this.transporter.verify();
-      console.log('Email service connection verified');
+      // Resend doesn't have a verify method, so we'll check if the API key is set
+      if (!process.env.RESEND_API_KEY) {
+        throw new Error('RESEND_API_KEY is not set');
+      }
+      console.log('Email service connection verified (Resend API key is configured)');
       return true;
     } catch (error) {
       console.error('Email service connection failed:', error);

@@ -22,7 +22,7 @@ A robust backend API for Aadish Jain's portfolio website, built with **Express.j
 
 ### Key Packages
 - **Mongoose 8.17.1** - MongoDB object modeling
-- **Nodemailer 7.0.5** - Email functionality
+- **Resend 4.0.0** - Email API service (SMTP-free)
 - **CORS 2.8.5** - Cross-origin resource sharing
 - **Axios 1.11.0** - HTTP client for external requests
 - **Dotenv 17.2.1** - Environment variable management
@@ -47,8 +47,8 @@ A robust backend API for Aadish Jain's portfolio website, built with **Express.j
    ```env
    PORT=5500
    DATABASE_URL=mongodb://localhost:27017/portfolio
+   RESEND_API_KEY=re_your_resend_api_key
    EMAIL_USER=your_email@gmail.com
-   EMAIL_APP_PASSWORD=your_email_app_password
    ```
 
 3. **Development Server**
@@ -132,23 +132,33 @@ interface Contact {
 
 ## 📧 Email Configuration
 
-### Gmail Setup (Recommended)
-1. **Enable 2-Factor Authentication** on your Gmail account
-2. **Generate App Password**:
-   - Go to Google Account settings
-   - Security → 2-Step Verification → App passwords
-   - Generate new app password for "Mail"
-   - Use this password in `EMAIL_APP_PASSWORD`
+### Resend API Setup
+This backend uses **Resend** API service for email delivery, which is perfect for cloud hosting environments (like DigitalOcean) that block SMTP ports.
+
+1. **Create a Resend Account**:
+   - Go to [resend.com](https://resend.com)
+   - Sign up for a free account
+   - Navigate to API Keys section
+
+2. **Get Your API Key**:
+   - Create a new API key in the Resend dashboard
+   - Copy the API key (starts with `re_`)
+
+3. **Verify Your Domain** (Recommended):
+   - Add and verify your domain in Resend dashboard
+   - This allows you to send from `noreply@yourdomain.com` or similar
+   - Alternatively, you can use Resend's test domain for development
 
 ### Environment Variables
-- `EMAIL_USER`: Your email address
-- `EMAIL_APP_PASSWORD`: Your email app password (not regular password)
+- `RESEND_API_KEY`: Your Resend API key (required)
+- `EMAIL_USER`: Your email address (used for both sending and receiving notifications - must be verified in Resend)
 
-### Other Email Providers
-Modify `services/emailService.ts` to use:
-- Outlook/Hotmail
-- Yahoo
-- Custom SMTP servers
+### Benefits of Resend
+- ✅ No SMTP configuration needed
+- ✅ Works on cloud platforms that block SMTP
+- ✅ Simple API-based email delivery
+- ✅ Built-in email analytics
+- ✅ Free tier available
 
 ## 🏗️ Project Structure
 
@@ -182,8 +192,8 @@ Backend/
 Ensure all required environment variables are set in production:
 - `PORT` - Server port (default: 3000)
 - `DATABASE_URL` - MongoDB connection string
-- `EMAIL_USER` - Email address for notifications
-- `EMAIL_APP_PASSWORD` - Email app password
+- `RESEND_API_KEY` - Resend API key for email service
+- `EMAIL_USER` - Email address (used for both sending and receiving - must be verified in Resend)
 
 ### Production Commands
 ```bash
