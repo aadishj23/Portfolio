@@ -42,7 +42,7 @@ const ProjectsSection = () => {
         uptime: '99%'
       },
       links: {
-        live: 'https://namdapha-axuo.vercel.app/',
+        live: 'https://namdapha.aadishjain.dev',
         github: 'https://github.com/aadishj23/Namdapha'
       }
     },

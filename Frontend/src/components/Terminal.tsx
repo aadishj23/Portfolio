@@ -52,7 +52,7 @@ const Terminal = () => {
       command: 'run-namdapha',
       description: 'A modern and accessible website for Namdapha Tiger Reserve, showcasing its biodiversity, tourism info, and conservation efforts.',
       links: {
-        live: 'https://namdapha-axuo.vercel.app/',
+        live: 'https://namdapha.aadishjain.dev',
         github: 'https://github.com/aadishj23/Namdapha'
       }
     },
