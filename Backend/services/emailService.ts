@@ -29,7 +29,9 @@ class EmailService {
         throw new Error('EMAIL_USER environment variable is required');
       }
 
-      await this.resend.emails.send({
+      console.log('Attempting to send email:', { from: fromEmail, to: toEmail });
+
+      const result = await this.resend.emails.send({
         from: fromEmail,
         to: toEmail,
         subject: `New Contact Form Message from ${contactData.email}`,
@@ -38,10 +40,26 @@ class EmailService {
         replyTo: contactData.email
       });
 
-      console.log('Contact notification email sent successfully');
-      return true;
+      // Check for errors in the response
+      if (result.error) {
+        console.error('Resend API returned an error:', result.error);
+        console.error('Error details:', JSON.stringify(result.error, null, 2));
+        return false;
+      }
+
+      if (result.data) {
+        console.log('Contact notification email sent successfully. Email ID:', result.data.id);
+        return true;
+      }
+
+      console.error('Unexpected response from Resend API:', JSON.stringify(result, null, 2));
+      return false;
     } catch (error) {
       console.error('Error sending contact notification email:', error);
+      if (error instanceof Error) {
+        console.error('Error message:', error.message);
+        console.error('Error stack:', error.stack);
+      }
       return false;
     }
   }
