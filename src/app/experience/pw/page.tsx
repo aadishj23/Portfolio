@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import {
   ArrowLeft,
   ExternalLink,
@@ -108,7 +108,7 @@ const resultPipelines = [
 
 const techStack = ['Next.js', 'Node.js', 'Express.js', 'Python', 'PostgreSQL', 'MongoDB', 'React'];
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: (i: number = 0) => ({
     opacity: 1,
