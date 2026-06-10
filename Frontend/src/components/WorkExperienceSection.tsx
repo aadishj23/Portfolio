@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { MapPin, Calendar, ExternalLink, Briefcase, Users, TrendingUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { MapPin, Calendar, ExternalLink, Briefcase, Users, TrendingUp, ArrowRight } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -10,23 +11,32 @@ const WorkExperienceSection = () => {
   const experience = [
     {
         id: 'physicsWallah',
-        title: 'Backend Trainee',
+        title: 'Software Development Engineer',
         company: 'Physics Wallah Limited',
         period: 'May 2025 - Present',
+        roleProgression: 'Backend Trainee (May–Nov 2025) → SDE (Nov 2025–Present)',
         location: 'Noida, India',
         status: 'current',
         type: 'Internship',
-        description: 'Contributed to India\'s fastest-growing EdTech unicorn. Automating the "Khazana" feature to reduce the manual workload and reducing the development time by 50%',
-        responsibilities: [
-          'Automated the "Khazana" feature to reduce the manual workload and reducing the development time by 50%',
-          'Making the Khazana Portal from scratch in Next.js to reduce the development time by 80%',
-          'Automating the Result Extraction of multiple categories for advertisement of results',
-          'Fixing the bugs in the existing Khazana codebase',
-          'Contacting the other categories of the company to get the data for the Khazana Portal'
+        description: 'Driving product development & operational automation at India\'s largest EdTech unicorn — ideated and now lead end-to-end development of Career Wallah, built high-traffic exam tools for 500K+ users, and led the Khazana 1.0→2.0 migration.',
+        highlights: [
+          { value: '₹2Cr+', label: 'Revenue' },
+          { value: '500K+', label: 'Users served' },
+          { value: '300K+', label: 'Records migrated' },
+          { value: '48h→2h', label: 'Automation' },
         ],
-        technologies: ['Node.js', 'Express.js', 'Next.js', 'Python'],
-        impact: 'Helped serve 2M+ students with the Khazana feature',
-        website: 'https://www.pw.live/'
+        responsibilities: [
+          'Ideated, pitched & lead end-to-end development of Career Wallah, a JEE college-prediction platform generating ₹2Cr+ in revenue since launch',
+          'Built and scaled high-traffic exam tools — score calculators, rank predictors & counseling platforms — serving 500,000+ users',
+          'Led the Khazana 1.0→2.0 migration: database schema redesign + migration scripts moving 300,000+ records across multiple teams',
+          'Designed an internal automation portal (Next.js) that cut a recurring workflow from 48 hours to 2 hours (95%+ efficiency gain)',
+          'Built automation pipelines (Node.js, Python) to extract & process 100,000+ student result records during peak exam seasons',
+          'Shipped internal business tools in days — a bulk certificate generator (10,000+ certs) and a faculty resource planning platform'
+        ],
+        technologies: ['Next.js', 'Node.js', 'Express.js', 'Python', 'PostgreSQL', 'MongoDB'],
+        impact: '₹2Cr+ revenue • 500K+ users served • 90K+ leads captured • 48h→2h automation',
+        website: 'https://www.pw.live/',
+        caseStudy: '/experience/pw'
     },
     {
       id: 'appzlogic',
@@ -37,6 +47,9 @@ const WorkExperienceSection = () => {
       status: 'completed',
       type: 'Internship',
       description: 'Built scalable systems for enterprise clients. Got to work on Images Bazaar by Sandeep Maheshwari and added 3+ new pages to the company\'s website as well.',
+      roleProgression: '',
+      highlights: [] as { value: string; label: string }[],
+      caseStudy: '',
       responsibilities: [
         'Built scalable systems for enterprise clients',
         'Added 3+ new pages to the company\'s website',
@@ -169,9 +182,45 @@ const WorkExperienceSection = () => {
                   </Badge>
                 </div>
 
+                {role.roleProgression && (
+                  <div className="mb-4 inline-flex items-center gap-2 text-xs font-mono text-foreground-secondary bg-background-secondary/60 border border-border rounded-md px-3 py-1.5">
+                    <TrendingUp size={12} className="text-neon" />
+                    {role.roleProgression}
+                  </div>
+                )}
+
                 <p className="text-foreground-secondary mb-6">
                   {role.description}
                 </p>
+
+                {/* Headline Metrics */}
+                {role.highlights && role.highlights.length > 0 && (
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                    {role.highlights.map((h) => (
+                      <div
+                        key={h.label}
+                        className="rounded-lg border border-border bg-background-secondary/60 p-3 text-center"
+                      >
+                        <div className="text-xl font-serif gradient-text">{h.value}</div>
+                        <div className="text-xs text-foreground-secondary mt-0.5">{h.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Case Study CTA */}
+                {role.caseStudy && (
+                  <Link to={role.caseStudy} onClick={(e) => e.stopPropagation()}>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="flex items-center gap-2 mb-6 hover:shadow-glow group"
+                    >
+                      Read the full case study
+                      <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                    </Button>
+                  </Link>
+                )}
 
                 {/* Impact Highlight */}
                 <div className="p-3 bg-electric/10 border border-electric/20 rounded-lg mb-6">
