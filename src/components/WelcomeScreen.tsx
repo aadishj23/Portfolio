@@ -142,7 +142,7 @@ const WelcomeScreen = () => {
               <div className="flex items-center justify-center gap-4 text-terminal-accent/60">
                 <span>v2.0.1</span>
                 <span>•</span>
-                <span>Backend Trainee @Physics Wallah</span>
+                <span>SDE @Physics Wallah</span>
                 <span>•</span>
                 <span>Full Stack Developer</span>
               </div>

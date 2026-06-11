@@ -17,7 +17,7 @@ const PersonalSection = () => {
       id: 'motivation',
       title: 'What Drives Me',
       icon: <Rocket size={20} />,
-      content: "I'm obsessed with the moment when code becomes more than just logic - when it becomes a solution that genuinely improves someone's day. Whether it's automating Physics Wallah's Khazana feature to serve 2M+ students or building a website for Namdapha Tiger Reserve, that's my fuel.",
+      content: "I'm obsessed with the moment when code becomes more than just logic - when it becomes a solution that genuinely improves someone's day. Whether it's leading Career Wallah to ₹2Cr+ in revenue at Physics Wallah or building a website for Namdapha Tiger Reserve, that's my fuel.",
       doodle: '✨',
       color: 'neon'
     },
@@ -48,12 +48,12 @@ const PersonalSection = () => {
   ];
 
   const quickFacts = [
-    { label: 'Coffee Consumed', value: '∞ cups', subtitle: 'Daily fuel' },
-    { label: 'Projects Built', value: '15+', subtitle: 'From Labeasy to Namdapha' },
+    { label: 'Records Migrated', value: '300K+', subtitle: 'Khazana 1.0→2.0' },
+    { label: 'Projects Built', value: '15+', subtitle: 'From Labeasy to IntervueX' },
+    { label: 'Revenue Driven', value: '₹2Cr+', subtitle: 'Career Wallah @ PW' },
+    { label: 'Users Served', value: '500K+', subtitle: 'PW exam tools' },
     { label: 'Team Members Led', value: '100+', subtitle: 'Anveshan Society' },
-    { label: 'Students Mentored', value: '50+', subtitle: 'Web Development' },
-    { label: 'Events Organised', value: '10+', subtitle: 'for Anveshan Society' },
-    { label: 'Students Served', value: '2M+', subtitle: 'at Physics Wallah' }
+    { label: 'Events Organised', value: '10+', subtitle: 'for Anveshan Society' }
   ];
 
   return (
@@ -184,8 +184,8 @@ const PersonalSection = () => {
               <div className="text-terminal-foreground text-left space-y-4">
                 <p>
                   "Building software isn't just about solving problems - it's about crafting experiences 
-                  that make people's lives a little bit better, one line of code at a time. From serving 
-                  2M+ students at Physics Wallah to organizing hackathons that inspire innovation."
+                  that make people's lives a little bit better, one line of code at a time. From building
+                  products used by 500K+ students at Physics Wallah to organizing hackathons that inspire innovation."
                 </p>
                 
                 <p>

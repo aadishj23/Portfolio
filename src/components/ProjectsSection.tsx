@@ -15,18 +15,56 @@ const ProjectsSection = () => {
       name: 'Labeasy',
       command: 'run-labeasy',
       status: 'production',
-      description: 'A unified diagnostics platform that helps users find and book affordable lab tests from trusted local labs.',
-      impact: ['100+ Tests Database', 'Built MVP in 3 Days', 'Finalist @ HackCBS - a MLH Hackathon'],
-      tech: ['React','Recoil','Tailwind CSS','Express.js', 'Prisma', 'PostgreSQL' ],
+      description: 'A full-stack multi-vendor healthcare marketplace to book from 120+ lab tests, schedule doctor consultations, and buy health insurance in one app - with Gemini-generated AI report summaries.',
+      impact: ['120+ Lab Tests, Consults & Insurance', 'Gemini AI Report Summaries', 'Top 10 Finalist @ HackCBS 7 (MLH)'],
+      tech: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Gemini AI', 'Redis', 'Docker'],
       type: 'icon1',
       metrics: {
-        tests: '100+',
-        "data encryption": '100%',
+        "lab tests": '120+',
+        "revenue streams": '4',
         uptime: '99%'
       },
       links: {
         live: 'https://labeasy.aadishjain.dev/',
         github: 'https://github.com/aadishj23/Labeasy'
+      }
+    },
+    {
+      id: 'intervuex',
+      name: 'IntervueX',
+      command: 'run-intervuex',
+      status: 'production',
+      description: 'A collaborative technical interviewing platform unifying coding, video communication, and a shared canvas — with support for 6 programming-language compilers and full scheduling, assessment, and feedback workflows.',
+      impact: ['3 Interview Workflows Unified', '6 Language Compilers', 'Scheduling, Assessments & Feedback'],
+      tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Convex', 'Clerk', 'Stream'],
+      type: 'icon2',
+      metrics: {
+        workflows: '3',
+        compilers: '6',
+        uptime: '99%'
+      },
+      links: {
+        live: 'https://intervuex.aadishjain.dev/',
+        github: 'https://github.com/aadishj23/IntervueX'
+      }
+    },
+    {
+      id: 'trackr',
+      name: 'Trackr',
+      command: 'run-trackr',
+      status: 'production',
+      description: 'An internal team task-management tool used at Physics Wallah — managers assign and track work across their team while reportees view, update, and manage all their assigned tasks in one place.',
+      impact: ['Role-based teams: managers assign, reportees manage', 'Tasks with subtasks, comments, due dates & approvals', 'Used by internal teams at Physics Wallah'],
+      tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Cloudinary', 'MongoDB'],
+      type: 'icon4',
+      metrics: {
+        "task states": '4',
+        roles: '2',
+        uptime: '99%'
+      },
+      links: {
+        live: 'https://trackr.aadishjain.dev/',
+        github: 'https://github.com/aadishj23/Trackr'
       }
     },
     {

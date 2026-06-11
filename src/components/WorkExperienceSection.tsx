@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { MapPin, Calendar, ExternalLink, Briefcase, Users, TrendingUp, ArrowRight } from 'lucide-react';
 import { Card } from '@/components/ui/card';
@@ -42,65 +42,83 @@ const WorkExperienceSection = () => {
     },
     {
       id: 'appzlogic',
-      title: 'Full Stack SDE Intern',
+      title: 'Full Stack SDE Developer Intern',
       company: 'Appzlogic Mobility Solutions',
       period: 'June 2024 - November 2024',
       location: 'Noida, India',
       status: 'completed',
       type: 'Internship',
-      description: 'Built scalable systems for enterprise clients. Got to work on Images Bazaar by Sandeep Maheshwari and added 3+ new pages to the company\'s website as well.',
+      description: 'Shipped customer-facing features for Images Bazaar (by Sandeep Maheshwari) using Next.js, and revamped the company website UI to improve navigation and content accessibility.',
       roleProgression: '',
       highlights: [] as { value: string; label: string }[],
       caseStudy: '',
       responsibilities: [
-        'Built scalable systems for enterprise clients',
-        'Added 3+ new pages to the company\'s website',
-        'Worked on 10+ new pages for Images Bazaar by Sandeep Maheshwari',
-        'Collaborated with cross-functional teams on product strategy'
+        'Developed and shipped customer-facing features for the Images Bazaar platform using Next.js, enhancing platform functionality and user experience',
+        'Revamped the company website UI, improving navigation, content accessibility, and overall user experience',
+        'Collaborated with cross-functional teams to deliver features on production timelines'
       ],
-      technologies: ['JavaScript', 'React.js', 'Redux', 'MUI', 'Next.js', 'Node.js', 'Express.js', 'PostgreSQL' ],
-      impact: 'Increase in user retention by 40% on the company\'s website',
+      technologies: ['JavaScript', 'React.js', 'Next.js', 'Redux', 'MUI', 'Node.js', 'Express.js', 'PostgreSQL'],
+      impact: 'Shipped customer-facing features for the Images Bazaar platform and revamped the company website UI',
       website: 'https://appzlogic.com'
     }
   ];
 
   // Function to calculate total experience in years and months
+  // Parse "May 2025" reliably across browsers. `new Date("May 2025")` works in
+  // V8 (Node/Chrome) but returns Invalid Date in Safari, which caused a
+  // hydration mismatch ("NaN+ months"). This parser is engine-independent.
+  const MONTHS = [
+    'january', 'february', 'march', 'april', 'may', 'june',
+    'july', 'august', 'september', 'october', 'november', 'december',
+  ];
+  const parseMonthYear = (str: string): { year: number; month: number } | null => {
+    const [monthStr, yearStr] = str.trim().split(/\s+/);
+    const month = MONTHS.indexOf(monthStr?.toLowerCase());
+    const year = Number(yearStr);
+    if (month === -1 || !Number.isFinite(year)) return null;
+    return { year, month };
+  };
+
   const calculateTotalExperience = () => {
     let totalMonths = 0;
-    
+
     experience.forEach(role => {
-      const period = role.period;
-      const [startStr, endStr] = period.split(' - ');
-      
-      // Parse start date
-      const startDate = new Date(startStr);
-      
-      // Parse end date (handle "Present" case)
-      let endDate: Date;
-      if (endStr === 'Present') {
-        endDate = new Date();
-      } else {
-        endDate = new Date(endStr);
-      }
-      
-      // Calculate difference in months
-      const monthsDiff = (endDate.getFullYear() - startDate.getFullYear()) * 12 + 
-                        (endDate.getMonth() - startDate.getMonth());
-      
-      totalMonths += monthsDiff;
+      const [startStr, endStr] = role.period.split(' - ');
+
+      const start = parseMonthYear(startStr);
+      if (!start) return;
+
+      const now = new Date();
+      const end = endStr === 'Present'
+        ? { year: now.getFullYear(), month: now.getMonth() }
+        : parseMonthYear(endStr);
+      if (!end) return;
+
+      totalMonths += (end.year - start.year) * 12 + (end.month - start.month);
     });
-    
+
     const years = Math.floor(totalMonths / 12);
     const months = totalMonths % 12;
-    
+    const yearLabel = years === 1 ? 'Year' : 'Years';
+    const monthLabel = months === 1 ? 'Month' : 'Months';
+
     if (years > 0 && months > 0) {
-      return `${years}+ years, ${months}+ months`;
+      return `${years} ${yearLabel} ${months} ${monthLabel}+`;
     } else if (years > 0) {
-      return `${years}+ years`;
+      return `${years} ${yearLabel}+`;
     } else {
-      return `${months}+ months`;
+      return `${months} ${monthLabel}+`;
     }
   };
+
+  // Compute on the client only: the result depends on `new Date()` ("Present"),
+  // which differs between the static build (server) and runtime (client). Keep
+  // SSR and first client render identical to avoid a hydration mismatch.
+  const [totalExperience, setTotalExperience] = useState<string | null>(null);
+  useEffect(() => {
+    setTotalExperience(calculateTotalExperience());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const getStatusColor = (status: string) => {
     return status === 'current' ? 'neon' : 'electric';
@@ -312,7 +330,7 @@ const WorkExperienceSection = () => {
               $ cat career_summary.txt
             </div>
             <div>
-              {experience.length} professional roles • {calculateTotalExperience()} experience • Millions of users impacted
+              {experience.length} professional roles{totalExperience ? ` • ${totalExperience} Experience` : ''} • Millions of users impacted
             </div>
           </div>
         </div>

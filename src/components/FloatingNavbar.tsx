@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef, memo } from 'react';
 import { Home, Code, BookOpen, Briefcase, Folder, Layers, User, Mail, Menu, X } from 'lucide-react';
-import { motion, AnimatePresence, useAnimationControls } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface NavItem {
   id: string;
@@ -22,9 +22,12 @@ const navItems: NavItem[] = [
   { id: 'contact', label: 'Contact', icon: <Mail size={16} />, color: 'electric' }
 ];
 
-// Desktop Navigation (memoized, imperatively animated to avoid rerenders on scroll)
+// Desktop Navigation (state-driven animation; `visible` only flips at the
+// scroll threshold, so this re-renders rarely. Driving the `animate` prop with
+// state instead of imperative controls.start() avoids Framer Motion's
+// mount-timing error during route changes / StrictMode double-mount.)
 const DesktopFloatingNav = memo(() => {
-  const controls = useAnimationControls();
+  const [visible, setVisible] = useState(false);
   const isNavigatingRef = useRef(false);
 
   const getWelcomeBottom = () => {
@@ -39,9 +42,9 @@ const DesktopFloatingNav = memo(() => {
   const updateVisibility = useCallback(() => {
     if (isNavigatingRef.current) return;
     const threshold = getWelcomeBottom();
-    const show = window.scrollY >= threshold;
-    controls.start({ opacity: show ? 1 : 0, y: show ? 0 : -20, transition: { duration: 0.3, ease: 'easeOut' } });
-  }, [controls]);
+    // setState bails out when the value is unchanged, so scrolling doesn't churn renders.
+    setVisible(window.scrollY >= threshold);
+  }, []);
 
   useEffect(() => {
     // Initialize visibility
@@ -88,11 +91,11 @@ const DesktopFloatingNav = memo(() => {
   }, []);
 
   const handleClick = useCallback(async (sectionId: string) => {
-    // Hide immediately with animation
-    await controls.start({ opacity: 0, y: -20, transition: { duration: 0.2, ease: 'easeIn' } });
+    // Hide while navigating
+    isNavigatingRef.current = true;
+    setVisible(false);
 
     // Smooth scroll to target
-    isNavigatingRef.current = true;
     if (sectionId === 'welcome') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
@@ -105,17 +108,15 @@ const DesktopFloatingNav = memo(() => {
     // Wait until the target section is reached, then reappear if past welcome
     await waitUntilSectionReached(sectionId);
     const threshold = getWelcomeBottom();
-    const shouldShow = window.scrollY >= threshold;
-    if (shouldShow) {
-      await controls.start({ opacity: 1, y: 0, transition: { duration: 0.3, ease: 'easeOut' } });
-    }
+    setVisible(window.scrollY >= threshold);
     isNavigatingRef.current = false;
-  }, [controls, waitUntilSectionReached]);
+  }, [waitUntilSectionReached]);
 
   return (
     <motion.div
       initial={{ opacity: 0, y: -20 }}
-      animate={controls}
+      animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : -20 }}
+      transition={{ duration: 0.3, ease: 'easeOut' }}
       className="hidden lg:flex items-center gap-2 bg-background/95 backdrop-blur-md border border-border/50 rounded-full px-6 py-3 shadow-soft"
       style={{
         position: 'fixed',
@@ -124,7 +125,8 @@ const DesktopFloatingNav = memo(() => {
         right: '0',
         margin: '0 auto',
         width: 'fit-content',
-        zIndex: 1000
+        zIndex: 1000,
+        pointerEvents: visible ? 'auto' : 'none'
       }}
     >
       {navItems.map((item) => (

@@ -42,10 +42,30 @@ const Terminal = () => {
       id: 'labeasy',
       name: 'Labeasy',
       command: 'run-labeasy',
-      description: 'A unified diagnostics platform that helps users find and book affordable lab tests from trusted local labs.',
+      description: 'A full-stack multi-vendor healthcare marketplace for lab tests, doctor consultations, and insurance, with Gemini AI report summaries. Top 10 Finalist @ HackCBS 7.',
       links: {
         live: 'https://labeasy.aadishjain.dev/',
         github: 'https://github.com/aadishj23/Labeasy'
+      }
+    },
+    {
+      id: 'intervuex',
+      name: 'IntervueX',
+      command: 'run-intervuex',
+      description: 'A collaborative technical interviewing platform unifying coding, video, and a shared canvas with 6 language compilers.',
+      links: {
+        live: 'https://intervuex.aadishjain.dev/',
+        github: 'https://github.com/aadishj23/IntervueX'
+      }
+    },
+    {
+      id: 'trackr',
+      name: 'Trackr',
+      command: 'run-trackr',
+      description: 'An internal team task-management tool used at Physics Wallah — managers assign tasks and reportees manage their work in one place.',
+      links: {
+        live: 'https://trackr.aadishjain.dev/',
+        github: 'https://github.com/aadishj23/Trackr'
       }
     },
     {
@@ -256,7 +276,7 @@ const Terminal = () => {
         <div className="space-y-2">
           <div className="text-terminal-accent font-bold">Aadish Jain</div>
           <div className="text-terminal-foreground text-sm">
-            Full Stack Developer • Backend Trainee @Physics Wallah
+            Full Stack Developer • SDE @Physics Wallah
           </div>
         </div>
       )
@@ -321,30 +341,32 @@ const Terminal = () => {
         // Skills data from SkillsSection.tsx
         const skills = [
           // Programming Languages
-          { name: 'C++', category: 'languages', proficiency: 4, experience: '2+ years', description: 'High-performance systems programming language' },
-          { name: 'HTML', category: 'languages', proficiency: 5, experience: '2+ years', description: 'Markup language for structuring web content' },
-          { name: 'CSS', category: 'languages', proficiency: 5, experience: '2+ years', description: 'Styling language for web presentation' },
           { name: 'JavaScript', category: 'languages', proficiency: 4, experience: '2+ years', description: 'Dynamic programming language for web development' },
           { name: 'TypeScript', category: 'languages', proficiency: 4, experience: '1+ years', description: 'Typed superset of JavaScript for safer development' },
+          { name: 'C++', category: 'languages', proficiency: 4, experience: '2+ years', description: 'High-performance systems programming language' },
           { name: 'SQL', category: 'languages', proficiency: 4, experience: '2+ years', description: 'Structured query language for database operations' },
-          { name: 'NoSQL', category: 'languages', proficiency: 5, experience: '2+ years', description: 'Non-relational database querying and operations' },
-          
+
           // Frameworks
-          { name: 'Tailwind CSS', category: 'frameworks', proficiency: 5, experience: '1+ years', description: 'Utility-first CSS framework for rapid UI development' },
           { name: 'React.js', category: 'frameworks', proficiency: 5, experience: '2+ years', description: 'Modern JavaScript library for building interactive user interfaces' },
+          { name: 'Next.js', category: 'frameworks', proficiency: 4, experience: '1+ years', description: 'Full-stack React framework with server-side rendering' },
           { name: 'Node.js', category: 'frameworks', proficiency: 5, experience: '1+ years', description: 'JavaScript runtime for server-side development' },
           { name: 'Express.js', category: 'frameworks', proficiency: 4, experience: '1+ years', description: 'Minimal and flexible Node.js web application framework' },
-          { name: 'Next.js', category: 'frameworks', proficiency: 4, experience: '1+ years', description: 'Full-stack React framework with server-side rendering' },
-          
+          { name: 'Tailwind CSS', category: 'frameworks', proficiency: 5, experience: '1+ years', description: 'Utility-first CSS framework for rapid UI development' },
+
           // Database Systems
           { name: 'PostgreSQL', category: 'database', proficiency: 4, experience: '2+ years', description: 'Advanced SQL and database optimization techniques' },
           { name: 'MongoDB', category: 'database', proficiency: 5, experience: '2+ years', description: 'NoSQL database design and aggregation pipelines' },
+          { name: 'Redis', category: 'database', proficiency: 4, experience: '1+ years', description: 'In-memory data store for caching and fast lookups' },
           { name: 'Prisma', category: 'database', proficiency: 4, experience: '1+ years', description: 'Modern ORM for type-safe database operations' },
-          
-          // DevOps & Cloud
-          { name: 'Docker', category: 'devops', proficiency: 4, experience: '1+ years', description: 'Containerization platform for consistent deployments' },
+
+          // Cloud & DevOps
           { name: 'AWS', category: 'devops', proficiency: 4, experience: '1+ years', description: 'Cloud computing platform for scalable infrastructure' },
-          { name: 'Cloudflare', category: 'devops', proficiency: 3, experience: '1+ years', description: 'Serverless Cloud infrastructure' }
+          { name: 'Docker', category: 'devops', proficiency: 4, experience: '1+ years', description: 'Containerization platform for consistent deployments' },
+          { name: 'CI/CD', category: 'devops', proficiency: 4, experience: '1+ years', description: 'Automated build, test, and deployment pipelines' },
+
+          // Tools
+          { name: 'Git', category: 'tools', proficiency: 5, experience: '2+ years', description: 'Distributed version control for collaborative development' },
+          { name: 'Postman', category: 'tools', proficiency: 5, experience: '2+ years', description: 'API development and testing client' }
         ];
         
         // Filter skills based on arguments
@@ -448,13 +470,13 @@ const Terminal = () => {
          <div className="space-y-2">
            <div className="text-terminal-accent font-bold">Work Experience:</div>
            <div className="text-terminal-foreground text-sm">
-             🏢 <span className="text-terminal-accent">Physics Wallah</span> - Backend Trainee<br/>
+             🏢 <span className="text-terminal-accent">Physics Wallah</span> - Software Development Engineer<br/>
              📅 May 2025 - Present<br/>
-             🔧 Backend Development, API Development, Database Management<br/><br/>
-             
-             🏢 <span className="text-terminal-accent">Appzlogic</span> - Full Stack SDE Intern<br/>
+             🔧 Career Wallah (₹2Cr+), Exam Tools (500K+ users), Khazana Migration, Automation<br/><br/>
+
+             🏢 <span className="text-terminal-accent">Appzlogic</span> - Full Stack SDE Developer Intern<br/>
              📅 June 2024 - November 2024<br/>
-             🔧 Web Applications, E-commerce, APIs
+             🔧 Images Bazaar features (Next.js), Website UI revamp
            </div>
          </div>
        )
@@ -555,17 +577,17 @@ const Terminal = () => {
            <div className="space-y-2">
              <div className="text-terminal-accent font-bold">Career Summary (career_summary.txt):</div>
              <div className="text-terminal-foreground text-sm font-mono">
-               <div>🏢 Physics Wallah - Backend Trainee</div>
+               <div>🏢 Physics Wallah - Software Development Engineer</div>
                <div>   📅 Duration: May 2025 - Present</div>
-               <div>   🔧 Focus: Backend Development, API Development</div>
-               <div>   🚀 Achievements: Database optimization, API performance</div>
+               <div>   🔧 Focus: Product Development, Automation, Result Pipelines</div>
+               <div>   🚀 Achievements: Career Wallah ₹2Cr+, 500K+ users, Khazana migration</div>
                <div></div>
-               <div>🏢 Appzlogic - Full Stack SDE Intern</div>
+               <div>🏢 Appzlogic - Full Stack SDE Developer Intern</div>
                <div>   📅 Duration: June 2024 - November 2024</div>
-               <div>   🔧 Focus: Web Applications, E-commerce, APIs</div>
-               <div>   🚀 Achievements: Full-stack development, team collaboration</div>
+               <div>   🔧 Focus: Images Bazaar features (Next.js), Website UI</div>
+               <div>   🚀 Achievements: Shipped customer-facing features, UI revamp</div>
                <div></div>
-               <div>🎓 Education: BPIT - Computer Science</div>
+               <div>🎓 Education: GGSIPU - Information Technology</div>
                <div>🌟 Specialization: Full Stack Development</div>
              </div>
            </div>

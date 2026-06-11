@@ -48,7 +48,8 @@ const StackSection = () => {
       description: 'Data persistence and management',
       technologies: [
         { name: 'PostgreSQL', role: 'Relational DB', why: 'ACID compliance and rich SQL features' },
-        { name: 'MongoDB', role: 'Document DB', why: 'Flexible schema for JSON-like data' }
+        { name: 'MongoDB', role: 'Document DB', why: 'Flexible schema for JSON-like data' },
+        { name: 'Redis', role: 'In-memory Store', why: 'Caching and low-latency lookups' }
       ],
       connections: ['cloud']
     },
@@ -60,9 +61,9 @@ const StackSection = () => {
       position: 'top-80',
       description: 'Cloud services and deployment',
       technologies: [
-        { name: 'AWS', role: 'Cloud Platform', why: 'Managed services and global infrastructure' },
+        { name: 'AWS', role: 'Cloud Platform', why: 'EC2, S3, and CloudFront for scalable infrastructure' },
         { name: 'Docker', role: 'Containerization', why: 'Consistent environments and packaging' },
-        { name: 'Cloudflare', role: 'Edge/CDN', why: 'Global caching, security, and delivery' }
+        { name: 'CI/CD', role: 'Automation', why: 'Automated build, test, and deploy pipelines' }
       ],
       connections: []
     }

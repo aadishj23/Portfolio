@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Search, Command, Star, TrendingUp, Database, Server, Code, Zap } from 'lucide-react';
+import { Search, Command, Star, TrendingUp, Database, Server, Code, Zap, Wrench } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
@@ -35,10 +35,17 @@ const SkillsSection = () => {
     },
     {
       id: 'devops',
-      name: 'DevOps & Cloud',
+      name: 'Cloud & DevOps',
       icon: <Zap size={20} />,
       color: 'electric',
       description: 'Infrastructure and deployment'
+    },
+    {
+      id: 'tools',
+      name: 'Tools',
+      icon: <Wrench size={20} />,
+      color: 'neon',
+      description: 'Daily development toolkit'
     }
   ];
 
@@ -51,24 +58,6 @@ const SkillsSection = () => {
       experience: '2+ years',
       description: 'High-performance systems programming language',
       usedIn: ['Data Structures and Algorithms', 'System programming', 'Performance optimization']
-  },
-  {
-      name: 'HTML',
-      category: 'languages',
-      proficiency: 5,
-      experience: '2+ years',
-      projects: ['All Recent Projects'],
-      description: 'Markup language for structuring web content',
-      usedIn: ['Web development', 'Content structure', 'Accessibility implementation']
-  },
-  {
-      name: 'CSS',
-      category: 'languages',
-      proficiency: 5,
-      experience: '2+ years',
-      projects: ['All Recent Projects'],
-      description: 'Styling language for web presentation',
-      usedIn: ['UI/UX design', 'Responsive layouts', 'Animation and transitions']
   },
   {
       name: 'JavaScript',
@@ -96,15 +85,6 @@ const SkillsSection = () => {
       projects: ['Labeasy', 'Quizzical'],
       description: 'Structured query language for database operations',
       usedIn: ['Database operations', 'Data analysis', 'Report generation']
-  },
-  {
-      name: 'NoSQL',
-      category: 'languages',
-      proficiency: 5,
-      experience: '2+ years',
-      projects: ['Anveshan', 'TaskMate'],
-      description: 'Non-relational database querying and operations',
-      usedIn: ['Flexible data modeling', 'Scalable applications', 'Real-time data']
   },
 
 
@@ -175,6 +155,15 @@ const SkillsSection = () => {
       usedIn: ['Document modeling', 'Aggregation queries', 'Sharding strategies']
     },
     {
+      name: 'Redis',
+      category: 'database',
+      proficiency: 4,
+      experience: '1+ years',
+      projects: ['Labeasy'],
+      description: 'In-memory data store for caching and fast lookups',
+      usedIn: ['Response caching', 'Rate limiting', 'Session storage']
+    },
+    {
         name: 'Prisma',
         category: 'database',
         proficiency: 4,
@@ -183,16 +172,8 @@ const SkillsSection = () => {
         description: 'Modern ORM for type-safe database operations',
         usedIn: ['Database migrations', 'Query optimization', 'Schema management']
     },
-    
-    // DevOps & Cloud
-    {
-      name: 'Docker',
-      category: 'devops',
-      proficiency: 4,
-      experience: '1+ years',
-      description: 'Containerization platform for consistent deployments',
-      usedIn: ['Microservices deployment', 'Development environments', 'CI/CD pipelines']
-    },
+
+    // Cloud & DevOps
     {
       name: 'AWS',
       category: 'devops',
@@ -202,12 +183,38 @@ const SkillsSection = () => {
       usedIn: ['EC2 deployment', 'CloudFront CDN', 'S3 storage']
     },
     {
-        name: 'Cloudflare',
-        category: 'devops',
-        proficiency: 3,
-        experience: '1+ years',
-        description: 'Serverless Cloud infrastructure',
-        usedIn: ['Cloudflare Pages', 'Cloudflare Workers']
+      name: 'Docker',
+      category: 'devops',
+      proficiency: 4,
+      experience: '1+ years',
+      description: 'Containerization platform for consistent deployments',
+      usedIn: ['Microservices deployment', 'Development environments', 'Reproducible builds']
+    },
+    {
+      name: 'CI/CD',
+      category: 'devops',
+      proficiency: 4,
+      experience: '1+ years',
+      description: 'Automated build, test, and deployment pipelines',
+      usedIn: ['Automated deployments', 'Build pipelines', 'Continuous integration']
+    },
+
+    // Tools
+    {
+      name: 'Git',
+      category: 'tools',
+      proficiency: 5,
+      experience: '2+ years',
+      description: 'Distributed version control for collaborative development',
+      usedIn: ['Version control', 'Branching workflows', 'Team collaboration']
+    },
+    {
+      name: 'Postman',
+      category: 'tools',
+      proficiency: 5,
+      experience: '2+ years',
+      description: 'API development and testing client',
+      usedIn: ['API testing', 'Request debugging', 'Endpoint documentation']
     }
   ];
 
@@ -263,7 +270,7 @@ const SkillsSection = () => {
 
         {/* Category Filters */}
         <div className="max-w-4xl mx-auto mb-12">
-          <div className="grid md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {skillCategories.map((category, index) => (
               <Card
                 key={category.id}

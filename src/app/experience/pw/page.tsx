@@ -88,22 +88,12 @@ const accomplishments = [
 ];
 
 const products = [
-  { name: 'JEE Mains Score Calculator', responses: '40,118', url: 'https://jee-score-calculator.pw.live/', status: 'Live' },
-  { name: 'JEE College Predictor', responses: '36,000+', url: 'https://jeeresult.pw.live/counselling', status: 'Live' },
-  { name: 'JEE Advance Score Portal', responses: '16,000+', url: 'https://jee-score-calculator.pw.live/advance', status: 'Live' },
-  { name: 'Faculty Battle', responses: '15,761', url: 'https://faculty-battle.pw.live', status: 'Live' },
-  { name: 'Class 10 Stream Predictor', responses: '13,450', url: 'https://stream-predictor.pw.live/', status: 'Live' },
-  { name: 'JEE Mains Result Portal', responses: '2,978', url: 'https://jeeresult.pw.live', status: 'Live' },
-  { name: 'JEE Advance Rank Predictor', responses: '1,700+', url: 'https://jee-score-calculator.pw.live/advance/rank-predictor', status: 'Live' },
-  { name: 'Bulk Certificate Generator', responses: '10,000+ certs', url: 'https://bulk-certificate-generator-pw.vercel.app/', status: 'Internal' },
-];
-
-const resultPipelines = [
-  { category: 'JEE Main Score', volume: '~25,000 / session' },
-  { category: 'JEE Main Result', volume: '35,000+ records' },
-  { category: 'CBSE Class 10 & 12', volume: '10,000+ records' },
-  { category: 'ICSE Class 12', volume: '3,000+ records' },
-  { category: 'State Boards & Vernacular', volume: '20,000+ records' },
+  { name: 'Career Wallah', engaged: '70,000+', visits: '2,10,100+', url: 'https://careerwallah.pw.live/', status: 'Live' },
+  { name: 'JEE Mains Score Calculator', engaged: '40,000+', visits: '1,50,000+', url: 'https://jee-score-calculator.pw.live/', status: 'Live' },
+  { name: 'JEE Advance Score Calculator', engaged: '16,000+', visits: '40,000+', url: 'https://jee-score-calculator.pw.live/advance', status: 'Live' },
+  { name: 'Faculty Battle', engaged: '15,500+', visits: '60,000+', url: 'https://faculty-battle.pw.live', status: 'Live' },
+  { name: 'Class 10 Stream Predictor', engaged: '13,500+', visits: '45,000+', url: 'https://stream-predictor.pw.live/', status: 'Live' },
+  { name: 'Bulk Certificate Generator', engaged: '10,000+ certs', visits: '—', url: 'https://bulk-certificate-generator-pw.vercel.app/', status: 'Internal' },
 ];
 
 const techStack = ['Next.js', 'Node.js', 'Express.js', 'Python', 'PostgreSQL', 'MongoDB', 'React'];
@@ -248,7 +238,7 @@ const ExperiencePW = () => {
             Live products & proof
           </h2>
           <p className="text-foreground-secondary mb-8">
-            Lead-capture tools I shipped, with real response counts — 90,000+ responses captured across active products.
+            Lead-capture tools I shipped, with real response counts - 90,000+ responses captured across active products.
           </p>
           <div className="grid sm:grid-cols-2 gap-4">
             {products.map((p, i) => (
@@ -265,49 +255,34 @@ const ExperiencePW = () => {
                 className="group"
               >
                 <Card className="os-window interactive-hover p-5 h-full">
-                  <div className="flex items-start justify-between gap-3 mb-3">
+                  <div className="flex items-start justify-between gap-3 mb-4">
                     <h3 className="font-semibold text-foreground group-hover:text-electric transition-colors">
                       {p.name}
                     </h3>
-                    <ExternalLink size={16} className="text-foreground-secondary group-hover:text-electric transition-colors shrink-0" />
+                    <div className="flex items-center gap-2 shrink-0">
+                      <Badge
+                        variant="outline"
+                        className={p.status === 'Live' ? 'text-neon border-neon/30' : 'text-electric border-electric/30'}
+                      >
+                        {p.status}
+                      </Badge>
+                      <ExternalLink size={16} className="text-foreground-secondary group-hover:text-electric transition-colors" />
+                    </div>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-serif gradient-text">{p.responses}</span>
-                    <Badge
-                      variant="outline"
-                      className={p.status === 'Live' ? 'text-neon border-neon/30' : 'text-electric border-electric/30'}
-                    >
-                      {p.status}
-                    </Badge>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="rounded-lg border border-border bg-background-secondary/60 p-3">
+                      <div className="text-xl font-serif gradient-text">{p.engaged}</div>
+                      <div className="text-xs text-foreground-secondary mt-0.5">Users Engaged</div>
+                    </div>
+                    <div className="rounded-lg border border-border bg-background-secondary/60 p-3">
+                      <div className="text-xl font-serif gradient-text">{p.visits}</div>
+                      <div className="text-xs text-foreground-secondary mt-0.5">User Visits</div>
+                    </div>
                   </div>
                 </Card>
               </motion.a>
             ))}
           </div>
-        </div>
-
-        {/* Result automation coverage */}
-        <div className="mt-20">
-          <h2 className="text-3xl font-serif mb-3 flex items-center gap-3">
-            <FileSpreadsheet className="text-electric" size={26} />
-            Result automation coverage
-          </h2>
-          <p className="text-foreground-secondary mb-8">
-            Bulk extraction & processing pipelines across exam categories — 100,000+ records handled.
-          </p>
-          <Card className="os-window overflow-hidden">
-            {resultPipelines.map((r, i) => (
-              <div
-                key={r.category}
-                className={`flex items-center justify-between px-6 py-4 ${
-                  i !== resultPipelines.length - 1 ? 'border-b border-border' : ''
-                }`}
-              >
-                <span className="font-medium text-foreground">{r.category}</span>
-                <span className="text-sm font-mono text-electric">{r.volume}</span>
-              </div>
-            ))}
-          </Card>
         </div>
 
         {/* Tech stack */}

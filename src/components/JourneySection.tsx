@@ -67,7 +67,7 @@ const JourneySection = () => {
         id: 'appzlogic',
         year: 'June 2024',
         title: 'First Internship - Appzlogic',
-        description: 'Joined Appzlogic Mobility Solution as a Full Stack SDE Intern.',
+        description: 'Joined Appzlogic Mobility Solution as a Full Stack SDE Developer Intern.',
         story: 'Got to work on "Images Bazaar" platform by Sandeep Maheswari and got to learn about real world projects and how to work in a team.',
         icon: <Briefcase size={20} />,
         mood: '💼',
@@ -87,9 +87,9 @@ const JourneySection = () => {
     {
       id: 'hackcbs-winner',
       year: 'November 2024',
-      title: 'Finalist at HackCBS',
-      description: 'Developed Labeasy which lead to my team being the finalist and winning the Vultr Award for Best Unique Idea.',
-      story: 'Developed Labeasy wihin a span of 3 days with my team and reached the finals of HackCBS 7 which had 4500+ participants.',
+      title: 'Top 10 Finalist at HackCBS',
+      description: 'Built Labeasy in 3 days — a Top 10 Finalist among 150+ teams at HackCBS 7 and winner of the Vultr Award for Best Unique Idea.',
+      story: 'Developed Labeasy within a span of 3 days with my team and finished as a Top 10 Finalist among 150+ teams (from 4,200+ registrants) at HackCBS 7, a Major League Hacking event — also winning the Vultr Award for Best Unique Idea.',
       icon: <Trophy size={20} />,
       mood: '🏆',
       tech: ['Database Design', 'System Architecture', 'Scalable Code'],
@@ -109,12 +109,13 @@ const JourneySection = () => {
     {
       id: 'physics-wallah',
       year: 'May 2025',
-      title: 'Backend Trainee - Physics Wallah',
-      description: 'Joined Physics Wallah as Backend Trainee, contributing to India\'s fastest-growing unicorn.',
-      story: 'Stepping into the unicorn world. Building systems that serve millions of students across India. I am working on their product called "Khazana" and helping it scale.',
+      title: 'Software Development Engineer - Physics Wallah',
+      description: 'Joined Physics Wallah, India\'s largest EdTech unicorn — now leading end-to-end development of Career Wallah and high-traffic examination tools.',
+      story: 'Stepping into the unicorn world. I ideated and now lead Career Wallah (₹2Cr+ revenue), built examination tools used by 500K+ students, led the Khazana 1.0→2.0 migration moving 300K+ records, and built automation pipelines processing 100K+ result records.',
       icon: <Rocket size={20} />,
       mood: '🦄',
-      tech: ['Scale', 'Performance', 'Impact'],
+      tech: ['Next.js', 'Node.js', 'Python', 'Scale'],
+      achievement: '₹2Cr+ revenue • 500K+ users served',
       status: 'current'
     }
   ];
