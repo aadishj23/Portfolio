@@ -18,6 +18,17 @@ const WelcomeScreen = () => {
   ];
 
   useEffect(() => {
+    // Already booted this tab session — the context skips the screen before
+    // paint, so don't run (or replay) the animation.
+    try {
+      if (sessionStorage.getItem('portfolio-booted') === '1') {
+        setBootingComplete(true);
+        return;
+      }
+    } catch {
+      // sessionStorage unavailable — fall through and play the sequence.
+    }
+
     const timer = setInterval(() => {
       setCurrentStep((prev) => {
         if (prev < bootSequence.length - 1) {
