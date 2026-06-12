@@ -59,12 +59,47 @@ const ProjectsSection = () => {
       type: 'icon4',
       metrics: {
         "task states": '4',
-        roles: '2',
-        uptime: '99%'
+        roles: '2'
       },
       links: {
         live: 'https://trackr.aadishjain.dev/',
         github: 'https://github.com/aadishj23/Trackr'
+      }
+    },
+    {
+      id: 'finboard',
+      name: 'FinBoard',
+      command: 'run-finboard',
+      status: 'production',
+      description: 'A customizable, widget-driven finance dashboard to build, configure, and monitor real-time market data — with drag-and-drop widgets, watchlists, and cards, tables, and charts powered by multiple finance APIs.',
+      impact: ['Drag-and-drop widget dashboard', 'Real-time data from multiple finance APIs', 'Cards, tables, charts & watchlists'],
+      tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Recharts'],
+      type: 'icon1',
+      metrics: {
+        "data sources": '4',
+        "view types": '3'
+      },
+      links: {
+        live: 'https://finboard.aadishjain.dev',
+        github: 'https://github.com/aadishj23/FinBoard'
+      }
+    },
+    {
+      id: 'certgen',
+      name: 'CertGen',
+      command: 'run-certgen',
+      status: 'production',
+      description: 'A bulk certificate generator used at Physics Wallah — maps a custom template to CSV / Google Sheets data and renders thousands of personalized certificates, with a drag-and-drop template editor and one-click bulk export.',
+      impact: ['Drag-and-drop template editor', 'Bulk generation from CSV / Google Sheets', '10,000+ certificates generated at PW'],
+      tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Fabric.js', 'Sharp'],
+      type: 'icon6',
+      metrics: {
+        generated: '10,000+',
+        templates: 'Custom'
+      },
+      links: {
+        live: 'https://certgen.aadishjain.dev',
+        github: 'https://github.com/aadishj23/Certificate-Generator'
       }
     },
     {

@@ -69,6 +69,26 @@ const Terminal = () => {
       }
     },
     {
+      id: 'finboard',
+      name: 'FinBoard',
+      command: 'run-finboard',
+      description: 'A customizable, widget-driven finance dashboard with drag-and-drop widgets, watchlists, and real-time data from multiple finance APIs.',
+      links: {
+        live: 'https://finboard.aadishjain.dev',
+        github: 'https://github.com/aadishj23/FinBoard'
+      }
+    },
+    {
+      id: 'certgen',
+      name: 'CertGen',
+      command: 'run-certgen',
+      description: 'A bulk certificate generator used at Physics Wallah that renders thousands of personalized certificates from a custom template and CSV / Google Sheets data.',
+      links: {
+        live: 'https://certgen.aadishjain.dev',
+        github: 'https://github.com/aadishj23/Certificate-Generator'
+      }
+    },
+    {
       id: 'namdapha',
       name: 'Namdapha Tiger Reserve Website',
       command: 'run-namdapha',
