@@ -21,12 +21,12 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
 const headlineMetrics = [
-  { value: '₹2Cr+', label: 'Revenue generated', sub: 'Career Wallah' },
-  { value: '500K+', label: 'Users served', sub: 'Exam tools' },
+  { value: '150K+', label: 'Active users', sub: 'Career Wallah' },
+  { value: '200K+', label: 'Active users', sub: 'Tracker 360' },
+  { value: '500K+', label: 'Users served', sub: 'Exam platforms' },
   { value: '300K+', label: 'Records migrated', sub: 'Khazana 1.0 → 2.0' },
-  { value: '100K+', label: 'Results processed', sub: 'Automation pipelines' },
-  { value: '48h → 2h', label: 'Workflow automated', sub: '95%+ efficiency gain' },
-  { value: '90K+', label: 'Leads captured', sub: 'Live products' },
+  { value: '200K+ hrs', label: 'Video auto-ingested', sub: 'Khazana automation' },
+  { value: '1M+', label: 'Notes auto-ingested', sub: 'Khazana automation' },
 ];
 
 // Full literal class strings so Tailwind's JIT keeps them (dynamic `bg-${x}` gets purged).
@@ -42,53 +42,54 @@ const accomplishments = [
     color: 'hot',
     title: 'Career Wallah — owned end-to-end',
     detail:
-      'Ideated and pitched a JEE college-prediction product that is being scaled into Career Wallah. I currently lead its end-to-end development — from product thinking to architecture and shipping. The platform has generated ₹2Cr+ in revenue since launch as a paid product.',
-    metric: '₹2Cr+ revenue',
+      'Ideated and pitched Career Wallah, a personalized college-prediction and career-guidance platform. I currently own its end-to-end development — architecture, backend, frontend and shipping. It now serves 150,000+ active users with 200,000+ sign-ins.',
+    metric: '150K+ active users',
   },
   {
     icon: Users,
     color: 'electric',
-    title: 'High-traffic examination tools',
+    title: 'Tracker 360 — designed & built solo',
     detail:
-      'Built and scaled lead-capture exam tools — score calculators, rank predictors and counseling platforms — that collect high-intent student data PW never received before, increasing result collection up to 5×. Combined, these tools have been used by 500,000+ students.',
-    metric: '500,000+ users',
+      'Designed and independently developed Tracker 360, a personalized study-planning and progress-tracking platform that dynamically generates student-specific learning plans and tracks progress against them. Now serves 200,000+ active users.',
+    metric: '200K+ active users',
   },
   {
     icon: Database,
     color: 'neon',
     title: 'Khazana 1.0 → 2.0 migration',
     detail:
-      'Led the migration of the Khazana feature from 1.0 to 2.0, owning the database schema redesign and writing the migration scripts to move 300,000+ records to the new schema — while coordinating rollout across multiple teams.',
-    metric: '300,000+ records',
+      'Led the Khazana 1.0 → 2.0 migration: designed the system architecture and database schema, built the migration pipelines, and coordinated a multi-team rollout to move 300,000+ records onto the new schema without downtime for students.',
+    metric: '300K+ records',
   },
   {
     icon: Zap,
     color: 'hot',
-    title: 'Internal automation portal',
+    title: 'Khazana ingestion automation',
     detail:
-      'Designed and built an internal automation portal in Next.js for the creation, maintenance and addition workflow of Khazana, reducing a recurring operational task from 48 hours to 2 hours — a 95%+ improvement in process efficiency.',
-    metric: '48h → 2h',
+      'Owned and architected the automation layer for Khazana, enabling end-to-end autonomous ingestion of 200,000+ hours of video and 1M+ notes — supporting a platform used by 2Cr+ students with zero manual intervention in the content pipeline.',
+    metric: '200K+ hrs • 1M+ notes',
   },
   {
     icon: FileSpreadsheet,
     color: 'electric',
-    title: 'Bulk result automation pipelines',
+    title: 'High-traffic examination platforms',
     detail:
-      'Built 100+ automation scripts (Node.js, Python) to extract, clean and process 100,000+ student result records across JEE, CBSE, ICSE, state boards and vernacular categories — eliminating repetitive manual workflows during peak examination seasons.',
-    metric: '100,000+ records',
+      'Built and scaled score calculators, rank predictors and counseling tools that hold up under exam-day traffic spikes, serving 500,000+ users. Developed Node.js/Python data pipelines that extract, clean and process 170,000+ student result records across JEE, CBSE, ICSE and state boards.',
+    metric: '500K+ users • 170K+ records',
   },
   {
     icon: Award,
     color: 'neon',
-    title: 'Rapid internal business tools',
+    title: 'Rapid internal tooling',
     detail:
-      'Shipped internal business tools in as little as a day, including a bulk certificate generator (10,000+ certificates generated) and a digital faculty resource planning platform to check faculty availability at one click.',
-    metric: '10,000+ certificates',
+      'Shipped internal tools in as little as a day, including a bulk certificate generator (10,000+ certificates generated), a Next.js automation portal that cut a recurring Khazana workflow from 48 hours to 2, and a faculty resource-planning platform.',
+    metric: '48h → 2h',
   },
 ];
 
 const products = [
-  { name: 'Career Wallah', engaged: '70,000+', visits: '2,10,100+', url: 'https://careerwallah.pw.live/', status: 'Live' },
+  { name: 'Career Wallah', engaged: '1,50,000+', visits: '2,00,000+ sign-ins', url: 'https://careerwallah.pw.live/', status: 'Live' },
+  { name: 'Tracker 360', engaged: '2,00,000+', visits: '3,00,000+', url: 'https://tracker360.pw.live', status: 'Live' },
   { name: 'JEE Mains Score Calculator', engaged: '40,000+', visits: '1,50,000+', url: 'https://jee-score-calculator.pw.live/', status: 'Live' },
   { name: 'JEE Advance Score Calculator', engaged: '16,000+', visits: '40,000+', url: 'https://jee-score-calculator.pw.live/advance', status: 'Live' },
   { name: 'Faculty Battle', engaged: '15,500+', visits: '60,000+', url: 'https://faculty-battle.pw.live', status: 'Live' },
@@ -96,7 +97,7 @@ const products = [
   { name: 'Bulk Certificate Generator', engaged: '10,000+ certs', visits: '—', url: 'https://bulk-certificate-generator-pw.vercel.app/', status: 'Internal' },
 ];
 
-const techStack = ['Next.js', 'Node.js', 'Express.js', 'Python', 'PostgreSQL', 'MongoDB', 'React'];
+const techStack = ['Next.js', 'TypeScript', 'Node.js', 'Express.js', 'Python', 'PostgreSQL', 'MongoDB', 'Redis', 'Docker', 'React'];
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -156,8 +157,9 @@ const ExperiencePW = () => {
             Physics <span className="gradient-text">Wallah</span>
           </h1>
           <p className="text-xl text-foreground-secondary mb-6 max-w-3xl">
-            Driving product development & operational automation at India's largest EdTech unicorn —
-            from a ₹2Cr+ revenue product to automation pipelines processing lakhs of records.
+            Building and scaling student-facing platforms at India's largest EdTech unicorn — from
+            Career Wallah and Tracker 360 (350K+ combined active users) to the Khazana migration and
+            automation pipelines ingesting lakhs of hours of content.
           </p>
 
           <div className="flex flex-wrap items-center gap-6 text-sm text-foreground-secondary">
@@ -238,7 +240,7 @@ const ExperiencePW = () => {
             Live products & proof
           </h2>
           <p className="text-foreground-secondary mb-8">
-            Lead-capture tools I shipped, with real response counts - 90,000+ responses captured across active products.
+            Products I shipped that are live today, with real usage numbers.
           </p>
           <div className="grid sm:grid-cols-2 gap-4">
             {products.map((p, i) => (

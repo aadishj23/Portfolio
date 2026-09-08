@@ -110,12 +110,12 @@ const JourneySection = () => {
       id: 'physics-wallah',
       year: 'May 2025',
       title: 'Software Development Engineer - Physics Wallah',
-      description: 'Joined Physics Wallah, India\'s largest EdTech unicorn — now leading end-to-end development of Career Wallah and high-traffic examination tools.',
-      story: 'Stepping into the unicorn world. I ideated and now lead Career Wallah (₹2Cr+ revenue), built examination tools used by 500K+ students, led the Khazana 1.0→2.0 migration moving 300K+ records, and built automation pipelines processing 100K+ result records.',
+      description: 'Joined Physics Wallah, India\'s largest EdTech unicorn — now owning Career Wallah and Tracker 360 end-to-end, plus high-traffic examination platforms.',
+      story: 'Stepping into the unicorn world. I ideated and own Career Wallah (150K+ active users), built Tracker 360 solo (200K+ active users), led the Khazana 1.0→2.0 migration moving 300K+ records, architected automation ingesting 200K+ hours of video and 1M+ notes, and scaled exam platforms used by 500K+ students.',
       icon: <Rocket size={20} />,
       mood: '🦄',
       tech: ['Next.js', 'Node.js', 'Python', 'Scale'],
-      achievement: '₹2Cr+ revenue • 500K+ users served',
+      achievement: '350K+ active users • 500K+ exam users',
       status: 'current'
     }
   ];

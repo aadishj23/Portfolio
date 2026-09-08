@@ -492,7 +492,7 @@ const Terminal = () => {
            <div className="text-terminal-foreground text-sm">
              🏢 <span className="text-terminal-accent">Physics Wallah</span> - Software Development Engineer<br/>
              📅 May 2025 - Present<br/>
-             🔧 Career Wallah (₹2Cr+), Exam Tools (500K+ users), Khazana Migration, Automation<br/><br/>
+             🔧 Career Wallah (150K+ users), Tracker 360 (200K+ users), Exam Tools (500K+), Khazana Migration & Automation<br/><br/>
 
              🏢 <span className="text-terminal-accent">Appzlogic</span> - Full Stack SDE Developer Intern<br/>
              📅 June 2024 - November 2024<br/>
@@ -599,8 +599,8 @@ const Terminal = () => {
              <div className="text-terminal-foreground text-sm font-mono">
                <div>🏢 Physics Wallah - Software Development Engineer</div>
                <div>   📅 Duration: May 2025 - Present</div>
-               <div>   🔧 Focus: Product Development, Automation, Result Pipelines</div>
-               <div>   🚀 Achievements: Career Wallah ₹2Cr+, 500K+ users, Khazana migration</div>
+               <div>   🔧 Focus: Student Platforms, System Architecture, Automation Pipelines</div>
+               <div>   🚀 Achievements: Career Wallah 150K+ users, Tracker 360 200K+ users, Khazana migration</div>
                <div></div>
                <div>🏢 Appzlogic - Full Stack SDE Developer Intern</div>
                <div>   📅 Duration: June 2024 - November 2024</div>

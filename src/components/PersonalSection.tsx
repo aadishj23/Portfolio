@@ -17,7 +17,7 @@ const PersonalSection = () => {
       id: 'motivation',
       title: 'What Drives Me',
       icon: <Rocket size={20} />,
-      content: "I'm obsessed with the moment when code becomes more than just logic - when it becomes a solution that genuinely improves someone's day. Whether it's leading Career Wallah to ₹2Cr+ in revenue at Physics Wallah or building a website for Namdapha Tiger Reserve, that's my fuel.",
+      content: "I'm obsessed with the moment when code becomes more than just logic - when it becomes a solution that genuinely improves someone's day. Whether it's building Career Wallah and Tracker 360 for 350K+ students at Physics Wallah or a website for Namdapha Tiger Reserve, that's my fuel.",
       doodle: '✨',
       color: 'neon'
     },
@@ -50,7 +50,7 @@ const PersonalSection = () => {
   const quickFacts = [
     { label: 'Records Migrated', value: '300K+', subtitle: 'Khazana 1.0→2.0' },
     { label: 'Projects Built', value: '15+', subtitle: 'From Labeasy to IntervueX' },
-    { label: 'Revenue Driven', value: '₹2Cr+', subtitle: 'Career Wallah @ PW' },
+    { label: 'Active Users', value: '350K+', subtitle: 'Career Wallah + Tracker 360' },
     { label: 'Users Served', value: '500K+', subtitle: 'PW exam tools' },
     { label: 'Team Members Led', value: '100+', subtitle: 'Anveshan Society' },
     { label: 'Events Organised', value: '10+', subtitle: 'for Anveshan Society' }
