@@ -55,7 +55,7 @@ const SkillsSection = () => {
       name: 'C++',
       category: 'languages',
       proficiency: 4,
-      experience: '2+ years',
+      experience: '3+ years',
       description: 'High-performance systems programming language',
       usedIn: ['Data Structures and Algorithms', 'System programming', 'Performance optimization']
   },
@@ -63,8 +63,8 @@ const SkillsSection = () => {
       name: 'JavaScript',
       category: 'languages',
       proficiency: 4,
-      experience: '2+ years',
-      projects: ['All Recent Projects'],
+      experience: '3+ years',
+      projects: ['Career Wallah', 'Tracker 360', 'Labeasy', 'IntervueX'],
       description: 'Dynamic programming language for web development',
       usedIn: ['Frontend applications', 'Backend APIs', 'Interactive web features']
   },
@@ -72,8 +72,8 @@ const SkillsSection = () => {
     name: 'TypeScript',
     category: 'languages',
     proficiency: 4,
-    experience: '1+ years',
-    projects: ['Namdpaha', 'Quizzical'],
+    experience: '2+ years',
+    projects: ['Career Wallah', 'Tracker 360', 'Labeasy', 'IntervueX', 'Trackr', 'FinBoard'],
     description: 'Typed superset of JavaScript for safer development',
     usedIn: ['Large codebases', 'API development', 'Frontend applications']
   },
@@ -81,8 +81,8 @@ const SkillsSection = () => {
       name: 'SQL',
       category: 'languages',
       proficiency: 4,
-      experience: '2+ years',
-      projects: ['Labeasy', 'Quizzical'],
+      experience: '3+ years',
+      projects: ['Khazana', 'Labeasy', 'Quizzical'],
       description: 'Structured query language for database operations',
       usedIn: ['Database operations', 'Data analysis', 'Report generation']
   },
@@ -93,8 +93,8 @@ const SkillsSection = () => {
         name: 'Tailwind CSS',
         category: 'frameworks',
         proficiency: 5,
-        experience: '1+ years',
-        projects: ['Labeasy', 'Namdapha', 'Quizzical','Anveshan','TaskMate','VentureVine', 'HackBlitz', 'TempTrack','Tenzies','Youtube Comment Scraper'],
+        experience: '2+ years',
+        projects: ['Career Wallah', 'Tracker 360', 'Labeasy', 'IntervueX', 'Trackr', 'FinBoard', 'Namdapha'],
         description: 'Utility-first CSS framework for rapid UI development',
         usedIn: ['Responsive layouts', 'Component styling', 'Design systems']
     },
@@ -102,8 +102,8 @@ const SkillsSection = () => {
         name: 'React.js',
         category: 'frameworks',
         proficiency: 5,
-        experience: '2+ years',
-        projects: ['Labeasy', 'Namdapha', 'Quizzical','Anveshan','TaskMate','VentureVine', 'HackBlitz', 'TempTrack','Tenzies','Youtube Comment Scraper'],
+        experience: '3+ years',
+        projects: ['Career Wallah', 'Tracker 360', 'Labeasy', 'IntervueX', 'Namdapha', 'Quizzical', 'Anveshan'],
         description: 'Modern JavaScript library for building interactive user interfaces',
         usedIn: ['Single-page applications', 'Component architecture', 'State management']
     },
@@ -111,8 +111,8 @@ const SkillsSection = () => {
         name: 'Node.js',
         category: 'frameworks',
         proficiency: 5,
-        experience: '1+ years',
-        projects: ['Labeasy', 'Quizzical','Anveshan','TaskMate'],
+        experience: '2+ years',
+        projects: ['Khazana automation', 'Result pipelines', 'Labeasy', 'Quizzical', 'Anveshan'],
         description: 'JavaScript runtime for server-side development',
         usedIn: ['Backend APIs', 'Real-time applications', 'Microservices']
     },
@@ -120,8 +120,8 @@ const SkillsSection = () => {
       name: 'Express.js',
       category: 'frameworks',
       proficiency: 4,
-      experience: '1+ years',
-      projects: ['Labeasy', 'Quizzical','Anveshan','TaskMate'],
+      experience: '2+ years',
+      projects: ['Exam platforms', 'Labeasy', 'Quizzical', 'Anveshan'],
       description: 'Minimal and flexible Node.js web application framework',
       usedIn: ['RESTful APIs', 'Middleware development', 'Authentication systems']
     },
@@ -129,8 +129,8 @@ const SkillsSection = () => {
         name: 'Next.js',
         category: 'frameworks',
         proficiency: 4,
-        experience: '1+ years',
-        projects: ['Images Bazzar', 'Physics Wallah'],
+        experience: '2+ years',
+        projects: ['Career Wallah', 'Tracker 360', 'Labeasy', 'IntervueX', 'Trackr', 'CertGen', 'Images Bazaar'],
         description: 'Full-stack React framework with server-side rendering',
         usedIn: ['SEO-optimized apps', 'Full-stack development', 'Performance optimization']
     },
@@ -141,7 +141,7 @@ const SkillsSection = () => {
       category: 'database',
       proficiency: 4,
       experience: '2+ years',
-      projects: ['Labeasy', 'Quizzical'],
+      projects: ['Khazana 2.0', 'Labeasy', 'Quizzical'],
       description: 'Advanced SQL and database optimization techniques',
       usedIn: ['Complex queries', 'Performance tuning', 'Normalization']
     },
@@ -150,7 +150,7 @@ const SkillsSection = () => {
       category: 'database',
       proficiency: 5,
       experience: '2+ years',
-      projects: ['Anveshan', 'TaskMate'],
+      projects: ['Career Wallah', 'Tracker 360', 'Trackr', 'Anveshan'],
       description: 'NoSQL database design and aggregation pipelines',
       usedIn: ['Document modeling', 'Aggregation queries', 'Sharding strategies']
     },
@@ -159,7 +159,7 @@ const SkillsSection = () => {
       category: 'database',
       proficiency: 4,
       experience: '1+ years',
-      projects: ['Labeasy'],
+      projects: ['Career Wallah', 'Labeasy'],
       description: 'In-memory data store for caching and fast lookups',
       usedIn: ['Response caching', 'Rate limiting', 'Session storage']
     },
@@ -168,7 +168,7 @@ const SkillsSection = () => {
         category: 'database',
         proficiency: 4,
         experience: '1+ years',
-        projects: ['Labeasy', 'Quizzical'],
+        projects: ['Khazana 2.0', 'Labeasy', 'Quizzical'],
         description: 'Modern ORM for type-safe database operations',
         usedIn: ['Database migrations', 'Query optimization', 'Schema management']
     },
@@ -179,6 +179,7 @@ const SkillsSection = () => {
       category: 'devops',
       proficiency: 4,
       experience: '1+ years',
+      projects: ['Career Wallah', 'Tracker 360', 'Exam platforms'],
       description: 'Cloud computing platform for scalable infrastructure',
       usedIn: ['EC2 deployment', 'CloudFront CDN', 'S3 storage']
     },
@@ -187,6 +188,7 @@ const SkillsSection = () => {
       category: 'devops',
       proficiency: 4,
       experience: '1+ years',
+      projects: ['Khazana automation', 'Labeasy'],
       description: 'Containerization platform for consistent deployments',
       usedIn: ['Microservices deployment', 'Development environments', 'Reproducible builds']
     },
@@ -195,6 +197,7 @@ const SkillsSection = () => {
       category: 'devops',
       proficiency: 4,
       experience: '1+ years',
+      projects: ['Career Wallah', 'Tracker 360', 'Exam platforms'],
       description: 'Automated build, test, and deployment pipelines',
       usedIn: ['Automated deployments', 'Build pipelines', 'Continuous integration']
     },
@@ -204,7 +207,7 @@ const SkillsSection = () => {
       name: 'Git',
       category: 'tools',
       proficiency: 5,
-      experience: '2+ years',
+      experience: '3+ years',
       description: 'Distributed version control for collaborative development',
       usedIn: ['Version control', 'Branching workflows', 'Team collaboration']
     },
@@ -212,7 +215,7 @@ const SkillsSection = () => {
       name: 'Postman',
       category: 'tools',
       proficiency: 5,
-      experience: '2+ years',
+      experience: '3+ years',
       description: 'API development and testing client',
       usedIn: ['API testing', 'Request debugging', 'Endpoint documentation']
     }

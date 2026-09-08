@@ -1,15 +1,34 @@
 'use client';
 
 import { useState } from 'react';
-import { ExternalLink, Github, Play, Database, Shield, Users,Code, Folder, User } from 'lucide-react';
+import Link from 'next/link';
+import { ExternalLink, Github, Play, Database, Shield, Users, Code, Folder, User, BookOpen, ChevronDown, ChevronUp } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
 const ProjectsSection = () => {
   const [runningProcesses, setRunningProcesses] = useState<string[]>([]);
+  const [showAll, setShowAll] = useState(false);
 
-  const projects = [
+  // Top projects shown by default; everything else collapses under "more experiments".
+  const FEATURED_COUNT = 6;
+
+  type Project = {
+    id: string;
+    name: string;
+    command: string;
+    status: string;
+    description: string;
+    impact: string[];
+    tech: string[];
+    type: string;
+    metrics?: Record<string, string>;
+    caseStudy?: string;
+    links: { live?: string; github?: string };
+  };
+
+  const projects: Project[] = [
     {
       id: 'labeasy',
       name: 'Labeasy',
@@ -21,9 +40,10 @@ const ProjectsSection = () => {
       type: 'icon1',
       metrics: {
         "lab tests": '120+',
-        "revenue streams": '4',
+        roles: '5',
         uptime: '99%'
       },
+      caseStudy: '/projects/labeasy',
       links: {
         live: 'https://labeasy.aadishjain.dev/',
         github: 'https://github.com/aadishj23/Labeasy'
@@ -43,6 +63,7 @@ const ProjectsSection = () => {
         compilers: '6',
         uptime: '99%'
       },
+      caseStudy: '/projects/intervuex',
       links: {
         live: 'https://intervuex.aadishjain.dev/',
         github: 'https://github.com/aadishj23/IntervueX'
@@ -263,6 +284,9 @@ const ProjectsSection = () => {
     }
   ];
 
+  const visibleProjects = showAll ? projects : projects.slice(0, FEATURED_COUNT);
+  const hiddenCount = projects.length - FEATURED_COUNT;
+
   const runProcess = (projectId: string) => {
     if (!runningProcesses.includes(projectId)) {
       setRunningProcesses([...runningProcesses, projectId]);
@@ -333,7 +357,7 @@ const ProjectsSection = () => {
 
         {/* Projects Grid */}
         <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
-          {projects.map((project, index) => (
+          {visibleProjects.map((project, index) => (
             <Card 
               key={project.id}
               className={`os-window interactive-hover cursor-pointer animate-scale-in animate-delay-${(index + 1) * 200} overflow-hidden`}
@@ -427,7 +451,19 @@ const ProjectsSection = () => {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex gap-3">
+                <div className="flex flex-wrap gap-3">
+                  {project.caseStudy && (
+                    <Link href={project.caseStudy} onClick={(e) => e.stopPropagation()}>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex items-center gap-2 hover:shadow-glow border-electric/40 text-electric"
+                      >
+                        <BookOpen size={14} />
+                        Case study
+                      </Button>
+                    </Link>
+                  )}
                   {Object.entries(project.links).map(([type, url]) => (
                     <Button
                         key={type}
@@ -452,6 +488,20 @@ const ProjectsSection = () => {
             </Card>
           ))}
         </div>
+
+        {/* Show more / less */}
+        {hiddenCount > 0 && (
+          <div className="text-center mt-10">
+            <Button
+              variant="outline"
+              className="flex items-center gap-2 mx-auto hover:shadow-glow font-mono text-sm"
+              onClick={() => setShowAll((v) => !v)}
+            >
+              {showAll ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+              {showAll ? 'Show fewer' : `ls ./more-experiments  (${hiddenCount} more)`}
+            </Button>
+          </div>
+        )}
 
         {/* Footer Message */}
         <div className="text-center mt-16">
