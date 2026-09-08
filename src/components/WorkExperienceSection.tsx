@@ -19,7 +19,7 @@ const WorkExperienceSection = () => {
         roleProgression: 'Backend Trainee (May–Nov 2025) → SDE (Nov 2025–Present)',
         location: 'Noida, India',
         status: 'current',
-        type: 'Internship',
+        type: 'Full-time',
         description: 'Building and scaling student-facing platforms at India\'s largest EdTech unicorn — own end-to-end development of Career Wallah (150K+ active users), built Tracker 360 (200K+ active users), led the Khazana 1.0→2.0 migration, and architected automation ingesting 200K+ hours of video.',
         highlights: [
           { value: '350K+', label: 'Active users' },

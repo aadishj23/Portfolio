@@ -41,14 +41,6 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: 'Aadish Jain Portfolio',
     locale: 'en_US',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Aadish Jain - Full Stack Developer Portfolio',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -56,7 +48,6 @@ export const metadata: Metadata = {
     creator: '@AadishJ23',
     title: TITLE,
     description: DESCRIPTION,
-    images: ['/og-image.jpg'],
   },
   other: {
     'geo.region': 'IN',
