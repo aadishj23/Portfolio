@@ -15,6 +15,8 @@ import {
   FileSpreadsheet,
   Award,
   TrendingUp,
+  Cpu,
+  BookOpen,
 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -87,6 +89,56 @@ const accomplishments = [
   },
 ];
 
+type BuildStory = {
+  name: string;
+  summary: string;
+  stack: string[];
+  points: string[];
+  caseStudy?: string;
+};
+
+const buildStories: BuildStory[] = [
+  {
+    name: 'Career Wallah',
+    summary:
+      'A single Next.js 16 service on Kubernetes. Prediction engines run over 30,882 cutoff rows held as committed JSON in process memory, so no database read sits on the hot path. MongoDB spans four logical databases for leads, payments and OMR submissions; Redis holds PW tokens, entitlement flags, rate limits and live per-booklet aggregates.',
+    stack: ['Next.js 16', 'MongoDB', 'Redis', 'Docker', 'Kubernetes', 'Jenkins', 'AWS Lambda'],
+    points: [
+      'Twelve JEE and eight NEET board adapters unify different cutoff schemas; every result row declares which of a student\'s four ranks produced it',
+      'OMR scoring stays up during a database outage: the image URL travels in an HMAC-signed token and all persistence runs after the response',
+      'Refresh-token rotation is serialised with a Redis lock per phone so concurrent page loads cannot spend the same token and log the student out',
+      'Payments are re-verified server-to-server and owners resolved from our own pending row, never from the gateway payload',
+    ],
+    caseStudy: '/projects/career-wallah',
+  },
+  {
+    name: 'Tracker 360',
+    summary:
+      'A pure, unit-tested scheduling engine derives each day\'s list, backlog and pace from a small plan document on every read. Course content ships as version-pinned JSON; MongoDB stores plans and members with a unique partial index guaranteeing one active plan per student; Redis holds PW tokens and rate-limit counters.',
+    stack: ['Next.js 16', 'MongoDB', 'Redis', 'Docker', 'Kubernetes', 'Jenkins', 'Elastic APM'],
+    points: [
+      'Plan documents cut from 133 KB to 2 KB by deriving items on read, with a verification step that guarantees no student\'s completed progress is orphaned',
+      'Today\'s budget is fixed at the start of the day: finishing or moving work shrinks the list instead of refilling it',
+      'Watch progress synced from PW\'s video API in chunks under a 5 s total budget, picked round-robin across subjects',
+      'Strict per-request CSP with nonces, double-submit CSRF, and a lint rule that fails the build on inline styles',
+    ],
+    caseStudy: '/projects/tracker-360',
+  },
+  {
+    name: 'Khazana ingestion automation',
+    summary:
+      'A self-service portal where category teams file content sheets, a superadmin approves them, and an in-process worker publishes them to PW\'s admin APIs across three hosts and API versions — with no message broker. MongoDB is both the store and the queue.',
+    stack: ['Next.js 16', 'MongoDB', 'Docker', 'Kubernetes', 'Jenkins', 'Gmail API', 'Slack'],
+    points: [
+      'A partial unique index on the running status is the distributed lock: two pods claiming the same job get a duplicate-key answer, not a race, backed by heartbeats and stale-job reclaim',
+      'Seven-step resumable pipeline with idempotency at four levels (chapter, topic, sub-topic, item) against an API that offers no idempotency keys',
+      'Credential failover that tells a dead uploader token apart from a load-shed 401 by verifying the token alone, then swaps accounts mid-run',
+      'Row-level optimistic merge lets two people edit one sheet; a hand-rolled RFC 4180 parser keeps row numbers matching the spreadsheet',
+      'Mail goes through an outbox with per-message dedupe keys enforced by a unique index; 39 declared indexes are created individually so one failure cannot block the rest',
+    ],
+  },
+];
+
 const products = [
   { name: 'Career Wallah', engaged: '1,50,000+', visits: '2,00,000+ sign-ins', url: 'https://careerwallah.pw.live/', status: 'Live' },
   { name: 'Tracker 360', engaged: '2,00,000+', visits: '3,00,000+', url: 'https://tracker360.pw.live', status: 'Live' },
@@ -97,7 +149,7 @@ const products = [
   { name: 'Bulk Certificate Generator', engaged: '10,000+ certs', visits: '—', url: 'https://bulk-certificate-generator-pw.vercel.app/', status: 'Internal' },
 ];
 
-const techStack = ['Next.js', 'TypeScript', 'Node.js', 'Express.js', 'Python', 'PostgreSQL', 'MongoDB', 'Redis', 'Docker', 'React'];
+const techStack = ['Next.js', 'TypeScript', 'Node.js', 'Express.js', 'Python', 'MongoDB', 'PostgreSQL', 'Redis', 'Docker', 'Kubernetes', 'Jenkins', 'React'];
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -230,6 +282,57 @@ const ExperiencePW = () => {
                 </motion.div>
               );
             })}
+          </div>
+        </div>
+
+        {/* How it was built */}
+        <div className="mt-20">
+          <h2 className="text-3xl font-serif mb-3 flex items-center gap-3">
+            <Cpu className="text-hot" size={26} />
+            How it was built
+          </h2>
+          <p className="text-foreground-secondary mb-8 max-w-3xl">
+            Architecture notes on the three systems I own. Two of them have full case studies.
+          </p>
+          <div className="space-y-5">
+            {buildStories.map((b, i) => (
+              <motion.div
+                key={b.name}
+                custom={i}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.15 }}
+              >
+                <Card className="os-window p-6">
+                  <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+                    <h3 className="text-lg font-semibold text-foreground">{b.name}</h3>
+                    {b.caseStudy && (
+                      <Link href={b.caseStudy}>
+                        <Button variant="outline" size="sm" className="flex items-center gap-2 hover:shadow-glow border-electric/40 text-electric">
+                          <BookOpen size={14} />
+                          Full case study
+                        </Button>
+                      </Link>
+                    )}
+                  </div>
+                  <p className="text-sm text-foreground-secondary leading-relaxed mb-4">{b.summary}</p>
+                  <ul className="space-y-2 mb-4">
+                    {b.points.map((pt) => (
+                      <li key={pt} className="text-sm text-foreground-secondary flex gap-2">
+                        <span className="text-neon shrink-0">›</span>
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex flex-wrap gap-2">
+                    {b.stack.map((t) => (
+                      <Badge key={t} variant="secondary" className="text-xs">{t}</Badge>
+                    ))}
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
           </div>
         </div>
 

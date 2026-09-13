@@ -25,10 +25,51 @@ const ProjectsSection = () => {
     type: string;
     metrics?: Record<string, string>;
     caseStudy?: string;
+    tag?: string;
     links: { live?: string; github?: string };
   };
 
   const projects: Project[] = [
+    {
+      id: 'career-wallah',
+      name: 'Career Wallah',
+      command: 'run-career-wallah',
+      status: 'production',
+      description: 'A college-prediction and career-guidance platform for JEE and NEET aspirants at Physics Wallah — rank-based predictors across 20 counselling boards, an OMR score calculator, pw.live SSO and verified payments. Ideated, pitched and built end-to-end by me.',
+      impact: ['150,000+ active users · 200,000+ sign-ins', '30,882 cutoff rows across 12 JEE + 8 NEET boards', 'OMR photo → serverless parser → instant score'],
+      tech: ['Next.js 16', 'TypeScript', 'MongoDB', 'Redis', 'Docker', 'Kubernetes'],
+      type: 'icon7',
+      tag: 'Physics Wallah · built solo',
+      metrics: {
+        "active users": '150K+',
+        "sign-ins": '200K+',
+        boards: '20'
+      },
+      caseStudy: '/projects/career-wallah',
+      links: {
+        live: 'https://careerwallah.pw.live/'
+      }
+    },
+    {
+      id: 'tracker-360',
+      name: 'Tracker 360',
+      command: 'run-tracker-360',
+      status: 'production',
+      description: 'A personalised study planner for Physics Wallah batches — turns subject, faculty and chapter choices into a day-by-day schedule, auto-ticks watched lectures from PW video stats, and adapts with recovery windows when students fall behind. Designed and built solo.',
+      impact: ['200,000+ active users · 300,000+ visits', 'Pure scheduling engine with 126 test assertions', 'Plan documents cut from 133 KB to 2 KB'],
+      tech: ['Next.js 16', 'TypeScript', 'MongoDB', 'Redis', 'Docker', 'Kubernetes'],
+      type: 'icon3',
+      tag: 'Physics Wallah · built solo',
+      metrics: {
+        "active users": '200K+',
+        visits: '300K+',
+        "content hrs": '9K+'
+      },
+      caseStudy: '/projects/tracker-360',
+      links: {
+        live: 'https://tracker360.pw.live'
+      }
+    },
     {
       id: 'labeasy',
       name: 'Labeasy',
@@ -378,6 +419,11 @@ const ProjectsSection = () => {
                   >
                     {project.status}
                   </Badge>
+                  {project.tag && (
+                    <Badge variant="secondary" className="hidden sm:inline-flex text-[10px] font-mono">
+                      {project.tag}
+                    </Badge>
+                  )}
                 </div>
                 <div className="os-window-controls">
                   <div className="os-window-control close" />

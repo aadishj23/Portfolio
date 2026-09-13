@@ -82,7 +82,7 @@ const SkillsSection = () => {
       category: 'languages',
       proficiency: 4,
       experience: '3+ years',
-      projects: ['Khazana', 'Labeasy', 'Quizzical'],
+      projects: ['Labeasy', 'Quizzical'],
       description: 'Structured query language for database operations',
       usedIn: ['Database operations', 'Data analysis', 'Report generation']
   },
@@ -112,7 +112,7 @@ const SkillsSection = () => {
         category: 'frameworks',
         proficiency: 5,
         experience: '2+ years',
-        projects: ['Khazana automation', 'Result pipelines', 'Labeasy', 'Quizzical', 'Anveshan'],
+        projects: ['Career Wallah', 'Tracker 360', 'Khazana automation', 'Labeasy', 'Quizzical', 'Anveshan'],
         description: 'JavaScript runtime for server-side development',
         usedIn: ['Backend APIs', 'Real-time applications', 'Microservices']
     },
@@ -141,7 +141,7 @@ const SkillsSection = () => {
       category: 'database',
       proficiency: 4,
       experience: '2+ years',
-      projects: ['Khazana 2.0', 'Labeasy', 'Quizzical'],
+      projects: ['Labeasy', 'Quizzical'],
       description: 'Advanced SQL and database optimization techniques',
       usedIn: ['Complex queries', 'Performance tuning', 'Normalization']
     },
@@ -150,7 +150,7 @@ const SkillsSection = () => {
       category: 'database',
       proficiency: 5,
       experience: '2+ years',
-      projects: ['Career Wallah', 'Tracker 360', 'Trackr', 'Anveshan'],
+      projects: ['Career Wallah', 'Tracker 360', 'Khazana automation', 'Trackr', 'Anveshan'],
       description: 'NoSQL database design and aggregation pipelines',
       usedIn: ['Document modeling', 'Aggregation queries', 'Sharding strategies']
     },
@@ -159,7 +159,7 @@ const SkillsSection = () => {
       category: 'database',
       proficiency: 4,
       experience: '1+ years',
-      projects: ['Career Wallah', 'Labeasy'],
+      projects: ['Career Wallah', 'Tracker 360', 'Labeasy'],
       description: 'In-memory data store for caching and fast lookups',
       usedIn: ['Response caching', 'Rate limiting', 'Session storage']
     },
@@ -168,7 +168,7 @@ const SkillsSection = () => {
         category: 'database',
         proficiency: 4,
         experience: '1+ years',
-        projects: ['Khazana 2.0', 'Labeasy', 'Quizzical'],
+        projects: ['Labeasy', 'Quizzical'],
         description: 'Modern ORM for type-safe database operations',
         usedIn: ['Database migrations', 'Query optimization', 'Schema management']
     },
@@ -188,7 +188,7 @@ const SkillsSection = () => {
       category: 'devops',
       proficiency: 4,
       experience: '1+ years',
-      projects: ['Khazana automation', 'Labeasy'],
+      projects: ['Career Wallah', 'Tracker 360', 'Khazana automation', 'Labeasy'],
       description: 'Containerization platform for consistent deployments',
       usedIn: ['Microservices deployment', 'Development environments', 'Reproducible builds']
     },
